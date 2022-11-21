@@ -1,0 +1,14 @@
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\obj\Debug\net6.0\RentalCarManagementSystem.Infrastructure.csproj.AssemblyReference.cache
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\obj\Debug\net6.0\RentalCarManagementSystem.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\obj\Debug\net6.0\RentalCarManagementSystem.Infrastructure.AssemblyInfoInputs.cache
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\obj\Debug\net6.0\RentalCarManagementSystem.Infrastructure.AssemblyInfo.cs
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\obj\Debug\net6.0\RentalCarManagementSystem.Infrastructure.csproj.CoreCompileInputs.cache
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\bin\Debug\net6.0\RentalCarManagementSystem.Infrastructure.deps.json
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\bin\Debug\net6.0\RentalCarManagementSystem.Infrastructure.runtimeconfig.json
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\bin\Debug\net6.0\RentalCarManagementSystem.Infrastructure.dll
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\bin\Debug\net6.0\RentalCarManagementSystem.Infrastructure.pdb
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\obj\Debug\net6.0\RentalCarManagementSystem.Infrastructure.dll
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\obj\Debug\net6.0\refint\RentalCarManagementSystem.Infrastructure.dll
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\obj\Debug\net6.0\RentalCarManagementSystem.Infrastructure.pdb
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\obj\Debug\net6.0\RentalCarManagementSystem.Infrastructure.genruntimeconfig.cache
+D:\SoftUni\source\SoftUniProject\RentalCarManagementSystem\RentalCarManagementSystem.Infrastructure\obj\Debug\net6.0\ref\RentalCarManagementSystem.Infrastructure.dll
