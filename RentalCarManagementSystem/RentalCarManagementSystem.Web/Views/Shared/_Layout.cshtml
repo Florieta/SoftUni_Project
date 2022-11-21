@@ -25,6 +25,18 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a class="nav-link" asp-area="" asp-controller="Car" asp-action="All">Car Park</a>
                 </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                     <a class="nav-link" asp-area="" asp-controller="Booking" asp-action="All">All Bookings</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                   <a class="nav-link" asp-area="" asp-controller="Booking" asp-action="AllCheckIns">Check Ins</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="Booking" asp-action="AllCheckOuts">Check Outs</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/" class="nav-link">New Booking</a>
+                </li>
                   @if (User.IsInRole("Admin"))
                 {
                 <li class="nav-item">
@@ -40,18 +52,7 @@
                 </li>
                 }
                 
-                <li class="nav-item d-none d-sm-inline-block">
-                     <a class="nav-link" asp-area="" asp-controller="Booking" asp-action="All">All Bookings</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/" class="nav-link">Going Cars</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/" class="nav-link">Coming Cars</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/" class="nav-link">New Booking</a>
-                </li>
+                
             </ul>
 
             <ul class="navbar-nav ml-auto">
