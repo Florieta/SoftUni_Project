@@ -2023,11 +2023,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SoftUni\\source\\SoftUniProject\\RentalCarManagementSystem\\RentalCarManagementSystem.Infrastructure\\RentalCarManagementSystem.Infrastructure.csproj",
+      "projectUniqueName": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Infrastructure\\RentalCarManagementSystem.Infrastructure.csproj",
       "projectName": "RentalCarManagementSystem.Infrastructure",
-      "projectPath": "D:\\SoftUni\\source\\SoftUniProject\\RentalCarManagementSystem\\RentalCarManagementSystem.Infrastructure\\RentalCarManagementSystem.Infrastructure.csproj",
+      "projectPath": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Infrastructure\\RentalCarManagementSystem.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Aspire\\.nuget\\packages\\",
-      "outputPath": "D:\\SoftUni\\source\\SoftUniProject\\RentalCarManagementSystem\\RentalCarManagementSystem.Infrastructure\\obj\\",
+      "outputPath": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Aspire\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pAn5fgrwsgkWhF0U4eJ5626cpZ3YWBne1S6JzdzwVh9SElAy6HrwPfw+/YtePRHZU0otJZkjdyueVqm6k4GPDA==",
+  "dgSpecHash": "Eq5R5m1HnJhEdbwHXRlC8+0ZQMrezNK/+sSTeh7Y6jDpduP08Co0dZjcGMxk4iDBMlHfNpvVFM2XCCsJdP8wJg==",
   "success": true,
-  "projectFilePath": "D:\\SoftUni\\source\\SoftUniProject\\RentalCarManagementSystem\\RentalCarManagementSystem.Infrastructure\\RentalCarManagementSystem.Infrastructure.csproj",
+  "projectFilePath": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Infrastructure\\RentalCarManagementSystem.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Aspire\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.11\\microsoft.aspnetcore.cryptography.internal.6.0.11.nupkg.sha512",

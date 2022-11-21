@@ -13,10 +13,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RentalCarManagementSystem.Infrastructure\RentalCarManagementSystem.Infrastructure.csproj" />
+    <ProjectReference Include="..\RentalCarManagementSystem.Core\RentalCarManagementSystem.Core.csproj" />
   </ItemGroup>
 
 </Project>

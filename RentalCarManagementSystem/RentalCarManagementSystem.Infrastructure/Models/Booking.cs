@@ -65,5 +65,7 @@ namespace RentalCarManagementSystem.Infrastructure.Models
 
         public ApplicationUser ApplicationUser { get; set; } = null!;
 
+        public bool IsRented { get; set; } = false;
+
     }
 }

@@ -32,6 +32,8 @@ namespace RentalCarManagementSystem.Infrastructure.Data
             builder.ApplyConfiguration(new LocationConfiguration());
             builder.ApplyConfiguration(new InsuranceConfiguration());
             builder.ApplyConfiguration(new ApplicationUserConfiguration());
+            builder.ApplyConfiguration(new RoleConfiguration());
+            builder.ApplyConfiguration(new UserRoleConfiguration());
 
             builder.Entity<Booking>(e =>
             {

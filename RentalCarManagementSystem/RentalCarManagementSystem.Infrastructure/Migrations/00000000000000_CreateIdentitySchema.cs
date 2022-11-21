@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace RentalCarManagementSystem.Infrastructure.Migrations
+namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
