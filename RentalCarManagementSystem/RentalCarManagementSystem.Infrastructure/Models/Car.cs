@@ -57,6 +57,8 @@ namespace RentalCarManagementSystem.Infrastructure.Models
         [Required]
         public bool IsAvailable { get; set; } = true;
 
+        public bool NotInUse { get; set; } = false;
+
         public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     }
 }

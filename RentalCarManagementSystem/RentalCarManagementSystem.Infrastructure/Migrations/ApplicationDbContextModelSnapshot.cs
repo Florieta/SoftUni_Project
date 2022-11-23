@@ -52,7 +52,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         new
                         {
                             Id = "d86dba5034324ec481562264fecc1d3b",
-                            ConcurrencyStamp = "08d61a34-8837-476c-9c65-051e74aaf273",
+                            ConcurrencyStamp = "1227c39d-9f2b-4eda-bbaa-aff2b61dd135",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -330,6 +330,9 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<bool>("NotInUse")
+                        .HasColumnType("bit");
+
                     b.Property<string>("RegNumber")
                         .IsRequired()
                         .HasMaxLength(8)
@@ -355,6 +358,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             Make = "Toyota",
                             MakeYear = 2022,
                             Model = "Corolla",
+                            NotInUse = false,
                             RegNumber = "B1234AB"
                         },
                         new
@@ -370,6 +374,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             Make = "Hundai",
                             MakeYear = 2022,
                             Model = "i20",
+                            NotInUse = false,
                             RegNumber = "B1444CB"
                         },
                         new
@@ -385,6 +390,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             Make = "Citroen",
                             MakeYear = 2022,
                             Model = "C4",
+                            NotInUse = false,
                             RegNumber = "B1223AB"
                         });
                 });
@@ -601,7 +607,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         {
                             Id = "d3211a8d-efde-4a19-8087-79cde4679276",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "70c7cb1d-f6b1-4888-8924-06dd7bb08582",
+                            ConcurrencyStamp = "5ed2b685-7f3c-4dfa-bca1-a0a690a8351a",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Peter",
@@ -609,10 +615,10 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAELLVz3OonzHrryFSil7qavk2JlJ4CoOQqyO8O86scr68e/ABRM4YNFgYh7+NihUrvQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL5fEY4YbuEpzr+GJxvZ5PABD/vjBAaFbzaJeTNs+LZHXKGEbs35jebBk7Cr/MRUkQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "88db10c1-50ee-4579-b984-d54969e967d3",
+                            SecurityStamp = "9acd49ac-5837-4739-b60c-994076bcc0df",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         },
@@ -620,7 +626,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         {
                             Id = "c6e570fd-d889-4a67-a36a-0ecbe758bc2c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "48b4a2fd-3edc-4513-ac48-e8c2c69e4c7e",
+                            ConcurrencyStamp = "9c0204cd-5c7d-4288-beed-6744280c1ff5",
                             Email = "agent@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Peter",
@@ -628,10 +634,10 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AGENT@GMAIL.COM",
                             NormalizedUserName = "AGENT1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBNJ/joU34rH6IfSeZGeK3Db97+B5agy0tuNiaoRgs/XHVcr6h6nVnjv7YWsjABYiQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEFl1Oox1OtTHiZDi4VgHS922kk8Ag/vQaK5Bmgrk/kK1ChyQJWFnN0Z+dp9iU2aAA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9516fd36-f5b9-4816-8483-8e92c426eb14",
+                            SecurityStamp = "879bbb4c-7760-4401-83fe-1d89eea05765",
                             TwoFactorEnabled = false,
                             UserName = "Agent1"
                         });
