@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RentalCarManagementSystem.Core.Contracts;
 using RentalCarManagementSystem.Web.Models;
 using System.Diagnostics;
 
@@ -6,11 +7,19 @@ namespace RentalCarManagementSystem.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        
+        private readonly IScheduleService scheduleService;
 
-        public IActionResult Index()
+        public HomeController(IScheduleService scheduleService)
         {
-            return View();
+            this.scheduleService = scheduleService;
+        }
+
+
+        public async Task<IActionResult> Index()
+        {
+            var model = await scheduleService.TotalAvailableCarsAsync();
+
+            return View(model);
         }
 
         public IActionResult Privacy()
