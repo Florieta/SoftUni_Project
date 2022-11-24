@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "ghHg0oqSzUoKEd6+blSMxGRxNK7A56xBloPRuHokGUpVyW2bs67BTmyMpNiRfh0UOaCZcJ62YhX9lh9HqMO/lg==",
+  "dgSpecHash": "cB2MwpDsZZm+gwSLnGZjnC4xkWUVAEJTtf/F0rfWZWte07Kyjz+egDSvqfbHNKA3jSzj00KFSmbvfSJ55u0h8Q==",
   "success": true,
   "projectFilePath": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Core\\RentalCarManagementSystem.Core.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Aspire\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\Aspire\\.nuget\\packages\\automapper.extensions.expressionmapping\\6.0.1\\automapper.extensions.expressionmapping.6.0.1.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.11\\microsoft.aspnetcore.cryptography.internal.6.0.11.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.11\\microsoft.aspnetcore.cryptography.keyderivation.6.0.11.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.11\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.11.nupkg.sha512",
-    "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.11\\microsoft.entityframeworkcore.6.0.11.nupkg.sha512",

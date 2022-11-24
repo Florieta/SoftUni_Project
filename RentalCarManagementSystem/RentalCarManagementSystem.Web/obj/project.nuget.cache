@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "oK6F1apHMJZtYsgOsAAb727v3XrsD5uWC9+WW/6xauaQKWmXmLFby01rn+R8rNJCaDmJHRVm595J9OpO9oaBPw==",
+  "dgSpecHash": "e+lMyZXEFw6oMCfA4cNe5y6AnjYCK79S8QaxbdPUvROTKlhE1wicwsy3cbcq9CqP7IWQeAz5YWAzFCZ34nzh7g==",
   "success": true,
   "projectFilePath": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Web\\RentalCarManagementSystem.Web.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Aspire\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\Aspire\\.nuget\\packages\\automapper.extensions.expressionmapping\\6.0.1\\automapper.extensions.expressionmapping.6.0.1.nupkg.sha512",
+    "C:\\Users\\Aspire\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
@@ -32,7 +35,7 @@
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.codeanalysis.visualbasic.workspaces\\4.0.0\\microsoft.codeanalysis.visualbasic.workspaces.4.0.0.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.codeanalysis.workspaces.common\\4.0.0\\microsoft.codeanalysis.workspaces.common.4.0.0.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.codeanalysis.workspaces.msbuild\\4.0.0\\microsoft.codeanalysis.workspaces.msbuild.4.0.0.nupkg.sha512",
-    "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.diasymreader\\1.3.0\\microsoft.diasymreader.1.3.0.nupkg.sha512",

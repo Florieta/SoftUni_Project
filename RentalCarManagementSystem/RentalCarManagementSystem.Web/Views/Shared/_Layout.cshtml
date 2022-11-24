@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css" />
     <link rel="stylesheet" href="~/css/adminlte.min.css" />
     <link rel="stylesheet" href="~/plugins/toastr/toastr.min.css" />
-   
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     @await RenderSectionAsync("Head", false)
 </head>
@@ -26,10 +26,10 @@
                     <a class="nav-link" asp-area="" asp-controller="Car" asp-action="All">Car Park</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                     <a class="nav-link" asp-area="" asp-controller="Booking" asp-action="All">All Bookings</a>
+                    <a class="nav-link" asp-area="" asp-controller="Booking" asp-action="All">All Bookings</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                   <a class="nav-link" asp-area="" asp-controller="Booking" asp-action="AllCheckIns">Check Ins</a>
+                    <a class="nav-link" asp-area="" asp-controller="Booking" asp-action="AllCheckIns">Check Ins</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a class="nav-link" asp-area="" asp-controller="Booking" asp-action="AllCheckOuts">Check Outs</a>
@@ -37,22 +37,16 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="/" class="nav-link">New Booking</a>
                 </li>
-                  @if (User.IsInRole("Admin"))
+                @if (User.IsInRole("Admin"))
                 {
-                <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Car" asp-action="CreateCar">Add Car</a>
-                </li>
-                
-                
-               
-                <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Bookings" asp-action="Delete">Delete Booking</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="Car" asp-action="CreateCar">Add Car</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="User" asp-action="UserManage">User Menu</a>
+                    </li>
                 }
-                
-                
             </ul>
-
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post">
@@ -100,7 +94,7 @@
             <!-- /.sidebar -->
         </aside>
 
-        <!-- Content Wrapper. Contains page content -->
+
         <div class="content-wrapper">
             @*<!-- Content Header (Page header) -->
             <div class="content-header">
@@ -172,9 +166,10 @@
     <script src="~/plugins/bs-stepper/js/bs-stepper.min.js"></script>
     <!-- dropzonejs -->
     <script src="~/plugins/dropzone/min/dropzone.min.js"></script>
+    <script src="~/plugins/toastr/toastr.min.js"></script>
     <partial name="_UserMessages" />
     <partial name="_PartialScript" />
     @await RenderSectionAsync("Scripts", false)
-   
+
 </body>
 </html>

@@ -9,6 +9,7 @@ using RentalCarManagementSystem.Core.Services;
 using RentalCarManagementSystem.Infrastructure.Data.Common;
 using RentalCarManagementSystem.Core.Contracts.Admin;
 using RentalCarManagementSystem.Core.Services.Admin;
+using RentalCarManagementSystem.Core.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,10 +37,13 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = $"/Identity/Account/Logout";
 });
 
+builder.Services.AddAutoMapper(typeof(UserMapping));
+
 builder.Services.AddScoped<ICarService, CarService>()
     .AddScoped<IRepository, Repository>()
     .AddScoped<IBookingService, BookingService>()
-    .AddScoped<ICarServiceAdmin, CarServiceAdmin>();
+    .AddScoped<ICarServiceAdmin, CarServiceAdmin>()
+    .AddScoped<IUserServiceAdmin, UserServiceAdmin>();
 
 var app = builder.Build();
 

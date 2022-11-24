@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.ExpressionMapping" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RentalCarManagementSystem.Infrastructure\RentalCarManagementSystem.Infrastructure.csproj" />
   </ItemGroup>
 
