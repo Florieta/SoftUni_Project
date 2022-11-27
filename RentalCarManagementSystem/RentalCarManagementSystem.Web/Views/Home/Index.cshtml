@@ -1,5 +1,5 @@
 ﻿@using RentalCarManagementSystem.Core.Models.Schedule
-@model AvailableCarServiceModel
+@model ScheduleServiceModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -39,50 +39,29 @@
             </div>
           </div>
         </div>
-        <div class="card card-row card-success">
+        <div class="card card-row card-primary">
           <div class="card-header bg-info">
             <h3 class="card-title">
-              CheckIns
+              CheckIns Today
             </h3>
           </div>
           <div class="card-body">
             <div class="card card-light card-outline">
               <div class="card-header">
-                <h5 class="card-title">Update Readme</h5>
-                <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-link">#2</a>
-                  <a href="#" class="btn btn-tool">
-                    <i class="fas fa-pen"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="card-body">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                  Aenean commodo ligula eget dolor. Aenean massa.
-                  Cum sociis natoque penatibus et magnis dis parturient montes,
-                  nascetur ridiculus mus.
-                </p>
-              </div>
+                <h5 class="card-title">Total CheckIns: @Model.CheckInsTodayCount</h5>
             </div>
           </div>
         </div>
         <div class="card card-row card-danger">
           <div class="card-header">
             <h3 class="card-title">
-              CheckOuts
+              CheckOuts Today
             </h3>
           </div>
           <div class="card-body">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="card-title">Create repo</h5>
-                <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-link">#1</a>
-                  <a href="#" class="btn btn-tool">
-                    <i class="fas fa-pen"></i>
-                  </a>
-                </div>
+                <h5 class="card-title">Total CheckOuts: @Model.CheckOutsTodayCount</h5>
               </div>
             </div>
           </div>
