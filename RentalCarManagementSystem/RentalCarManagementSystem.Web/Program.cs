@@ -44,7 +44,9 @@ builder.Services.AddScoped<ICarService, CarService>()
     .AddScoped<IBookingService, BookingService>()
     .AddScoped<ICarServiceAdmin, CarServiceAdmin>()
     .AddScoped<IUserServiceAdmin, UserServiceAdmin>()
-    .AddScoped<IScheduleService, ScheduleService>();
+    .AddScoped<IScheduleService, ScheduleService>()
+    .AddScoped<IUserService, UserService>();
+
 
 var app = builder.Build();
 
