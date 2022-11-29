@@ -1,0 +1,72 @@
+﻿@model IEnumerable<CarServiceModel>
+
+
+@{
+    ViewBag.Title = "All Cars";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">All Cars</h3>
+
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Registration Number</th>
+                            <th>Status</th>
+                            <th>Price Per Day</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var car in Model)
+                        {
+                            <tr>
+                                <td>@car.Make</td>
+                                <td>@car.Model</td>
+                                <td>@car.RegNumber</td>
+                                <td><span class="tag tag-success">@(car.IsAvailable ? "Not booked" : "Booked")</span></td>
+                                <td>@String.Format("{0:f2}", car.DailyRate) BGN</td>
+                                <td>
+                                    <a asp-area="Admin" asp-controller="Car" asp-action="Details" asp-route-id="@car.Id"
+                                   class="btn btn-info">Details</a>
+                                </td>
+                                @if (car.IsAvailable)
+                                {
+                                    <td>
+                                        <a asp-area="Admin" asp-controller="Booking" asp-action="Add" asp-route-id="@car.Id"
+                                   class="btn btn-success">Book</a>
+
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

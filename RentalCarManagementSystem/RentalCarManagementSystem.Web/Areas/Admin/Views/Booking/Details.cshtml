@@ -1,0 +1,54 @@
+﻿@using RentalCarManagementSystem.Core.Models.Booking
+@model BookingDetailsViewModel
+
+@{
+    ViewBag.Title = "Booking Details";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="card card-warning">
+    <div class="card-header">
+        <h3 class="card-title">Booking Form</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <label>Car info:</label>
+                <p >@Model.Make @Model.Model @Model.RegNumber</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label>Customer info:</label>
+                <p>Fullname: @Model.FullName</p>
+                <p>Address: @Model.Address</p>
+                <p>Email: @Model.Email</p>
+                <p>Phone number: @Model.PhoneNumber</p>
+                <p>Gender: @Model.Gender</p>
+                <p>Driver license number: @Model.DriverLicenseNumber</p>
+                <p>Id card number: @Model.IdCardNumber</p>
+                <p>Date of issue: @Model.DateOfIssue</p>
+                <p>Date of expire: @Model.DateOfExpired</p>
+                <p>Issue by: @Model.IssuedBy</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label>Booking info</label>
+                <p>Pick up date: @Model.PickUpDateAndTime</p>
+                <p>Drop off date: @Model.DropOffDateAndTime</p>
+                <p>Payment type: @Model.PaymentType</p>
+                <p>
+                    Total Price:
+                    <b>@String.Format("{0:f2}", Model.TotalAmount) BGN</b>
+                </p>
+                <p>Duration: @Model.Duration</p>
+                <p>Pick up location: @Model.PickUpLocationName</p>
+                <p>Drop off location: @Model.DropOffLocationName</p>
+            </div>
+        </div>
+    </div>
+</div>
+       

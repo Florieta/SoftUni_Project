@@ -1,0 +1,49 @@
+﻿@model EditUserViewModel
+@{
+	ViewData["Title"] = "User Edit";
+}
+
+<div class="container">
+	<div class="row">
+		<div class="col-4">
+			<form id="edit" method="post">
+				<input type="hidden" name="Id" value="@Model.Id" />
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="form-floating">
+					<label asp-for="@Model.UserName" class="form-label"></label>
+					<input asp-for="@Model.UserName" class="form-control" aria-required="true" />
+					<span asp-validation-for="UserName" class="text-danger"></span>
+				</div>
+				<div class="form-floating">
+					<label asp-for="@Model.FirstName" class="form-label"></label>
+					<input asp-for="@Model.FirstName" class="form-control" aria-required="true" />
+					<span asp-validation-for="FirstName" class="text-danger"></span>
+				</div>
+			    <div class="form-floating">
+					<label asp-for="@Model.LastName" class="form-label"></label>
+					<input asp-for="@Model.LastName" class="form-control" aria-required="true" />
+					<span asp-validation-for="LastName" class="text-danger"></span>
+				</div>
+				<div class="form-floating">
+					<label asp-for="@Model.Email" class="form-label"></label>
+					<input asp-for="@Model.Email" class="form-control" aria-required="true" />
+					<span asp-validation-for="Email" class="text-danger"></span>
+				</div>
+				<div class="form-floating">
+					<label asp-for="@Model.PhoneNumber" class="form-label"></label>
+					<input asp-for="@Model.PhoneNumber" class="form-control" aria-required="true" />
+					<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+				</div>
+				<div class="row">&nbsp;</div>
+				<div class="row">
+					<div class="col-4">
+						<button id="login-submit" type="submit" class="btn btn-primary btn-block">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<partial name="_ValidationScriptsPartial" />

@@ -1,0 +1,189 @@
+﻿@using RentalCarManagementSystem.Core.Models.Booking
+@model BookingFormViewModel
+
+@{
+    ViewBag.Title = "Add new booking";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="card card-warning">
+    <div class="card-header">
+        <h3 class="card-title">Booking Form</h3>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label asp-for="@Model.FullName">FullName</label>
+                        <input asp-for="@Model.FullName" type="text" class="form-control" placeholder="Enter Full Name..." />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.PhoneNumber">PhoneNumber</label>
+                        <input asp-for="@Model.PhoneNumber" type="text" class="form-control" placeholder="Enter Phone Number..." />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Gender">Gender</label>
+                        <select asp-for="@Model.Gender" class="form-control" style="width: 100%;">
+                            <option selected="selected">Man</option>
+                            <option>Woman</option>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Address">Address</label>
+                    <input asp-for="@Model.Address" rows="3" class="form-control" placeholder="Enter Full Address..." />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Email" class="col-form-label" for="inputSuccess">
+                    <i class="fas fa-check"></i> Email Address
+                </label>
+                <input asp-for="@Model.Email" type="text" class="form-control is-valid" id="inputSuccess" placeholder="Enter Email Address...">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                        <label asp-for="@Model.IdCardNumber">Id Card Number</label>
+                        <input asp-for="@Model.IdCardNumber" type="text" class="form-control" placeholder="Enter Id Card Number..." />
+                        <span asp-validation-for="IdCardNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.DriverLicenseNumber">Driver License Number</label>
+                        <input asp-for="@Model.DriverLicenseNumber" type="text" class="form-control" placeholder="Enter Driver License Number..." />
+                        <span asp-validation-for="DriverLicenseNumber" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label asp-for="@Model.DateOfIssue">Date of Issue:</label>
+                        <div class="input-group date" id="issuedate" data-target-input="nearest">
+                            <input asp-for="@Model.DateOfIssue" type="date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                        </div>
+                        <span asp-validation-for="DateOfIssue" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.DateOfExpired">Date of Expired:</label>
+                        <div class="input-group date" id="expiredate" data-target-input="nearest">
+                            <input asp-for="@Model.DateOfExpired" type="date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                        </div>
+                        <span asp-validation-for="DateOfExpired" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label asp-for="@Model.IssuedBy">Issue By</label>
+                        <input asp-for="@Model.IssuedBy" type="text" class="form-control" placeholder="Enter Issued By..." />
+                        <span asp-validation-for="IssuedBy" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Duration">Duration</label>
+                        <input asp-for="@Model.Duration" id="durationForm" type="number" class="form-control" placeholder="Enter Issued By..." />
+                        <span asp-validation-for="Duration" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label asp-for="@Model.PickUpDateAndTime">Pick up date and time:</label>
+                        <div class="input-group date" id="pickupdatetime" data-target-input="nearest">
+                            <input asp-for="@Model.PickUpDateAndTime" type="datetime-local" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy hh:mm" data-mask />
+                        </div>
+                        <span asp-validation-for="PickUpDateAndTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.DropOffDateAndTime">Drop off date and time:</label>
+                        <div class="input-group date" id="dropoffdatetime" data-target-input="nearest">
+                            <input asp-for="@Model.DropOffDateAndTime" type="datetime-local" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy hh:mm" data-mask />
+                        </div>
+                        <span asp-validation-for="DropOffDateAndTime" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label asp-for="@Model.PickUpLocationId" class="form-label">Pick Up Location</label>
+                        <select asp-for="@Model.PickUpLocationId" class="form-control">
+                            @foreach (var location in Model.PickUpLocations)
+                            {
+                                <option value="@location.Id">@location.LocationName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="PickUpLocationId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.DropOffLocationId" class="form-label">Drop Off Location</label>
+                        <select asp-for="@Model.DropOffLocationId" class="form-control">
+                            @foreach (var location in Model.DropOffLocations)
+                            {
+                                <option value="@location.Id">@location.LocationName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="DropOffLocationId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label asp-for="@Model.InsuranceCode" class="form-label">Insurance</label>
+                        <select asp-for="@Model.InsuranceCode" class="form-control">
+                            @foreach (var ins in Model.Insurances)
+                            {
+                                <option value="@ins.InsuranceCode">@ins.TypeOfInsurance</option>
+                            }
+                        </select>
+                        <span asp-validation-for="InsuranceCode" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label asp-for="@Model.PaymentType">Payment Type</label>
+                        <select asp-for="@Model.PaymentType" class="form-control" style="width: 100%;">
+                            <option selected="selected">Cash</option>
+                            <option>Card</option>
+                            <option>Bank Transfer</option>
+                        </select>
+                        <span asp-validation-for="PaymentType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.TotalAmount">Total Amount</label>
+                        <input asp-for="@Model.TotalAmount" id="totalValue" type="number" class="form-control" />
+                       @* <script>
+                            let durationInput = document.getElementById("durationForm");
+                            document.getElementById("totalValue").value = (Number)(durationInput.value);
+                        </script>*@
+                        <span asp-validation-for="TotalAmount" class="text-danger"></span>
+                        @*<input value="@(Model.TotalAmount = Model.Duration * Model.DailyRate)" />*@
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    }

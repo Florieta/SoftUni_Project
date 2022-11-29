@@ -1,0 +1,116 @@
+﻿@using RentalCarManagementSystem.Core.Models.User
+@model EditUserProfileViewModel
+
+
+<div class="main-body">
+
+
+    <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="~/img/profile-img/@Model.ImageUrl" alt="Admin" class="rounded-circle" width="150">
+                        <div class="mt-3">
+                            <h4>@Model.UserName</h4>
+                            <p class="text-secondary mb-1">@Model.JobPosition</p>
+                            <p class="text-muted font-size-sm">@Model.Address</p>
+                            <button class="btn btn-primary">Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <form id="editPforile" method="post">
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Username</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input asp-for="UserName" class="form-control" aria-required="true" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">First Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input asp-for="FirstName" class="form-control" aria-required="true" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Last Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input asp-for="LastName" class="form-control" aria-required="true" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input asp-for="Email" class="form-control" aria-required="true" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Address</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input asp-for="Address" class="form-control" aria-required="true" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Job Position</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input asp-for="JobPosition" class="form-control" aria-required="true" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Address</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input asp-for="Address" class="form-control" aria-required="true" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">ImageUrl</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input asp-for="ImageUrl" class="form-control" aria-required="true" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button id="login-submit" type="submit" class="btn btn-info " href="/Profile/MyProfile">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />

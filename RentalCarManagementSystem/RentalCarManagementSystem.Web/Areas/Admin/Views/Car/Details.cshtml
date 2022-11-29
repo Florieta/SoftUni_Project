@@ -1,0 +1,49 @@
+﻿@using RentalCarManagementSystem.Core.Models.Car
+@model CarDetailsViewModel
+
+@{
+    ViewBag.Title = "Car Details";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="container" style="display:inline">
+    <div class="row">
+        <div class="col-4">
+            <img class="card-img-top" style="width: 20rem;"
+                 src="@Model.ImageUrl" alt="Car Image">
+        </div>
+        <div class="card col-8 border-0">
+            <p style="font-size:25px;">@Model.Make @Model.Model </p>
+            <p>Color: @Model.Color</p>
+            <p>Registration Number: @Model.RegNumber</p>
+            <p>Make year: @Model.MakeYear </p>
+            <p>
+                Price Per Day:
+                <b>@String.Format("{0:f2}", Model.DailyRate) BGN</b>
+            </p>
+            <p>Car info: @Model.Description</p>
+            <p>Gear box: @Model.GearBox</p>
+            <p>Car category: @Model.CategoryName</p>
+            <p><i>(@(Model.IsAvailable ? "Not booked" : "Booked"))</i></p>
+            <div class="form-inline">
+               
+                    <a class="btn btn-warning" asp-area="Admin" asp-controller="Car" asp-action="Edit"
+                   asp-route-id="@Model.Id">Edit Car Info</a>
+
+                    <form asp-area="Admin" asp-controller="Car" asp-action="Remove"
+                      asp-route-id="@Model.Id" method="post">
+                        <input class="btn btn-danger" type="submit" value="Delete Car" />
+                    </form>
+                @if (Model.IsAvailable)
+                {
+                    <form class="ml-2" asp-area="Admin" asp-controller="Booking"
+                      asp-action="Add" asp-route-id="@Model.Id" method="post">
+                        <input class="btn btn-primary" type="submit" value="Book" />
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>
