@@ -50,6 +50,34 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult CreateCategory()
+        {
+            CreateCategoryInputModel model = new CreateCategoryInputModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory(CreateCategoryInputModel categoryModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(categoryModel);
+            }
+
+            try
+            {
+                await carServiceAdmin.CreateCategory(categoryModel);
+                return RedirectToAction("All", "Car");
+            }
+            catch
+            {
+                ModelState.AddModelError("", "Something went wrong!");
+                return View(categoryModel);
+            }
+        }
+
         public async Task<IActionResult> Remove(int id)
         {
             try
@@ -114,7 +142,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
                 return View(editModel);
             }
 
-            if ((await carServiceAdmin.CategoryExists(editModel.CategoryId)) == false)
+            if ((await carServiceAdmin.CategoryExistsById(editModel.CategoryId)) == false)
             {
                 ModelState.AddModelError(nameof(editModel.CategoryId), "Category does not exist");
                 editModel.Categories = await carServiceAdmin.GetCategoriesAsync();

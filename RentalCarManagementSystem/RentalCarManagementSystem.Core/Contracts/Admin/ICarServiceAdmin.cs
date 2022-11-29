@@ -22,6 +22,9 @@ namespace RentalCarManagementSystem.Core.Contracts.Admin
 
         Task<int> GetCarCategoryIdAsync(int id);
 
-        Task<bool> CategoryExists(int categoryId);
+        Task<bool> CategoryExistsByName(string categoryName);
+
+        Task<bool> CategoryExistsById(int categoryId);
+        Task CreateCategory(CreateCategoryInputModel model);
     }
 }
