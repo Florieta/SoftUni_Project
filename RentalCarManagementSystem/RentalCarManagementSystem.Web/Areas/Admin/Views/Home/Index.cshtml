@@ -1,0 +1,70 @@
+﻿@using RentalCarManagementSystem.Core.Models.Schedule
+@model ScheduleServiceModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@*<div class="content-wrapper kanban">*@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>Daily Shedule</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content pb-3">
+    <div class="container-fluid h-100">
+        <div class="card card-row card-primary">
+            <div class="card-header">
+                <h3 class="card-title">
+                    Statistics
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h5 class="card-title">Total cars: @Model.TotalCars</h5>
+                    </div>
+                    <div class="card-header">
+                        <h5 class="card-title">Total available cars: @Model.TotalAvailableCars</h5>
+                    </div>
+                    <div class="card-header">
+                        <h5 class="card-title">Total rented cars: @Model.TotalRentedCars</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-row card-primary">
+            <div class="card-header bg-info">
+                <h3 class="card-title">
+                    CheckIns Today
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="card card-light card-outline">
+                    <div class="card-header">
+                        <h5 class="card-title">Total CheckIns: @Model.CheckInsTodayCount</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-row card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        CheckOuts Today
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">Total CheckOuts: @Model.CheckOutsTodayCount</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
