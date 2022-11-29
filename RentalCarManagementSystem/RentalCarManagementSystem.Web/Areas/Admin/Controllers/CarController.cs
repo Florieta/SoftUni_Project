@@ -108,7 +108,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 
             if ((await carService.Exists(editModel.Id)) == false)
             {
-                ModelState.AddModelError("", "House does not exist");
+                ModelState.AddModelError("", "Car does not exist");
                 editModel.Categories = await carService.GetCategoriesAsync();
 
                 return View(editModel);

@@ -7,7 +7,6 @@ using System.Security.Claims;
 
 namespace RentalCarManagementSystem.Web.Controllers
 {
-    
     public class BookingController : BaseController
     {
         private readonly IBookingService bookingService;
