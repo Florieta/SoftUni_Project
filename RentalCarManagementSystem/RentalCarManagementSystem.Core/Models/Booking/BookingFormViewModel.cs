@@ -71,7 +71,9 @@ namespace RentalCarManagementSystem.Core.Models.Booking
         public IEnumerable<Location> DropOffLocations { get; set; } = new List<Location>();
         public int InsuranceCode { get; set; }
 
-        public IEnumerable<Insurance> Insurances { get; set; } = new List<Insurance>();
+        public IEnumerable<Insurance> Insurance { get; set; } = new List<Insurance>();
+
+        public decimal DailyRate { get; set; }
         [Required]
         public decimal TotalAmount { get; set; }
       

@@ -29,5 +29,13 @@ namespace RentalCarManagementSystem.Core.Contracts
         Task<bool> Exists(int id);
 
         Task<BookingDetailsViewModel> BookingDetailsById(int id);
+
+        Task<Booking> FindBookingById(int id);
+
+        Task Edit(int id, EditBookingViewModel model);
+
+        Task<Customer> FindCustomerById(int id);
+
+        Task<Car> GetCarById(int id);
     }
 }

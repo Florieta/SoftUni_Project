@@ -100,10 +100,6 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
                 return RedirectToAction("All", "Car");
             }
 
-
-            //return RedirectToPage("/Account/AccessDenied", new { area = "Identity" });
-
-
             var car = await carServiceAdmin.FindCarAsync(id);
             var categoryId = await carServiceAdmin.GetCarCategoryIdAsync(id);
 

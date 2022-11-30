@@ -197,18 +197,41 @@ namespace RentalCarManagementSystem.Core.Services
                 .FirstAsync();
         }
 
-        //public async Task<BookingsQueryModel> All(DateTime searchTerm, int currentPage = 1, int bookingsPerPage = 1)
+        public async Task Edit(int id, EditBookingViewModel model)
+        {
+            var booking = await repo.GetByIdAsync<Booking>(id);
+
+            booking.Id = id;
+            booking.CustomerId = model.CustomerId;
+            booking.Customer.FullName = model.FullName;
+            booking.Customer.Address = model.Address;
+            booking.Customer.PhoneNumber = model.PhoneNumber;
+            booking.Customer.Email = model.Email;
+            booking.Customer.IdCardNumber = model.IdCardNumber;
+            booking.Customer.DriverLicenseNumber = model.DriverLicenseNumber;
+            booking.Customer.Gender = model.Gender;
+            booking.PickUpDateAndTime = model.PickUpDateAndTime;
+            booking.DropOffDateAndTime = model.DropOffDateAndTime;
+            booking.Duration = model.Duration;
+            booking.PickUpLocationId = model.PickUpLocationId;
+            booking.DropOffLocationId = model.DropOffLocationId;
+            booking.InsuranceCode = model.InsuranceCode;
+            booking.TotalAmount = model.TotalAmount;
+            booking.PaymentType = model.PaymentType;
+
+            await repo.SaveChangesAsync();
+        }
+
+        //public async Task<BookingsQueryModel> All(DateTime searchTerm)
         //{
         //    var result = new BookingsQueryModel();
         //    var bookings = repo.AllReadonly<Booking>()
         //        .Where(b => b.IsActive && b.IsPaid == false && b.IsRented == false);
 
-        //        bookings = bookings
-        //            .Where(b => EF.Functions.Like(b.PickUpDateAndTime.ToString(), searchTerm.ToString()));
+        //    bookings = bookings
+        //        .Where(b => EF.Functions.Like(b.PickUpDateAndTime.ToShortDateString, searchTerm.ToString()));
 
         //    result.Bookings = await bookings
-        //        .Skip((currentPage - 1) * bookingsPerPage)
-        //        .Take(bookingsPerPage)
         //        .Select(b => new BookingServiceModel()
         //        {
         //            Id = b.Id,
@@ -256,6 +279,21 @@ namespace RentalCarManagementSystem.Core.Services
         {
             return await repo.AllReadonly<Booking>()
                 .AnyAsync(c => c.Id == id);
+        }
+
+        public async Task<Booking> FindBookingById(int id)
+        {
+            return await repo.GetByIdAsync<Booking>(id);
+        }
+
+        public async Task<Customer> FindCustomerById(int id)
+        {
+            return await repo.GetByIdAsync<Customer>(id);
+        }
+
+        public async Task<Car> GetCarById(int id)
+        {
+            return await repo.GetByIdAsync<Car>(id);
         }
     }
 }

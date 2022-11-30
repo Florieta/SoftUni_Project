@@ -144,7 +144,7 @@
                     <div class="form-group">
                         <label asp-for="@Model.InsuranceCode" class="form-label">Insurance</label>
                         <select asp-for="@Model.InsuranceCode" class="form-control">
-                            @foreach (var ins in Model.Insurances)
+                            @foreach (var ins in Model.Insurance)
                             {
                                 <option value="@ins.InsuranceCode">@ins.TypeOfInsurance</option>
                             }
@@ -163,6 +163,10 @@
                             <option>Bank Transfer</option>
                         </select>
                         <span asp-validation-for="PaymentType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.DailyRate">Daily Rate</label>
+                        <p class="form-control">@String.Format("{0:f2}", Model.DailyRate) BGN</p>
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.TotalAmount">Total Amount</label>

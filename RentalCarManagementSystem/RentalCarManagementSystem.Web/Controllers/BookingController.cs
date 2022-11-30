@@ -17,14 +17,16 @@ namespace RentalCarManagementSystem.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Add()
+        public async Task<IActionResult> Add(int Id)
         {
+            var car = await bookingService.GetCarById(Id);
 
             BookingFormViewModel bookingModel = new()
             {
+                DailyRate = car.DailyRate,
                 PickUpLocations = await bookingService.GetLocationsAsync(),
                 DropOffLocations = await bookingService.GetLocationsAsync(),
-                Insurances = await bookingService.GetInsurancesAsync()
+                Insurance = await bookingService.GetInsurancesAsync()
             };
 
 
@@ -55,7 +57,63 @@ namespace RentalCarManagementSystem.Web.Controllers
             }
         }
 
-       
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            if ((await bookingService.Exists(id)) == false)
+            {
+                return RedirectToAction("All", "Booking");
+            }
+
+            var booking = await bookingService.FindBookingById(id);
+            var customer = await bookingService.FindCustomerById(booking.CustomerId);
+
+            var model = new EditBookingViewModel()
+            {
+                FullName = booking.Customer.FullName,
+                Address = booking.Customer.Address,
+                PhoneNumber = booking.Customer.PhoneNumber,
+                Email = booking.Customer.Email,
+                IdCardNumber = booking.Customer.IdCardNumber,
+                DriverLicenseNumber = booking.Customer.DriverLicenseNumber,
+                Gender = booking.Customer.Gender,
+                PickUpDateAndTime = booking.PickUpDateAndTime,
+                DropOffDateAndTime = booking.DropOffDateAndTime,
+                Duration = booking.Duration,
+                PickUpLocations = await bookingService.GetLocationsAsync(),
+                DropOffLocations = await bookingService.GetLocationsAsync(),
+                Insurance = await bookingService.GetInsurancesAsync(),
+                TotalAmount = booking.TotalAmount,
+                PaymentType = booking.PaymentType
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, EditBookingViewModel editModel)
+        {
+            if (id != editModel.Id)
+            {
+                return RedirectToPage("/Account/AccessDenied", new { area = "Identity" });
+            }
+
+            if ((await bookingService.Exists(editModel.Id)) == false)
+            {
+                ModelState.AddModelError("", "Booking does not exist");
+
+                return View(editModel);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(editModel);
+            }
+
+            await bookingService.Edit(editModel.Id, editModel);
+
+            return RedirectToAction("All", "Booking");
+        }
 
         [HttpGet]
         public async Task<IActionResult> All()
@@ -97,7 +155,7 @@ namespace RentalCarManagementSystem.Web.Controllers
             return RedirectToAction("All", "Booking");
         }
 
-        
+
         public async Task<IActionResult> Details(int id)
         {
             if ((await bookingService.Exists(id)) == false)

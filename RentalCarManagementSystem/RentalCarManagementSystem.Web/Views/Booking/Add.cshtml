@@ -90,11 +90,6 @@
                         <input asp-for="@Model.IssuedBy" type="text" class="form-control" placeholder="Enter Issued By..." />
                         <span asp-validation-for="IssuedBy" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="@Model.Duration">Duration</label>
-                        <input asp-for="@Model.Duration" id="durationForm" type="number" class="form-control" placeholder="Enter Issued By..." />
-                        <span asp-validation-for="Duration" class="text-danger"></span>
-                    </div>
                 </div>
             </div>
             <div class="row">
@@ -112,6 +107,15 @@
                             <input asp-for="@Model.DropOffDateAndTime" type="datetime-local" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy hh:mm" data-mask />
                         </div>
                         <span asp-validation-for="DropOffDateAndTime" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label asp-for="@Model.Duration">Duration</label>
+                        <input asp-for="@Model.Duration" id="durationForm" oninput="Total()" type="number" class="form-control" />
+                        <span asp-validation-for="Duration" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -144,10 +148,11 @@
                     <div class="form-group">
                         <label asp-for="@Model.InsuranceCode" class="form-label">Insurance</label>
                         <select asp-for="@Model.InsuranceCode" class="form-control">
-                            @foreach (var ins in Model.Insurances)
+                            @foreach (var ins in Model.Insurance)
                             {
                                 <option value="@ins.InsuranceCode">@ins.TypeOfInsurance</option>
                             }
+                            @*  <option value="null">No Insurance</option>*@
                         </select>
                         <span asp-validation-for="InsuranceCode" class="text-danger"></span>
                     </div>
@@ -165,14 +170,21 @@
                         <span asp-validation-for="PaymentType" class="text-danger"></span>
                     </div>
                     <div class="form-group">
+                        <label asp-for="@Model.DailyRate">Daily Rate</label>
+                        <p id="dailyRate" oninput="calculate()" type="number" class="form-control">@Model.DailyRate</p>
+                    </div>
+                    <div class="form-group">
                         <label asp-for="@Model.TotalAmount">Total Amount</label>
-                        <input asp-for="@Model.TotalAmount" id="totalValue" type="number" class="form-control" />
-                       @* <script>
-                            let durationInput = document.getElementById("durationForm");
-                            document.getElementById("totalValue").value = (Number)(durationInput.value);
-                        </script>*@
+                        <input asp-for="@Model.TotalAmount" id="result" type="number" class="form-control"/>
                         <span asp-validation-for="TotalAmount" class="text-danger"></span>
-                        @*<input value="@(Model.TotalAmount = Model.Duration * Model.DailyRate)" />*@
+                        <script>
+                            function Total() {
+                                var duration = document.getElementById('durationForm').value;
+                                var rate = document.getElementById('dailyRate').textContent;
+                                var myResult = (duration * rate);
+                                document.getElementById('result').value = myResult;
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
