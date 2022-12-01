@@ -116,27 +116,36 @@ namespace RentalCarManagementSystem.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery] AllBookingsQueryModel query)
         {
-            var model = await bookingService.GetAllBookingsAsync();
+            var result = await bookingService.GetAllBookingsAsync(
+                query.SearchTerm);
 
-            return View(model);
+            query.Bookings = result;
+
+            return View(query);
         }
 
         [HttpGet]
-        public async Task<IActionResult> AllCheckIns()
+        public async Task<IActionResult> AllCheckIns([FromQuery] AllBookingsQueryModel query)
         {
-            var model = await bookingService.GetAllCheckInsAsync();
+            var result = await bookingService.AllCheckIns(
+                query.SearchTerm);
 
-            return View(model);
+            query.Bookings = result;
+
+            return View(query);
         }
 
         [HttpGet]
-        public async Task<IActionResult> AllCheckOuts()
+        public async Task<IActionResult> AllCheckOuts([FromQuery] AllBookingsQueryModel query)
         {
-            var model = await bookingService.GetAllCheckOutsAsync();
+            var result = await bookingService.AllCheckOuts(
+                query.SearchTerm);
 
-            return View(model);
+            query.Bookings = result;
+
+            return View(query);
         }
 
         [HttpPost]

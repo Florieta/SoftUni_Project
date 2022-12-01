@@ -55,31 +55,17 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             }
         }
 
-
-
         [HttpGet]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery] AllBookingsQueryModel query)
         {
-            var model = await bookingService.GetAllBookingsAsync();
+            var result = await bookingService.GetAllBookingsAsync(
+                query.SearchTerm);
 
-            return View(model);
+            query.Bookings = result;
+
+            return View(query);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> AllCheckIns()
-        {
-            var model = await bookingService.GetAllCheckInsAsync();
-
-            return View(model);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> AllCheckOuts()
-        {
-            var model = await bookingService.GetAllCheckOutsAsync();
-
-            return View(model);
-        }
 
         [HttpPost]
         public async Task<IActionResult> CheckIn(int id)
@@ -168,5 +154,26 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             return RedirectToAction("All", "Booking");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> AllCheckIns([FromQuery] AllBookingsQueryModel query)
+        {
+            var result = await bookingService.AllCheckIns(
+                query.SearchTerm);
+
+            query.Bookings = result;
+
+            return View(query);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllCheckOuts([FromQuery] AllBookingsQueryModel query)
+        {
+            var result = await bookingService.AllCheckOuts(
+                query.SearchTerm);
+
+            query.Bookings = result;
+
+            return View(query);
+        }
     }
 }

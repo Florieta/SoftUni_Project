@@ -88,63 +88,6 @@ namespace RentalCarManagementSystem.Core.Services
             await repo.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<AllBookingsViewModel>> GetAllBookingsAsync()
-        {
-            var all = await repo.All<Booking>().Where(x => x.IsActive == true && x.IsRented == true)
-                .Include(c => c.Customer)
-                .ToListAsync();
-
-            return all
-                .Select(m => new AllBookingsViewModel()
-                {
-                    Id = m.Id,
-                    CarId = m.CarId,
-                    FullName = m.Customer.FullName,
-                    PickUpDateAndTime = m.PickUpDateAndTime,
-                    DropOffDateAndTime = m.DropOffDateAndTime,
-                    TotalAmount = m.TotalAmount,
-                    IsRented = m.IsRented
-                }).OrderBy(t => t.PickUpDateAndTime);
-        }
-
-        public async Task<IEnumerable<AllBookingsViewModel>> GetAllCheckInsAsync()
-        {
-            var all = await repo.All<Booking>().Where(x => x.IsActive == true && x.IsRented == false)
-                .Include(c => c.Customer)
-                .ToListAsync();
-
-            return all
-                .Select(m => new AllBookingsViewModel()
-                {
-                    Id = m.Id,
-                    CarId = m.CarId,
-                    FullName = m.Customer.FullName,
-                    PickUpDateAndTime = m.PickUpDateAndTime,
-                    DropOffDateAndTime = m.DropOffDateAndTime,
-                    TotalAmount = m.TotalAmount,
-                    IsRented = m.IsRented
-                }).OrderBy(t => t.PickUpDateAndTime);
-        }
-
-        public async Task<IEnumerable<AllBookingsViewModel>> GetAllCheckOutsAsync()
-        {
-            var all = await repo.All<Booking>().Where(x => x.IsActive == true && x.IsRented == true)
-                .Include(c => c.Customer)
-                .ToListAsync();
-
-            return all
-                .Select(m => new AllBookingsViewModel()
-                {
-                    Id = m.Id,
-                    CarId = m.CarId,
-                    FullName = m.Customer.FullName,
-                    PickUpDateAndTime = m.PickUpDateAndTime,
-                    DropOffDateAndTime = m.DropOffDateAndTime,
-                    TotalAmount = m.TotalAmount,
-                    IsRented = m.IsRented
-                }).OrderBy(t => t.DropOffDateAndTime);
-        }
-
         public async Task CheckIn(int id)
         {
             var booking = await repo.GetByIdAsync<Booking>(id);
@@ -222,46 +165,83 @@ namespace RentalCarManagementSystem.Core.Services
             await repo.SaveChangesAsync();
         }
 
-        //public async Task<BookingsQueryModel> All(DateTime searchTerm)
-        //{
-        //    var result = new BookingsQueryModel();
-        //    var bookings = repo.AllReadonly<Booking>()
-        //        .Where(b => b.IsActive && b.IsPaid == false && b.IsRented == false);
+        public async Task<IEnumerable<AllBookingsViewModel>> GetAllBookingsAsync(string? searchTerm = null)
+        {
+            var all = repo.AllReadonly<Booking>().Where(x => x.IsActive == true);
 
-        //    bookings = bookings
-        //        .Where(b => EF.Functions.Like(b.PickUpDateAndTime.ToShortDateString, searchTerm.ToString()));
+            if (string.IsNullOrEmpty(searchTerm) == false)
+            {
+                var searchTerm1 = DateTime.Parse(searchTerm).Date;
+                all = all.Where(b => b.PickUpDateAndTime.Date == searchTerm1);
+            }
 
-        //    result.Bookings = await bookings
-        //        .Select(b => new BookingServiceModel()
-        //        {
-        //            Id = b.Id,
-        //            PickUpDateAndTime = b.PickUpDateAndTime,
-        //            DropOffDateAndTime = b.DropOffDateAndTime,
-        //            Duration = b.Duration,
-        //            PaymentType = b.PaymentType,
-        //            TotalAmount = b.TotalAmount,
-        //            FullName = b.Customer.FullName,
-        //            Address = b.Customer.Address,
-        //            PhoneNumber = b.Customer.PhoneNumber,
-        //            Email = b.Customer.Email,
-        //            IdCardNumber = b.Customer.IdCardNumber,
-        //            DriverLicenseNumber = b.Customer.DriverLicenseNumber,
-        //            DateOfIssue = b.Customer.DateOfIssue,
-        //            DateOfExpired = b.Customer.DateOfExpired,
-        //            IssuedBy = b.Customer.IssuedBy,
-        //            Gender = b.Customer.Gender,
-        //            PickUpLocationName = b.PickUpLocation.LocationName,
-        //            DropOffLocationName = b.DropOffLocation.LocationName,
-        //            Model = b.Car.Model,
-        //            Make = b.Car.Make,
-        //            RegNumber = b.Car.RegNumber
-        //        })
-        //        .ToListAsync();
+            return await all
+                .Select(m => new AllBookingsViewModel()
+                {
+                    Id = m.Id,
+                    CarId = m.CarId,
+                    FullName = m.Customer.FullName,
+                    PickUpDateAndTime = m.PickUpDateAndTime,
+                    DropOffDateAndTime = m.DropOffDateAndTime,
+                    TotalAmount = m.TotalAmount,
+                    IsRented = m.IsRented
+                }).OrderBy(t => t.PickUpDateAndTime).ToListAsync();
+        }
 
-        //    result.TotalBookingsCount = await bookings.CountAsync();
 
-        //    return result;
-        //}
+        public async Task<IEnumerable<AllBookingsViewModel>> AllCheckIns(string? searchTerm = null)
+        {
+            var bookings = repo.AllReadonly<Booking>()
+                .Where(b => b.IsActive == true && b.IsPaid == false && b.IsRented == false);
+
+
+            if (string.IsNullOrEmpty(searchTerm) == false)
+            {
+                var searchTerm1 = DateTime.Parse(searchTerm).Date;
+                bookings = bookings.Where(b => b.PickUpDateAndTime.Date == searchTerm1);
+            }
+
+            var result = await bookings
+                .Select(b => new AllBookingsViewModel()
+                {
+                    Id = b.Id,
+                    PickUpDateAndTime = b.PickUpDateAndTime,
+                    DropOffDateAndTime = b.DropOffDateAndTime,
+                    TotalAmount = b.TotalAmount,
+                    FullName = b.Customer.FullName,
+                })
+                .OrderBy(t => t.PickUpDateAndTime)
+                .ToListAsync();
+
+            return result;
+        }
+
+        public async Task<IEnumerable<AllBookingsViewModel>> AllCheckOuts(string? searchTerm = null)
+        {
+            var bookings = repo.AllReadonly<Booking>()
+                .Where(b => b.IsActive && b.IsPaid == true && b.IsRented == true);
+
+
+            if (string.IsNullOrEmpty(searchTerm) == false)
+            {
+                var searchTerm1 = DateTime.Parse(searchTerm).Date;
+                bookings = bookings.Where(b => b.DropOffDateAndTime.Date == searchTerm1);
+            }
+
+            var result = await bookings
+                .Select(b => new AllBookingsViewModel()
+                {
+                    Id = b.Id,
+                    PickUpDateAndTime = b.PickUpDateAndTime,
+                    DropOffDateAndTime = b.DropOffDateAndTime,
+                    TotalAmount = b.TotalAmount,
+                    FullName = b.Customer.FullName,
+                })
+                .OrderBy(t => t.DropOffDateAndTime)
+                .ToListAsync();
+
+            return result;
+        }
 
         public async Task<IEnumerable<Location>> GetLocationsAsync()
         {

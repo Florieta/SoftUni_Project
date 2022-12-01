@@ -1,28 +1,40 @@
-﻿@model IEnumerable<AllBookingsViewModel>
+﻿@using RentalCarManagementSystem.Core.Models.Booking
+@model AllBookingsQueryModel
 
 @{
-    ViewBag.Title = "All Incoming Bookings";
+    ViewBag.Title = "All Check-In Bookings";
 }
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
+
+
+<form method="get">
+    <div class="row">
+        <div class="form-group">
+            <label asp-for="@Model.SearchTerm">Choose a date:</label>
+            <div class="input-group date" id="issuedate" data-target-input="nearest">
+                <input asp-for="@Model.SearchTerm" type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+            </div>
+            <span asp-validation-for="SearchTerm" class="text-danger"></span>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group mt-4 p-2">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@if (!Model.Bookings.Any())
+{
+    <h2 class="text-center">No bookings found for this date!</h2>
+}
 
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">All CheckIns</h3>
-
-                <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-default">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -35,27 +47,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var booking in Model)
+                        @foreach (var booking in Model.Bookings)
                         {
-                            <tr>
-                                <td>@booking.PickUpDateAndTime.ToShortDateString()</td>
-                            </tr>
-                            <tr>
-                                <td>@booking.FullName</td>
-                                <td>@booking.PickUpDateAndTime</td>
-                                <td>@booking.DropOffDateAndTime</td>
-                                <td>@String.Format("{0:f2}", booking.TotalAmount) BGN</td>
-                                <td>
-                                    <a asp-area="Admin" asp-controller="Booking" asp-action="Details" asp-route-id="@booking.Id"
-                                   class="btn btn-warning">Details</a>
-                                </td>
-                                <td>
-                                    <form asp-area="Admin" asp-controller="Booking" asp-action="CheckIn"
-                                      asp-route-id="@booking.Id" method="post">
-                                        <input class="btn btn-success" type="submit" value="Pay & Check-In" />
-                                    </form>
-                                </td>
-                            </tr>
+                            <partial name="_BookingPartial" model="@booking" />
                         }
                     </tbody>
                 </table>
@@ -63,3 +57,5 @@
         </div>
     </div>
 </div>
+
+
