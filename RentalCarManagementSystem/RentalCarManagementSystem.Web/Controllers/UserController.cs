@@ -21,13 +21,23 @@ namespace RentalCarManagementSystem.Web.Controllers
 
         public async Task<IActionResult> MyProfile()
         {
-            var profileModel = await userService.GetUserByUsernameAsync(User.Identity.Name);
+            var userName = User?.Identity?.Name;
+            if (userName == null)
+            {
+                ViewData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+            }
+            var profileModel = await userService.GetUserByUsernameAsync(userName);
 
             return View(profileModel);
         }
         public async Task<IActionResult> Edit()
         {
-            var user = await userService.GetUserByUsernameAsync(User.Identity.Name);
+            var userName = User?.Identity?.Name;
+            if (userName == null)
+            {
+                ViewData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+            }
+            var user = await userService.GetUserByUsernameAsync(userName);
 
             EditUserProfileViewModel editModel = new EditUserProfileViewModel()
             {

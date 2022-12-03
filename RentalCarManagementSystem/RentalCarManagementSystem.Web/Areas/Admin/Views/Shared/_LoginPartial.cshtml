@@ -5,17 +5,28 @@
 
 @if (User.Identity?.IsAuthenticated ?? false)
 {
-    <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-         @* <img gravatar-email="@User.Identity?.Name" gravatar-size="80" class="img-circle elevation-2" alt="My Gravatar" />*@
-          <img src="~/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+            <img src="~/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">@User.Identity?.Name</a>
+            <a href="#" class="d-block">@User.Identity?.Name</a>
         </div>
         <div class="info">
-             <a asp-area="Admin" asp-controller="Profile" asp-action="MyProfile" class="btn btn-info">My Profile</a>                  
+            <a asp-area="Admin" asp-controller="Profile" asp-action="MyProfile" class="btn btn-info">My Profile</a>
         </div>
-      </div>
+    </div>
+    <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+                <a class="nav-link" asp-area="Admin" asp-controller="User" asp-action="UserManage">
+                    <i class="nav-icon far fa-user"></i>
+                    <p>
+                        User Menu
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
 }

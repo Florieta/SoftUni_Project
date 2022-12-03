@@ -5,8 +5,10 @@ using RentalCarManagementSystem.Core.Constants;
 
 namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 {
-    [Authorize(Roles = UserConstants.Roles.Administrator)]
     [Area("Admin")]
+    [Route("Admin/[controller]/[Action]/{id?}")]
+    [Authorize(Roles = UserConstants.Roles.Administrator)]
+
     public class BaseController : Controller
     {
 

@@ -1,4 +1,5 @@
-﻿using RentalCarManagementSystem.Core.Models.Car;
+﻿using RentalCarManagementSystem.Core.CustomAttributes;
+using RentalCarManagementSystem.Core.Models.Car;
 using RentalCarManagementSystem.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
@@ -40,9 +41,11 @@ namespace RentalCarManagementSystem.Core.Models.Booking
         public string DriverLicenseNumber { get; set; } = null!;
 
         [Required]
+        [IsBeforeAttribute("DateOfIssue", errorMessage: "The date should be greater than the issue date!")]
         public DateTime DateOfExpired { get; set; }
 
         [Required]
+
         public DateTime DateOfIssue { get; set; }
 
         [Required]
@@ -59,6 +62,7 @@ namespace RentalCarManagementSystem.Core.Models.Booking
         public DateTime PickUpDateAndTime { get; set; }
 
         [Required]
+        [IsBeforeAttribute("PickUpDateAndTime", errorMessage: "The date should be greater than the drop off date!")]
         public DateTime DropOffDateAndTime { get; set; }
 
         [Required]

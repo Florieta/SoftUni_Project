@@ -1,4 +1,5 @@
-﻿using RentalCarManagementSystem.Infrastructure.Models;
+﻿using RentalCarManagementSystem.Core.CustomAttributes;
+using RentalCarManagementSystem.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,7 +26,7 @@ namespace RentalCarManagementSystem.Core.Models.Admin
         public string Make { get; set; } = null!;
 
         [Required]
-        [Range(2010, 2022)]
+        [IsBeforeAttribute("01/01/2015")]
         public int MakeYear { get; set; }
 
         [Required]

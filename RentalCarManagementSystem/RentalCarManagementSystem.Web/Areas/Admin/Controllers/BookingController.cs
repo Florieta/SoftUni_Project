@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RentalCarManagementSystem.Core.Constants;
 using RentalCarManagementSystem.Core.Contracts;
 using RentalCarManagementSystem.Core.Models.Booking;
 using System.Security.Claims;
@@ -42,15 +43,14 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             try
             {
                 string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
                 await bookingService.Create(model, Id, userId);
-
+                ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
                 return RedirectToAction("All", "Car");
             }
             catch
             {
                 ModelState.AddModelError("", "Something went wrong!");
-
+                ViewData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 return View(model);
             }
         }
@@ -72,7 +72,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         {
             await bookingService.CheckIn(id);
 
-            return RedirectToAction("All", "Booking");
+            return RedirectToAction(nameof(All));
         }
 
         [HttpPost]
@@ -80,7 +80,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         {
             await bookingService.CheckOut(id);
 
-            return RedirectToAction("All", "Booking");
+            return RedirectToAction(nameof(All));
         }
 
 
@@ -101,7 +101,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         {
             if ((await bookingService.Exists(id)) == false)
             {
-                return RedirectToAction("All", "Booking");
+                return RedirectToAction(nameof(All));
             }
 
             var booking = await bookingService.FindBookingById(id);
@@ -140,6 +140,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             if ((await bookingService.Exists(editModel.Id)) == false)
             {
                 ModelState.AddModelError("", "Booking does not exist");
+                ViewData[MessageConstant.ErrorMessage] = MessageConstant.BookingError;
 
                 return View(editModel);
             }
@@ -150,6 +151,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             }
 
             await bookingService.Edit(editModel.Id, editModel);
+            ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
 
             return RedirectToAction("All", "Booking");
         }
