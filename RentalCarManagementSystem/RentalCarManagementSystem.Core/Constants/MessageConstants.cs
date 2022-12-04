@@ -12,8 +12,11 @@ namespace RentalCarManagementSystem.Core.Constants
         public const string WarningMessage = "WarningMessage";
         public const string SuccessMessage = "SuccessMessage";
 
-        public const string SuccessfulRecord = "The regord was successfully made!";
+        public const string SuccessfulRecord = "The record was successfully made!";
         public const string OccurredError = "Something went wrong!";
         public const string BookingError = "Booking does not exist!";
+        public const string SuccessfulCheckedIn = "The booking was successfully checked-in!";
+        public const string SuccessfulCheckedOut = "The booking was successfully checked-out!";
+
     }
 }

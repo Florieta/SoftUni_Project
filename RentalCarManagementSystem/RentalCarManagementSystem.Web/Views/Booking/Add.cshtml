@@ -116,6 +116,20 @@
                         <label asp-for="@Model.Duration">Duration</label>
                         <input asp-for="@Model.Duration" id="durationForm" oninput="Total()" type="number" class="form-control" />
                         <span asp-validation-for="Duration" class="text-danger"></span>
+                      @*  <script>
+                            function DiffDays() {
+                                var pickUpDate = document.getElementById('pick').value;
+                                var dropOffDate = document.getElementById('drop').value;
+                                var pickDate = pickUpDate.split('T');
+                                var date = pickDate[0].split('-');
+                                var 1stDate = date[2];
+                               var dropDate = dropOffDate.split('T');
+                                var dateTwo = dropDate[0].split('-');
+                                var 2ndDate = dateTwo[2];
+                                var Difference_In_Days = 2ndDate - 1stDate;
+                                document.getElementById('durationForm').value = Difference_In_Days;
+                            }
+                        </script>*@
                     </div>
                 </div>
             </div>
@@ -147,12 +161,12 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label asp-for="@Model.InsuranceCode" class="form-label">Insurance</label>
-                        <select asp-for="@Model.InsuranceCode" class="form-control">
+                        <select asp-for="@Model.InsuranceCode" id="insurance" class="form-control">
                             @foreach (var ins in Model.Insurance)
                             {
-                                <option value="@ins.InsuranceCode">@ins.TypeOfInsurance</option>
+                                <option value="@ins.InsuranceCode">@ins.TypeOfInsurance @ins.CostPerDay</option>
                             }
-                            @*  <option value="null">No Insurance</option>*@
+                             @* <option value="0">No Insurance</option>*@
                         </select>
                         <span asp-validation-for="InsuranceCode" class="text-danger"></span>
                     </div>

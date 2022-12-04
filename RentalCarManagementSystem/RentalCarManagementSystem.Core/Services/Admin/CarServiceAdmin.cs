@@ -49,23 +49,7 @@ namespace RentalCarManagementSystem.Core.Services.Admin
                 await repo.SaveChangesAsync();
         }
 
-        public async Task CreateCategory(CreateCategoryInputModel model)
-        {
-
-            if (await CategoryExistsByName(model.CategoryName))
-            {
-                throw new ArgumentException("The category has already existed!");
-            }
-
-            var category = new Category()
-            {
-                CategoryName = model.CategoryName
-            };
-
-            await repo.AddAsync(category);
-            await repo.SaveChangesAsync();
-        }
-
+        
         public async Task<bool> IsCarExists(CreateCarInputModel model)
         {
             return await repo.All<Car>()
@@ -119,10 +103,6 @@ namespace RentalCarManagementSystem.Core.Services.Admin
             return await repo.AllReadonly<Category>()
                 .AnyAsync(c => c.Id == categoryId);
         }
-        public async Task<bool> CategoryExistsByName(string categoryName)
-        {
-            return await repo.AllReadonly<Category>()
-                .AnyAsync(c => c.CategoryName == categoryName);
-        }
+       
     }
 }

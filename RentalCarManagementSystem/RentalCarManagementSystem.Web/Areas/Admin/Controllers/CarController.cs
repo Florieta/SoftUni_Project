@@ -50,33 +50,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult CreateCategory()
-        {
-            CreateCategoryInputModel model = new CreateCategoryInputModel();
-
-            return View(model);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateCategory(CreateCategoryInputModel categoryModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(categoryModel);
-            }
-
-            try
-            {
-                await carServiceAdmin.CreateCategory(categoryModel);
-                return RedirectToAction("All", "Car");
-            }
-            catch
-            {
-                ModelState.AddModelError("", "Something went wrong!");
-                return View(categoryModel);
-            }
-        }
+       
 
         public async Task<IActionResult> Remove(int id)
         {

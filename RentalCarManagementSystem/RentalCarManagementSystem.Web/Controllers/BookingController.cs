@@ -46,7 +46,7 @@ namespace RentalCarManagementSystem.Web.Controllers
                 string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
                 await bookingService.Create(model, Id, userId);
-
+                ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
                 return RedirectToAction("All", "Car");
             }
             catch
@@ -111,7 +111,7 @@ namespace RentalCarManagementSystem.Web.Controllers
             }
 
             await bookingService.Edit(editModel.Id, editModel);
-
+            ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
             return RedirectToAction("All", "Booking");
         }
 
@@ -152,7 +152,7 @@ namespace RentalCarManagementSystem.Web.Controllers
         public async Task<IActionResult> CheckIn(int id)
         {
             await bookingService.CheckIn(id);
-
+            ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
             return RedirectToAction("All", "Booking");
         }
 
@@ -160,7 +160,7 @@ namespace RentalCarManagementSystem.Web.Controllers
         public async Task<IActionResult> CheckOut(int id)
         {
             await bookingService.CheckOut(id);
-
+            ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
             return RedirectToAction("All", "Booking");
         }
 

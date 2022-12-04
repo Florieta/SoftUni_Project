@@ -71,6 +71,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         public async Task<IActionResult> CheckIn(int id)
         {
             await bookingService.CheckIn(id);
+            ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulCheckedIn;
 
             return RedirectToAction(nameof(All));
         }
@@ -79,6 +80,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         public async Task<IActionResult> CheckOut(int id)
         {
             await bookingService.CheckOut(id);
+            ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulCheckedOut;
 
             return RedirectToAction(nameof(All));
         }

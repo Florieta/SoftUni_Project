@@ -75,7 +75,7 @@ namespace RentalCarManagementSystem.Core.Services
                 Duration = model.Duration,
                 PickUpLocationId = model.PickUpLocationId,
                 DropOffLocationId = model.DropOffLocationId,
-                InsuranceCode = model.InsuranceCode,
+                InsuranceCode = model.InsuranceCode == 0 ? 0 : model.InsuranceCode,
                 TotalAmount = model.TotalAmount,
                 PaymentType = model.PaymentType,
                 ApplicationUserId = userId,
