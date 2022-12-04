@@ -49,17 +49,27 @@ namespace RentalCarManagementSystem.Core.Services
             return car;
         }
 
-        public async Task<IEnumerable<Category>> GetCategoriesAsync()
+        public async Task<IEnumerable<CarServiceModel>> GetAllCarsAsync(string? searchMake = null, string? searchModel = null,
+            string? searchRegNumber = null)
         {
-            return await repo.AllReadonly<Category>().ToListAsync();
-        }
+            var allCars = repo.AllReadonly<Car>().Where(c => c.NotInUse == false);
 
+            if (string.IsNullOrEmpty(searchMake) == false)
+            {
+                allCars = allCars.Where(b => b.Make == searchMake);
+            }
 
-        public async Task<IEnumerable<CarServiceModel>> GetAllCarsAsync()
-        {
-            var allcars = await repo.All<Car>().Where(c => c.NotInUse == false).ToListAsync();
+            if (string.IsNullOrEmpty(searchModel) == false)
+            {
+                allCars = allCars.Where(b => b.Model == searchModel);
+            }
 
-            return allcars
+            if (string.IsNullOrEmpty(searchRegNumber) == false)
+            {
+                allCars = allCars.Where(b => b.RegNumber == searchRegNumber);
+            }
+
+            return await allCars
            .Select(m => new CarServiceModel()
            {
                Id = m.Id,
@@ -69,20 +79,12 @@ namespace RentalCarManagementSystem.Core.Services
                ImageUrl = m.ImageUrl,
                DailyRate = m.DailyRate,
                IsAvailable = m.IsAvailable
-           });
+           }).ToListAsync();
         }
 
-        public async Task CheckOut(int id)
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
         {
-            var car = await repo.GetByIdAsync<Car>(id);
-            if (car == null)
-            {
-                throw new ArgumentException("Invalid car ID");
-            }
-
-            car.IsAvailable = true;
-
-            await repo.SaveChangesAsync();
+            return await repo.AllReadonly<Category>().ToListAsync();
         }
 
         public async Task<bool> IsAvailable(int id)
@@ -95,6 +97,5 @@ namespace RentalCarManagementSystem.Core.Services
             return await repo.AllReadonly<Car>()
                 .AnyAsync(c => c.Id == id);
         }
-
     }
 }

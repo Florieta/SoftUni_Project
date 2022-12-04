@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace RentalCarManagementSystem.Test.UserAreaTests
 {
+    [TestFixture]
     public class CarServiceTest
     {
         private ServiceProvider serviceProvider;
@@ -47,7 +48,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
         }
 
         [Test]
-        public async Task GetProductById_Succeed()
+        public async Task GetCarById_Succeed()
         {
             var service = serviceProvider.GetService<ICarService>();
 
@@ -59,7 +60,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
         }
 
         [Test]
-        public async Task GetCarByIdWithInvalidId()
+        public async Task GetCarByIdWithInvalidId_ReturnFalse()
         {
             var service = serviceProvider.GetService<ICarService>();
 
@@ -68,6 +69,68 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
             var car = await service.Exists(id);
 
             Assert.That(car == false);
+        }
+
+        //[Test]
+        //public async Task GetCarDetailsById_ReturnCorrectCarDetails()
+        //{
+        //    var service = serviceProvider.GetService<ICarService>();
+
+        //    var id = 2;
+        //    var car = await service.Exists(id);
+        //    var car1 = await service.CarDetailsById(id);
+
+        //    Assert.That(car, Is.SameAs(car1));
+        //}
+
+        [Test]
+        public async Task GetCarDetailsByIdWithInvalidId_ReturnFalse()
+        {
+            var service = serviceProvider.GetService<ICarService>();
+
+            var id = 5;
+
+            var car = await service.CarDetailsById(id);
+
+            Assert.That(car == null);
+            Assert.Throws<ArgumentException>(() => service.CarDetailsById(id), "Invalid car ID");
+        }
+
+
+        [Test]
+        public async Task GetAllCategories_SucceededShowAllCategories()
+        {
+            var service = serviceProvider.GetService<ICarService>();
+
+            var categories = await service.GetCategoriesAsync();
+
+            var categoryList = categories.ToList();
+
+            Assert.That(categoryList.Count == 1);
+        }
+
+        [Test]
+        public async Task IsAvailable_ReturnsTrueIfTheCarIsAvailable()
+        {
+            var service = serviceProvider.GetService<ICarService>();
+
+            var id = 1;
+
+            var carAvailability = await service.IsAvailable(id);
+
+            Assert.That(carAvailability == true);
+        }
+
+        [Test]
+        public async Task IsAvailable_ReturnsFalseIfTheCarIsNotAvailable()
+        {
+            var service = serviceProvider.GetService<ICarService>();
+
+            var id = 3;
+
+            var carAvailability = await service.IsAvailable(id);
+
+            Assert.That(carAvailability == false);
         }
 
         private async Task SeedAsync(IRepository repo)
@@ -116,7 +179,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
                 ImageUrl = "https://www.citroen-eg.com/wp-content/uploads/2021/11/Polar-White-front1.jpg",
                 GearBox = "Automatic",
                 DailyRate = 37,
-                IsAvailable = true,
+                IsAvailable = false,
                 CategoryId = 2,
             };
 

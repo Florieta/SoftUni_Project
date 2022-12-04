@@ -1,0 +1,40 @@
+﻿@using RentalCarManagementSystem.Core.Models.Booking;
+
+@model AllBookingsViewModel
+
+<tr>
+    <td>@Model.FullName</td>
+    <td>@Model.PickUpDateAndTime</td>
+    <td>@Model.DropOffDateAndTime</td>
+    <td>@String.Format("{0:f2}", Model.TotalAmount) BGN</td>
+    <td>
+        <a asp-controller="Booking" asp-action="Details" asp-route-id="@Model.Id"
+           class="btn btn-info">Booking Details</a>
+    </td>
+    <td>
+        <a asp-controller="Car" asp-action="Details" asp-route-id="@Model.CarId"
+           class="btn btn-warning">Car Details</a>
+    </td>
+    @if (Model.IsRented == false)
+    {
+        <td>
+            <form asp-controller="Booking" asp-action="CheckIn"
+              asp-route-id="@Model.Id" method="post">
+                <input class="btn btn-success" type="submit" value="Pay & CheckIn" />
+            </form>
+        </td>
+    }
+    else
+    {
+        <td>
+            <form  asp-controller="Booking" asp-action="CheckOut"
+              asp-route-id="@Model.Id" method="post">
+                <input class="btn btn-danger" type="submit" value="CheckOut" />
+            </form>
+        </td>
+    }
+    <td>
+        <a asp-controller="Booking" asp-action="Edit" asp-route-id="@Model.Id"
+           class="btn btn-warning">Edit Booking</a>
+    </td>
+</tr>

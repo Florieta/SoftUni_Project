@@ -106,8 +106,6 @@ namespace RentalCarManagementSystem.Core.Services
             await repo.SaveChangesAsync();
         }
 
-        
-
         public async Task<BookingDetailsViewModel> BookingDetailsById(int id)
         {
             return await repo.AllReadonly<Booking>()
@@ -187,7 +185,6 @@ namespace RentalCarManagementSystem.Core.Services
                     IsRented = m.IsRented
                 }).OrderBy(t => t.PickUpDateAndTime).ToListAsync();
         }
-
 
         public async Task<IEnumerable<AllBookingsViewModel>> AllCheckIns(string? searchTerm = null)
         {

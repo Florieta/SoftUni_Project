@@ -10,13 +10,12 @@ namespace RentalCarManagementSystem.Core.Contracts
 {
     public interface ICarService
     {
-        Task<IEnumerable<CarServiceModel>> GetAllCarsAsync();
+        Task<IEnumerable<CarServiceModel>> GetAllCarsAsync(string? searchMake = null, string? searchModel = null,
+           string? searchRegNumber = null);
 
         Task<CarDetailsViewModel> CarDetailsById(int id);
 
         Task<IEnumerable<Category>> GetCategoriesAsync();
-
-        Task CheckOut(int id);
 
         Task<bool> Exists(int id);
 

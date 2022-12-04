@@ -52,7 +52,11 @@ namespace RentalCarManagementSystem.Core.Services
         {
             bool result = false;
 
-            var user = await repo.GetByIdAsync<ApplicationUser>(model.Id);
+            var user = await GetUserById(model.Id);
+            if (user == null)
+            {
+                throw new ArgumentException("Invalid user ID");
+            }
 
             if (user != null)
             {
@@ -69,6 +73,11 @@ namespace RentalCarManagementSystem.Core.Services
                 result = true;
             }
             return result;
+        }
+
+        public async Task<ApplicationUser> GetUserById(string id)
+        {
+            return await repo.GetByIdAsync<ApplicationUser>(id);
         }
     }
 }

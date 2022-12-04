@@ -1,4 +1,5 @@
 ﻿using RentalCarManagementSystem.Core.Models.User;
+using RentalCarManagementSystem.Infrastructure.Models.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,8 @@ namespace RentalCarManagementSystem.Core.Contracts
         Task<UserProfileViewModel> GetUserByUsernameAsync(string username);
 
         Task<bool> EditProfile(EditUserProfileViewModel model);
+
+        Task<ApplicationUser> GetUserById(string id);
+
     }
 }

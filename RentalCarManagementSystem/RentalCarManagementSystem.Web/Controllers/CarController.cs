@@ -16,14 +16,26 @@ namespace RentalCarManagementSystem.Web.Controllers
             this.carService = carService;
         }
 
-
         [HttpGet]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery] AllCarsQueryModel query)
         {
-            var model = await carService.GetAllCarsAsync();
+            var result = await carService.GetAllCarsAsync(
+                query.SearchMake,
+                query.SearchModel,
+                query.SearchRegNumber);
 
-            return View(model);
+            query.Cars = result;
+
+            return View(query);
         }
+
+        //[HttpGet]
+        //public async Task<IActionResult> All()
+        //{
+        //    var model = await carService.GetAllCarsAsync();
+
+        //    return View(model);
+        //}
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
