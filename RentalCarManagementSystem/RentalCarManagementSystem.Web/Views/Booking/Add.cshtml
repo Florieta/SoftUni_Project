@@ -42,17 +42,16 @@
                     <input asp-for="@Model.Address" rows="3" class="form-control" placeholder="Enter Full Address..." />
                     <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.Email" class="col-form-label" for="inputSuccess">
-                    <i class="fas fa-check"></i> Email Address
-                </label>
-                <input asp-for="@Model.Email" type="text" class="form-control is-valid" id="inputSuccess" placeholder="Enter Email Address...">
-                <span asp-validation-for="Email" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="@Model.Email" class="col-form-label" for="inputSuccess">
+                        <i class="fas fa-check"></i> Email Address
+                    </label>
+                    <input asp-for="@Model.Email" type="text" class="form-control is-valid" id="inputSuccess" placeholder="Enter Email Address...">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <!-- text input -->
                     <div class="form-group">
                         <label asp-for="@Model.IdCardNumber">Id Card Number</label>
                         <input asp-for="@Model.IdCardNumber" type="text" class="form-control" placeholder="Enter Id Card Number..." />
@@ -68,18 +67,16 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label asp-for="@Model.DateOfIssue">Date of Issue:</label>
-                        <div class="input-group date" id="issuedate" data-target-input="nearest">
-                            <input asp-for="@Model.DateOfIssue" type="date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
-                        </div>
+                       
+                        <label asp-for="DateOfIssue">Date of issue</label>
+                        <input asp-for="DateOfIssue" value="@DateTime.Now.ToString("d")" class="form-control" />
                         <span asp-validation-for="DateOfIssue" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="@Model.DateOfExpired">Date of Expired:</label>
-                        <div class="input-group date" id="expiredate" data-target-input="nearest">
-                            <input asp-for="@Model.DateOfExpired" type="date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
-                        </div>
+                        <label asp-for="DateOfExpired">Date of Expired:</label>
+                         <input asp-for="DateOfExpired" value="@DateTime.Now.ToString("d")" class="form-control" />
                         <span asp-validation-for="DateOfExpired" class="text-danger"></span>
+                       
                     </div>
                 </div>
             </div>
@@ -94,18 +91,14 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="form-group">
-                        <label asp-for="@Model.PickUpDateAndTime">Pick up date and time:</label>
-                        <div class="input-group date" id="pickupdatetime" data-target-input="nearest">
-                            <input asp-for="@Model.PickUpDateAndTime" type="datetime-local" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy hh:mm" data-mask />
-                        </div>
+                     <div class="form-group">
+                        <label asp-for="PickUpDateAndTime">Pick up date and time:</label>
+                         <input asp-for="PickUpDateAndTime" value="@DateTime.Now.ToString("s")" class="form-control" />
                         <span asp-validation-for="PickUpDateAndTime" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="@Model.DropOffDateAndTime">Drop off date and time:</label>
-                        <div class="input-group date" id="dropoffdatetime" data-target-input="nearest">
-                            <input asp-for="@Model.DropOffDateAndTime" type="datetime-local" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy hh:mm" data-mask />
                         </div>
+                    <div class="form-group">
+                        <label asp-for="DropOffDateAndTime">Pick up date and time:</label>
+                         <input asp-for="DropOffDateAndTime" value="@DateTime.Now.ToString("s")" class="form-control" />
                         <span asp-validation-for="DropOffDateAndTime" class="text-danger"></span>
                     </div>
                 </div>
@@ -116,20 +109,6 @@
                         <label asp-for="@Model.Duration">Duration</label>
                         <input asp-for="@Model.Duration" id="durationForm" oninput="Total()" type="number" class="form-control" />
                         <span asp-validation-for="Duration" class="text-danger"></span>
-                      @*  <script>
-                            function DiffDays() {
-                                var pickUpDate = document.getElementById('pick').value;
-                                var dropOffDate = document.getElementById('drop').value;
-                                var pickDate = pickUpDate.split('T');
-                                var date = pickDate[0].split('-');
-                                var 1stDate = date[2];
-                               var dropDate = dropOffDate.split('T');
-                                var dateTwo = dropDate[0].split('-');
-                                var 2ndDate = dateTwo[2];
-                                var Difference_In_Days = 2ndDate - 1stDate;
-                                document.getElementById('durationForm').value = Difference_In_Days;
-                            }
-                        </script>*@
                     </div>
                 </div>
             </div>
@@ -161,12 +140,11 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label asp-for="@Model.InsuranceCode" class="form-label">Insurance</label>
-                        <select asp-for="@Model.InsuranceCode" id="insurance" class="form-control">
+                        <select asp-for="@Model.InsuranceCode" id="insurance" oninput="Total()" class="form-control">
                             @foreach (var ins in Model.Insurance)
                             {
                                 <option value="@ins.InsuranceCode">@ins.TypeOfInsurance @ins.CostPerDay</option>
                             }
-                             @* <option value="0">No Insurance</option>*@
                         </select>
                         <span asp-validation-for="InsuranceCode" class="text-danger"></span>
                     </div>
@@ -185,20 +163,13 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.DailyRate">Daily Rate</label>
-                        <p id="dailyRate" oninput="calculate()" type="number" class="form-control">@Model.DailyRate</p>
+                        <p id="dailyRate" type="number" class="form-control">@Model.DailyRate</p>
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.TotalAmount">Total Amount</label>
-                        <input asp-for="@Model.TotalAmount" id="result" type="number" class="form-control"/>
+                        <input asp-for="@Model.TotalAmount" id="result" type="number" class="form-control" />
                         <span asp-validation-for="TotalAmount" class="text-danger"></span>
-                        <script>
-                            function Total() {
-                                var duration = document.getElementById('durationForm').value;
-                                var rate = document.getElementById('dailyRate').textContent;
-                                var myResult = (duration * rate);
-                                document.getElementById('result').value = myResult;
-                            }
-                        </script>
+
                     </div>
                 </div>
             </div>
@@ -212,4 +183,19 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+   
+     <script>
+        function Total() {
+            var duration = document.getElementById('durationForm').value;
+            var rate = document.getElementById('dailyRate').textContent;
+
+            var insurance = document.getElementById('insurance').value;
+            if (insurance == '1') {
+                var myResult = (duration * rate) + (duration * 10);
+            }else if (insurance == '2'){
+                var myResult = (duration * rate) + (duration * 5);
+            }
+            document.getElementById('result').value = myResult;
+        }
+    </script>
     }

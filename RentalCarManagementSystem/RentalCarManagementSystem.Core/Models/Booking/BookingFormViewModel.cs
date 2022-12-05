@@ -41,11 +41,12 @@ namespace RentalCarManagementSystem.Core.Models.Booking
         public string DriverLicenseNumber { get; set; } = null!;
 
         [Required]
-        [IsBeforeAttribute("DateOfIssue", errorMessage: "The date should be greater than the issue date!")]
+        [DataType(DataType.Date)]
+       [IsDateAfterAttribute("DateOfIssue", true, ErrorMessage = "Date of expired needs to be after date of issue")]
         public DateTime DateOfExpired { get; set; }
 
         [Required]
-
+        [DataType(DataType.Date)]
         public DateTime DateOfIssue { get; set; }
 
         [Required]
@@ -59,10 +60,13 @@ namespace RentalCarManagementSystem.Core.Models.Booking
         //Car
 
         [Required]
+        [DataType(DataType.DateTime)]
+        
         public DateTime PickUpDateAndTime { get; set; }
 
         [Required]
-        [IsBeforeAttribute("PickUpDateAndTime", errorMessage: "The date should be greater than the drop off date!")]
+        [DataType(DataType.DateTime)]
+        [IsDateAfterAttribute("PickUpDateAndTime", true, ErrorMessage = "The droff off date should be after the pick up date!")]
         public DateTime DropOffDateAndTime { get; set; }
 
         [Required]

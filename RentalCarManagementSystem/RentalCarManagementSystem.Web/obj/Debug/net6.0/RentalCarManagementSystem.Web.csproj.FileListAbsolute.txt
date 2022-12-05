@@ -351,3 +351,10 @@ D:\SoftUni\source\SoftUni_Project\RentalCarManagementSystem\RentalCarManagementS
 D:\SoftUni\source\SoftUni_Project\RentalCarManagementSystem\RentalCarManagementSystem.Web\bin\Debug\net6.0\AutoMapper.dll
 D:\SoftUni\source\SoftUni_Project\RentalCarManagementSystem\RentalCarManagementSystem.Web\bin\Debug\net6.0\AutoMapper.Extensions.ExpressionMapping.dll
 D:\SoftUni\source\SoftUni_Project\RentalCarManagementSystem\RentalCarManagementSystem.Web\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\SoftUni\source\SoftUni_Project\RentalCarManagementSystem\RentalCarManagementSystem.Web\bin\Debug\net6.0\System.Web.Mvc.dll
+D:\SoftUni\source\SoftUni_Project\RentalCarManagementSystem\RentalCarManagementSystem.Web\bin\Debug\net6.0\System.Web.Razor.dll
+D:\SoftUni\source\SoftUni_Project\RentalCarManagementSystem\RentalCarManagementSystem.Web\bin\Debug\net6.0\System.Web.Helpers.dll
+D:\SoftUni\source\SoftUni_Project\RentalCarManagementSystem\RentalCarManagementSystem.Web\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+D:\SoftUni\source\SoftUni_Project\RentalCarManagementSystem\RentalCarManagementSystem.Web\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+D:\SoftUni\source\SoftUni_Project\RentalCarManagementSystem\RentalCarManagementSystem.Web\bin\Debug\net6.0\System.Web.WebPages.dll
+D:\SoftUni\source\SoftUni_Project\RentalCarManagementSystem\RentalCarManagementSystem.Web\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

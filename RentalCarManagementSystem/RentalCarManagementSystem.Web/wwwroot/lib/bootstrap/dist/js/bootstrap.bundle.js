@@ -157,7 +157,8 @@
       return true;
     }
 
-    if (element.classList.contains('disabled')) {
+      if (element.
+        .contains('disabled')) {
       return true;
     }
 

@@ -47,7 +47,12 @@ namespace RentalCarManagementSystem.Core.Services
 
             car.IsAvailable = false;
 
+            if (model.DateOfIssue > model.DateOfExpired)
+            {
+                throw new ArgumentException("The date of issue cannot be greater than the date of expire!");
+            }
 
+          
             var customer = new Customer()
             {
                 FullName = model.FullName,
@@ -64,6 +69,12 @@ namespace RentalCarManagementSystem.Core.Services
 
             await repo.AddAsync<Customer>(customer);
 
+            if (model.PickUpDateAndTime > model.DropOffDateAndTime)
+            {
+                throw new ArgumentException("The pick up date cannot be greater than the drop off date!");
+            }
+
+
             var booking = new Booking()
             {
                 CarId = Id,
@@ -75,7 +86,7 @@ namespace RentalCarManagementSystem.Core.Services
                 Duration = model.Duration,
                 PickUpLocationId = model.PickUpLocationId,
                 DropOffLocationId = model.DropOffLocationId,
-                InsuranceCode = model.InsuranceCode == 0 ? 0 : model.InsuranceCode,
+                InsuranceCode = model.InsuranceCode,
                 TotalAmount = model.TotalAmount,
                 PaymentType = model.PaymentType,
                 ApplicationUserId = userId,

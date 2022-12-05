@@ -51,6 +51,10 @@
             "AutoMapper.Extensions.ExpressionMapping": {
               "target": "Package",
               "version": "[6.0.1, )"
+            },
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.9, )"
             }
           },
           "imports": [

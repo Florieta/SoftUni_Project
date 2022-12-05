@@ -171,12 +171,8 @@
                     <div class="form-group">
                         <label asp-for="@Model.TotalAmount">Total Amount</label>
                         <input asp-for="@Model.TotalAmount" id="totalValue" type="number" class="form-control" />
-                       @* <script>
-                            let durationInput = document.getElementById("durationForm");
-                            document.getElementById("totalValue").value = (Number)(durationInput.value);
-                        </script>*@
                         <span asp-validation-for="TotalAmount" class="text-danger"></span>
-                        @*<input value="@(Model.TotalAmount = Model.Duration * Model.DailyRate)" />*@
+
                     </div>
                 </div>
             </div>
