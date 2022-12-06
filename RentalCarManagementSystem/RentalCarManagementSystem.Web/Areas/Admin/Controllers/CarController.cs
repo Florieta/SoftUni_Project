@@ -3,6 +3,7 @@ using RentalCarManagementSystem.Core.Constants;
 using RentalCarManagementSystem.Core.Contracts;
 using RentalCarManagementSystem.Core.Contracts.Admin;
 using RentalCarManagementSystem.Core.Models.Admin;
+using RentalCarManagementSystem.Core.Models.Car;
 using System.Security.Claims;
 
 namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
@@ -136,12 +137,18 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery] AllCarsQueryModel query)
         {
-            var model = await carService.GetAllCarsAsync();
+            var result = await carService.GetAllCarsAsync(
+                query.SearchMake,
+                query.SearchModel,
+                query.SearchRegNumber);
 
-            return View(model);
+            query.Cars = result;
+
+            return View(query);
         }
+
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {

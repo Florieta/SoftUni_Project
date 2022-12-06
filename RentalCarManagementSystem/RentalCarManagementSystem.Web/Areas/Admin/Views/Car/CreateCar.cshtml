@@ -19,12 +19,12 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label asp-for="@Model.Make">Car Make</label>
-                        <input asp-for="@Model.Make" type="text" class="form-control" placeholder="Enter Full Name..." />
+                        <input asp-for="@Model.Make" type="text" class="form-control" placeholder="Enter Make..." />
                         <span asp-validation-for="Make" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.Model">Model</label>
-                        <input asp-for="@Model.Model" type="text" class="form-control" placeholder="Enter Phone Number..." />
+                        <input asp-for="@Model.Model" type="text" class="form-control" placeholder="Enter Model..." />
                         <span asp-validation-for="Model" class="text-danger"></span>
                     </div>
                 </div>
@@ -32,12 +32,12 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label asp-for="@Model.MakeYear">Make Year</label>
-                    <input asp-for="@Model.MakeYear" rows="3" class="form-control" placeholder="Enter Full Address..." />
+                    <input asp-for="@Model.MakeYear" rows="3" class="form-control" placeholder="Enter Make Year..." />
                     <span asp-validation-for="MakeYear" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="@Model.RegNumber">Registration Number</label>
-                    <input asp-for="@Model.RegNumber" rows="3" class="form-control" placeholder="Enter Full Address..." />
+                    <input asp-for="@Model.RegNumber" rows="3" class="form-control" placeholder="Enter Registration Number..." />
                     <span asp-validation-for="RegNumber" class="text-danger"></span>
                 </div>
             </div>
@@ -46,12 +46,12 @@
                     <!-- text input -->
                     <div class="form-group">
                         <label asp-for="@Model.Color">Color</label>
-                        <input asp-for="@Model.Color" type="text" class="form-control" placeholder="Enter Id Card Number..." />
+                        <input asp-for="@Model.Color" type="text" class="form-control" placeholder="Enter Color..." />
                         <span asp-validation-for="Color" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.GearBox">Gear box</label>
-                        <input asp-for="@Model.GearBox" type="text" class="form-control" placeholder="Enter Driver License Number..." />
+                        <input asp-for="@Model.GearBox" type="text" class="form-control" placeholder="Enter GearBox..." />
                         <span asp-validation-for="GearBox" class="text-danger"></span>
                     </div>
                 </div>
@@ -60,12 +60,12 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label asp-for="@Model.Description">Description</label>
-                        <input asp-for="@Model.Description" type="text" class="form-control" placeholder="Enter Driver License Number..." />
+                        <input asp-for="@Model.Description" type="text" class="form-control" placeholder="Enter Description..." />
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.ImageUrl">Image</label>
-                        <input asp-for="@Model.ImageUrl" type="text" class="form-control" placeholder="Enter Driver License Number..." />
+                        <input asp-for="@Model.ImageUrl" type="text" class="form-control" placeholder="Enter Image Url..." />
                         <span asp-validation-for="ImageUrl" class="text-danger"></span>
                     </div>
                 </div>
@@ -74,17 +74,13 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label asp-for="@Model.DailyRate">DailyRate</label>
-                        <input asp-for="@Model.DailyRate" type="number" class="form-control" placeholder="Enter Issued By..." />
+                        <input asp-for="@Model.DailyRate" type="number" class="form-control" />
                         <span asp-validation-for="DailyRate" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                  
-                     @*   <label asp-for="@Model.CategoryId">Category</label>
-                        <input asp-for="@Model.CategoryId" type="number" class="form-control" placeholder="Enter Category Id..." />
-                        <span asp-validation-for="CategoryId" class="text-danger"></span>*@
                   <div class="form-group">
                         <label asp-for="@Model.CategoryId" class="form-label">Categories</label>
                         <select asp-for="@Model.CategoryId" class="form-control">

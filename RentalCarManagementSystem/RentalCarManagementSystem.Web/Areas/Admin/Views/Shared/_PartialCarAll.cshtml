@@ -1,0 +1,19 @@
+﻿@model CarServiceModel
+
+<tr>
+    <td>@Model.Make</td>
+    <td>@Model.Model</td>
+    <td>@Model.RegNumber</td>
+    <td><span class="tag tag-success">@(Model.IsAvailable ? "Not booked" : "Booked")</span></td>
+    <td>@String.Format("{0:f2}", Model.DailyRate) BGN</td>
+    <td>
+        <a asp-controller="Car" asp-action="Details" asp-route-id="@Model.Id"
+           class="btn btn-info">Details</a>
+        @if (Model.IsAvailable)
+        {
+            <a asp-controller="Booking" asp-action="Add" asp-route-id="@Model.Id"
+           class="btn btn-success">Book</a>
+        }
+    </td>
+
+</tr>

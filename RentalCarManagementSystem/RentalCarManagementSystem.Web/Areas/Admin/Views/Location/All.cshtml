@@ -1,0 +1,46 @@
+﻿@model IEnumerable<LocationViewModel>
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Locations</h3>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Location Name</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var location in Model)
+                        {
+                            <tr>
+                                <td>@location.LocationName</td>
+                                <td>@location.Address</td>
+                                <td>
+                                    <a asp-area="admin" asp-action="add" asp-controller="location" asp-route-id="@location.Id" class="btn btn-block btn-outline-success btn-xs">Add</a>
+                                    <a asp-area="admin" asp-action="edit" asp-controller="location" asp-route-id="@location.Id" class="btn btn-block btn-outline-info btn-xs">Edit</a>
+                                    <a asp-area="admin" asp-action="remove" asp-controller="location" asp-route-id="@location.Id" class="btn btn-block btn-outline-warning btn-xs">Remove</a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
