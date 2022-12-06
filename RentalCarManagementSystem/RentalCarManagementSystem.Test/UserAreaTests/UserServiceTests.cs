@@ -117,24 +117,24 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
             Assert.IsTrue(user1);
         }
 
-        //[Test]
-        //public async Task EditProfile_ReturnFalse()
-        //{
-        //    var service = serviceProvider.GetService<IUserService>();
+        [Test]
+        public async Task EditProfile_ReturnFalse()
+        {
+            var service = serviceProvider.GetService<IUserService>();
 
-        //    var model = new EditUserProfileViewModel()
-        //    {
-        //        Id = 1,
-        //        UserName = "Admin",
-        //        Email = "admin@gmail.com",
-        //        FirstName = "Peter",
-        //        LastName = "Parker"
-        //    };
+            var model = new EditUserProfileViewModel()
+            {
+                Id = "1",
+                UserName = "Admin",
+                Email = "admin@gmail.com",
+                FirstName = "Peter",
+                LastName = "Parker"
+            };
 
-        //    var user1 = await service.EditProfile(model);
+            var user1 = await service.EditProfile(model);
 
-        //    Assert.That(user1 == false);
-        //}
+            Assert.That(user1 == false);
+        }
 
         private async Task SeedAsync(IRepository repo)
         {

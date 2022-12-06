@@ -71,17 +71,16 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
             Assert.That(car == false);
         }
 
-        //[Test]
-        //public async Task GetCarDetailsById_ReturnCorrectCarDetails()
-        //{
-        //    var service = serviceProvider.GetService<ICarService>();
+        [Test]
+        public async Task GetCarDetailsById_ReturnCorrectCarDetails()
+        {
+            var service = serviceProvider.GetService<ICarService>();
 
-        //    var id = 2;
-        //    var car = await service.Exists(id);
-        //    var car1 = await service.CarDetailsById(id);
+            var id = 2;
+            var car1 = await service.CarDetailsById(id);
 
-        //    Assert.That(car, Is.SameAs(car1));
-        //}
+            Assert.That(car1 != null);
+        }
 
         [Test]
         public async Task GetCarDetailsByIdWithInvalidId_ReturnFalse()

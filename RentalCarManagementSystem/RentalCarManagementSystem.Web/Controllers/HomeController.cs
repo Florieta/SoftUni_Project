@@ -17,6 +17,12 @@ namespace RentalCarManagementSystem.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
+
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
+            }
+
             var model = await scheduleService.TotalAvailableCarsAsync();
 
             return View(model);

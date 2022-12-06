@@ -46,12 +46,12 @@ namespace RentalCarManagementSystem.Web.Controllers
                 string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
                 await bookingService.Create(model, Id, userId);
-                ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
                 return RedirectToAction("All", "Car");
             }
             catch
             {
-                ModelState.AddModelError("", "Something went wrong!");
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
 
                 return View(model);
             }
@@ -62,6 +62,7 @@ namespace RentalCarManagementSystem.Web.Controllers
         {
             if ((await bookingService.Exists(id)) == false)
             {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 return RedirectToAction("All", "Booking");
             }
 
@@ -100,7 +101,8 @@ namespace RentalCarManagementSystem.Web.Controllers
 
             if ((await bookingService.Exists(editModel.Id)) == false)
             {
-                ModelState.AddModelError("", "Booking does not exist");
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.BookingError;
+
 
                 return View(editModel);
             }
@@ -111,7 +113,7 @@ namespace RentalCarManagementSystem.Web.Controllers
             }
 
             await bookingService.Edit(editModel.Id, editModel);
-            ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
             return RedirectToAction("All", "Booking");
         }
 
@@ -152,7 +154,7 @@ namespace RentalCarManagementSystem.Web.Controllers
         public async Task<IActionResult> CheckIn(int id)
         {
             await bookingService.CheckIn(id);
-            ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulCheckedIn;
             return RedirectToAction("All", "Booking");
         }
 
@@ -160,7 +162,7 @@ namespace RentalCarManagementSystem.Web.Controllers
         public async Task<IActionResult> CheckOut(int id)
         {
             await bookingService.CheckOut(id);
-            ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulCheckedOut;
             return RedirectToAction("All", "Booking");
         }
 
@@ -169,6 +171,7 @@ namespace RentalCarManagementSystem.Web.Controllers
         {
             if ((await bookingService.Exists(id)) == false)
             {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 return RedirectToAction(nameof(All));
             }
 

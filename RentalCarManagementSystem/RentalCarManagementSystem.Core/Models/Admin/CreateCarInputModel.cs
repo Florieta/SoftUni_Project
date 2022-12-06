@@ -26,7 +26,7 @@ namespace RentalCarManagementSystem.Core.Models.Admin
         public string Make { get; set; } = null!;
 
         [Required]
-        [IsDateAfterAttribute("01/01/2015")]
+        [Range(2010, 2022)]
         public int MakeYear { get; set; }
 
         [Required]

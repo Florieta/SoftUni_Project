@@ -97,5 +97,6 @@ namespace RentalCarManagementSystem.Core.Services
             return await repo.AllReadonly<Car>()
                 .AnyAsync(c => c.Id == id);
         }
+
     }
 }

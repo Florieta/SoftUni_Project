@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using RentalCarManagementSystem.Infrastructure.Models.Identity;
+using RentalCarManagementSystem.Core.Constants;
 
 namespace RentalCarManagementSystem.Web.Areas.Identity.Pages.Account
 {
@@ -121,10 +122,13 @@ namespace RentalCarManagementSystem.Web.Areas.Identity.Pages.Account
 
                     if (user != null && await userManager.IsInRoleAsync(user, "Admin"))
                     {
+                        TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulLoginAdmin;
                         return RedirectToAction("Index", "Home", new { Area = "Admin" });
                     }
 
                     logger.LogInformation("User logged in.");
+                    TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulLogin;
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

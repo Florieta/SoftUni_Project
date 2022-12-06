@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RentalCarManagementSystem.Core.Constants;
 using RentalCarManagementSystem.Core.Contracts;
 using RentalCarManagementSystem.Core.Contracts.Admin;
 using RentalCarManagementSystem.Core.Models.Admin;
@@ -41,11 +42,12 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             try
             {
                 await carServiceAdmin.CreateCar(carModel);
-                return RedirectToAction("All", "Car");
+                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+                return Redirect("/");
             }
             catch
             {
-                ModelState.AddModelError("", "Something went wrong!");
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 return View(carModel);
             }
         }
@@ -57,11 +59,12 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             try
             {
                 await carServiceAdmin.RemoveCarAsync(id);
+                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
                 return RedirectToAction("All", "Car");
             }
             catch (Exception)
             {
-                ModelState.AddModelError("", "Something went wrong!");
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 return RedirectToAction("Home", "Index");
             }
         }
@@ -128,7 +131,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             }
 
             await carServiceAdmin.Edit(editModel.Id, editModel);
-
+            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
             return RedirectToAction("All", "Car");
         }
 

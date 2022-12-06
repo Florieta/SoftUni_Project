@@ -90,6 +90,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             var viewModel = mapper.Map<EditUserViewModel>(editModel);
 
             return View(viewModel);
+            
         }
 
         [HttpPost]

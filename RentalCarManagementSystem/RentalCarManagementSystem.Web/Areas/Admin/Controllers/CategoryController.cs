@@ -35,7 +35,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             {
                 await categoryServiceAdmin.CreateCategory(categoryModel);
                 ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
-                return RedirectToAction("All", "Car");
+                return Redirect("/");
             }
             catch
             {

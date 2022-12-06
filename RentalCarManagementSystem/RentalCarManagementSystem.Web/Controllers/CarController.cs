@@ -29,13 +29,7 @@ namespace RentalCarManagementSystem.Web.Controllers
             return View(query);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> All()
-        //{
-        //    var model = await carService.GetAllCarsAsync();
-
-        //    return View(model);
-        //}
+       
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {

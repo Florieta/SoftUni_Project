@@ -17,6 +17,8 @@ namespace RentalCarManagementSystem.Core.Constants
         public const string BookingError = "Booking does not exist!";
         public const string SuccessfulCheckedIn = "The booking was successfully checked-in!";
         public const string SuccessfulCheckedOut = "The booking was successfully checked-out!";
+        public const string SuccessfulLogin = "You are successfully logged in!";
+        public const string SuccessfulLoginAdmin = "You are successfully logged in in the admin area";
 
     }
 }
