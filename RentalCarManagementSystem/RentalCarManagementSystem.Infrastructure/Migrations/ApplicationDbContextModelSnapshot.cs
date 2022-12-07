@@ -52,7 +52,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         new
                         {
                             Id = "d86dba5034324ec481562264fecc1d3b",
-                            ConcurrencyStamp = "669b0fae-195b-4d84-a333-5b334fb860e7",
+                            ConcurrencyStamp = "1ee8340f-7b7f-4cb1-ab9b-3e64676da165",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -408,6 +408,9 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
@@ -416,17 +419,20 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CategoryName = "Economy"
+                            CategoryName = "Economy",
+                            IsActive = true
                         },
                         new
                         {
                             Id = 2,
-                            CategoryName = "Compact"
+                            CategoryName = "Compact",
+                            IsActive = true
                         },
                         new
                         {
                             Id = 3,
-                            CategoryName = "Intermediate"
+                            CategoryName = "Intermediate",
+                            IsActive = true
                         });
                 });
 
@@ -607,7 +613,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         {
                             Id = "d3211a8d-efde-4a19-8087-79cde4679276",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "adba9e1d-4fcc-4bb4-9c77-ba7e6dd0c52f",
+                            ConcurrencyStamp = "68eb2800-18ca-4ff7-a787-f875687d92ea",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Peter",
@@ -615,10 +621,10 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAvcIte2Itj0/JmN5zHZpSxyu2H/JUjRWJ/9qp5RWUhalTQUoMvo7gnT/laNLkn4qA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEISjnr8elFFsrEEeeTaqyImf0qn8gDHPQy/SiG/rlJ4PkZRF95qgC8iaAogj6Zk0DA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "42c1127a-1d14-4608-a804-a88fb6a7cbed",
+                            SecurityStamp = "81cfb432-b0e9-4d16-bbe1-4a2b68cc3393",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         },
@@ -626,7 +632,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         {
                             Id = "c6e570fd-d889-4a67-a36a-0ecbe758bc2c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a35ae420-7817-44b6-95a8-003629338243",
+                            ConcurrencyStamp = "d6a4eed8-24ff-47d5-bc30-365a23dc1a18",
                             Email = "agent@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Peter",
@@ -634,10 +640,10 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AGENT@GMAIL.COM",
                             NormalizedUserName = "AGENT1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKnH1lpoBTrATL9YQnDfiOl+OLJcUechv6gkwLXWVt9hwjdVnZMMqkLdwx+CIFY7+w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHRe7LtbTc7Z8C6d90F9HTyNf8gPQCm9YyTJzA1x/4NlZwPviPHajoFIdTTXGg3ebQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1cefef7c-88db-49ca-851f-7baea7e52297",
+                            SecurityStamp = "e3ba3b23-aaa1-4732-8396-3162e3241a0b",
                             TwoFactorEnabled = false,
                             UserName = "Agent1"
                         });

@@ -1,4 +1,4 @@
-﻿@using RentalCarManagementSystem.Core.Models.User
+﻿@using RentalCarManagementSystem.Core.Models.Admin
 @model UserProfileViewModel
 
 
@@ -79,7 +79,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a class="btn btn-info " asp-area="Admin" asp-controller="Profile" asp-action="Edit">Edit</a>
+                                <a class="btn btn-info " asp-area="Admin" asp-controller="Profile" asp-action="Edit"  asp-route-id="@Model.Id">Edit</a>
                             </div>
                         </div>
                     </div>

@@ -19,10 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AdminAreaTests\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\RentalCarManagementSystem.Core\RentalCarManagementSystem.Core.csproj" />
     <ProjectReference Include="..\RentalCarManagementSystem.Infrastructure\RentalCarManagementSystem.Infrastructure.csproj" />
   </ItemGroup>

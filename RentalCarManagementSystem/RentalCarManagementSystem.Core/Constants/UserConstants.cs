@@ -11,7 +11,7 @@ namespace RentalCarManagementSystem.Core.Constants
         public static class Roles
         {
             public const string Administrator = "Admin";
-            public const string User = "User";
+            public const string Agent = "Agent";
         }
 
         public const string InvalidUser = "Invalid user!";

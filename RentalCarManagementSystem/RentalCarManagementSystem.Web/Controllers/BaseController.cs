@@ -4,7 +4,7 @@ using RentalCarManagementSystem.Core.Constants;
 
 namespace RentalCarManagementSystem.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = $"{UserConstants.Roles.Administrator}, {UserConstants.Roles.Agent}")]
     public class BaseController : Controller
     {
        

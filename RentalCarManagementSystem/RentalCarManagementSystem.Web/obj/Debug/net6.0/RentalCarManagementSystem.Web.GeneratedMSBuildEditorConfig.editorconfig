@@ -55,8 +55,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2FyXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Areas/Admin/Views/Category/CreateCategory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ3JlYXRlQ2F0ZWdvcnkuY3NodG1s
+[D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Areas/Admin/Views/Category/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Areas/Admin/Views/Category/All.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQWxsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Areas/Admin/Views/Category/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Areas/Admin/Views/Home/Index.cshtml]
@@ -241,14 +249,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Views/User/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Views/User/MyProfile.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNeVByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Views/_ViewImports.cshtml]

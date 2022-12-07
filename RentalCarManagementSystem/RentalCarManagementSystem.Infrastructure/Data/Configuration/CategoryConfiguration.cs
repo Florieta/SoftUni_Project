@@ -24,19 +24,24 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Configuration
                 new Category()
                  {
                       Id = 1,
-                      CategoryName = "Economy"
+                      CategoryName = "Economy",
+                      IsActive = true
                  },
 
                 new Category()
                 {
                     Id = 2,
-                    CategoryName = "Compact"
+                    CategoryName = "Compact",
+                      IsActive = true
+
                 },
 
                 new Category()
                 {
                     Id = 3,
-                    CategoryName = "Intermediate"
+                    CategoryName = "Intermediate",
+                      IsActive = true
+
                 }
             };
 

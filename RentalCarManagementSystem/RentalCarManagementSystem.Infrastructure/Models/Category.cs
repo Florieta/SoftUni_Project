@@ -17,6 +17,8 @@ namespace RentalCarManagementSystem.Infrastructure.Models
         [MaxLength(20)]
         public string CategoryName { get; set; } = null!;
 
+        public bool IsActive { get; set; } = true;
+
         public ICollection<Car> Cars { get; init; } = new List<Car>();
        
 

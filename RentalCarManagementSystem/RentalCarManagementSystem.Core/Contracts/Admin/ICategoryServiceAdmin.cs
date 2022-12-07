@@ -1,4 +1,5 @@
 ﻿using RentalCarManagementSystem.Core.Models.Admin;
+using RentalCarManagementSystem.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,13 @@ namespace RentalCarManagementSystem.Core.Contracts.Admin
 
         Task<bool> CategoryExistsByName(string categoryName);
 
+        Task<IEnumerable<CategoryViewModel>> GetAllAsync();
+
+        Task Edit(int id, CategoryViewModel model);
+        Task RemoveCategoryAsync(int id);
+
+        Task<bool> IsExisted(int id);
+
+        Task<Category> FindCategoryAsync(int id);
     }
 }

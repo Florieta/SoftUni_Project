@@ -16,7 +16,15 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateCategory()
+        public async Task<IActionResult> All()
+        {
+            var model = await categoryServiceAdmin.GetAllAsync();
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Add()
         {
             CreateCategoryInputModel model = new CreateCategoryInputModel();
 
@@ -24,7 +32,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(CreateCategoryInputModel categoryModel)
+        public async Task<IActionResult> Add(CreateCategoryInputModel categoryModel)
         {
             if (!ModelState.IsValid)
             {
@@ -43,6 +51,65 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
                 ViewData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 return View(categoryModel);
             }
+        }
+
+        public async Task<IActionResult> Remove(int Id)
+        {
+            try
+            {
+                await categoryServiceAdmin.RemoveCategoryAsync(Id);
+                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+                return RedirectToAction(nameof(All));
+            }
+            catch (Exception)
+            {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+                return RedirectToAction(nameof(All));
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            if ((await categoryServiceAdmin.IsExisted(id)) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            var category = await categoryServiceAdmin.FindCategoryAsync(id);
+
+
+            var model = new CategoryViewModel()
+            {
+                CategoryName = category.CategoryName,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int Id, CategoryViewModel editModel)
+        {
+            if (Id != editModel.Id)
+            {
+                return RedirectToPage("/Account/AccessDenied", new { area = "Identity" });
+            }
+
+            if ((await categoryServiceAdmin.IsExisted(editModel.Id)) == false)
+            {
+                ModelState.AddModelError("", "Category does not exist");
+
+                return View(editModel);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(editModel);
+            }
+
+            await categoryServiceAdmin.Edit(editModel.Id, editModel);
+            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+            return RedirectToAction(nameof(All));
         }
     }
 }

@@ -5,7 +5,6 @@
 
 @if (User.Identity?.IsAuthenticated ?? false)
 {
-    <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
          @* <img gravatar-email="@User.Identity?.Name" gravatar-size="80" class="img-circle elevation-2" alt="My Gravatar" />*@
@@ -13,9 +12,6 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">@User.Identity?.Name</a>
-        </div>
-        <div class="info">
-             <a asp-area="" asp-controller="User" asp-action="MyProfile" class="btn btn-info">My Profile</a>                  
         </div>
       </div>
 }

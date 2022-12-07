@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RentalCarManagementSystem.Core.Constants;
 using RentalCarManagementSystem.Core.Contracts;
-using RentalCarManagementSystem.Core.Models.User;
+using RentalCarManagementSystem.Core.Contracts.Admin;
+using RentalCarManagementSystem.Core.Models.Admin;
 
 namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 {
     public class ProfileController : BaseController
     {
-        private readonly IUserService userService;
+        private readonly IProfileServiceAdmin userService;
 
-        public ProfileController(IUserService userService)
+        public ProfileController(IProfileServiceAdmin userService)
         {
             this.userService = userService;
         }
@@ -40,7 +41,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(EditUserProfileViewModel model)
+        public async Task<IActionResult> Edit(EditUserProfileViewModel model, string id)
         {
             if (!ModelState.IsValid)
             {
@@ -58,7 +59,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
                 Address = model.Address
             };
 
-            if (await userService.EditProfile(editModel))
+            if (await userService.EditProfile(editModel, id))
             {
                 ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
             }

@@ -7,7 +7,7 @@ using RentalCarManagementSystem.Core.Models.Car;
 namespace RentalCarManagementSystem.Web.Controllers
 {
    
-    public class CarController : Controller
+    public class CarController : BaseController
     {
         private readonly ICarService carService;
 

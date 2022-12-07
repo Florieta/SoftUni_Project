@@ -1,0 +1,47 @@
+﻿@model IEnumerable<InsuranceViewModel>
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Insurances</h3>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Type of Insurance</th>
+                            <th>Cost Per Day</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var insurance in Model)
+                        {
+                            <tr>
+                                <td>@insurance.TypeOfInsurance</td>
+                                <td>@insurance.CostPerDay BGN</td>
+                                <td>
+                                    <a asp-area="admin" asp-action="add" asp-controller="location" asp-route-id="@insurance.InsuranceCode" class="btn btn-block btn-outline-success btn-xs">Add</a>
+                                    <a asp-area="admin" asp-action="edit" asp-controller="location" asp-route-id="@insurance.InsuranceCode" class="btn btn-block btn-outline-info btn-xs">Edit </a>
+                                    <form asp-area="Admin" asp-controller="Location" asp-action="Remove" asp-route-id="@insurance.InsuranceCode" method="post">
+                                        <input class="btn btn-block btn-outline-danger btn-xs" type="submit" value="Remove Location" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
