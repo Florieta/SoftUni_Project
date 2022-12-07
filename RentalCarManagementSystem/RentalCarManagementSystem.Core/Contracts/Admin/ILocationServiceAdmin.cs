@@ -21,5 +21,7 @@ namespace RentalCarManagementSystem.Core.Contracts.Admin
         Task<bool> IsExisted(int id);
 
         Task<Location> FindLocationAsync(int id);
+
+        Task RemoveLocationAsync(int id);
     }
 }

@@ -12,5 +12,6 @@ namespace RentalCarManagementSystem.Core.Models.Admin
         [Required]
         [MaxLength(20)]
         public string CategoryName { get; set; } = null!;
+
     }
 }

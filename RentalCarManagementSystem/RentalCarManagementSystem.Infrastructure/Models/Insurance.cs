@@ -18,6 +18,8 @@ namespace RentalCarManagementSystem.Infrastructure.Models
 
         public decimal CostPerDay { get; set; }
 
+        public bool IsActive { get; set; } = true;
+
         public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     }
 }

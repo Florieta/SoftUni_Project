@@ -20,6 +20,7 @@ namespace RentalCarManagementSystem.Infrastructure.Models
         [MaxLength(100)]
         public string Address { get; set; } = null!;
 
+        public bool IsActive { get; set; } = true;
 
         [InverseProperty("PickUpLocation")]
         public ICollection<Booking> PickUpBookings { get; set; } = new List<Booking>();

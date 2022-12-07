@@ -52,20 +52,20 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             }
         }
 
-        //public async Task<IActionResult> Remove(int id)
-        //{
-        //    try
-        //    {
-        //        await carServiceAdmin.RemoveCarAsync(id);
-        //        TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
-        //        return RedirectToAction("All", "Car");
-        //    }
-        //    catch (Exception)
-        //    {
-        //        TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
-        //        return RedirectToAction("Home", "Index");
-        //    }
-        //}
+        public async Task<IActionResult> Remove(int id)
+        {
+            try
+            {
+                await locationService.RemoveLocationAsync(id);
+                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+                return RedirectToAction(nameof(All));
+            }
+            catch (Exception)
+            {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+                return RedirectToAction(nameof(All));
+            }
+        }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)

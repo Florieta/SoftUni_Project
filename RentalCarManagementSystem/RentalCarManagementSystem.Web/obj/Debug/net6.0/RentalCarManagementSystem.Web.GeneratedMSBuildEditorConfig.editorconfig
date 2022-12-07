@@ -63,6 +63,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Areas/Admin/Views/Insurance/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW5zdXJhbmNlXEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Areas/Admin/Views/Insurance/All.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW5zdXJhbmNlXEFsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Areas/Admin/Views/Insurance/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW5zdXJhbmNlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SoftUni/source/SoftUni_Project/RentalCarManagementSystem/RentalCarManagementSystem.Web/Areas/Admin/Views/Location/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9jYXRpb25cQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

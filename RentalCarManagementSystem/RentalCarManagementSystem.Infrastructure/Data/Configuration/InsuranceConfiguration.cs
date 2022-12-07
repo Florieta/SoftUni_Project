@@ -25,14 +25,17 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Configuration
                  {
                       InsuranceCode = 1,
                       TypeOfInsurance = "FullCoverage",
-                      CostPerDay = 10
+                      CostPerDay = 10,
+                      IsActive = true
                  },
 
                 new Insurance()
                 {
                     InsuranceCode = 2,
                     TypeOfInsurance = "HalfCoverage",
-                    CostPerDay = 5
+                    CostPerDay = 5,
+                    IsActive = true
+
                 }
             };
 

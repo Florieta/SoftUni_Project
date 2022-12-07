@@ -50,14 +50,14 @@ namespace RentalCarManagementSystem.Core.Services.Admin
             await repo.SaveChangesAsync();
         }
 
-        //public async Task RemoveLocationAsync(int id)
-        //{
-        //    var location = await repo.GetByIdAsync<Location>(id);
-        //    car.NotInUse = true;
+        public async Task RemoveLocationAsync(int id)
+        {
+            var location = await repo.GetByIdAsync<Location>(id);
+            location.IsActive = false;
 
-        //    await repo.SaveChangesAsync();
+            await repo.SaveChangesAsync();
 
-        //}
+        }
 
         public async Task Edit(int id, LocationViewModel model)
         {

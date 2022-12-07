@@ -52,7 +52,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         new
                         {
                             Id = "d86dba5034324ec481562264fecc1d3b",
-                            ConcurrencyStamp = "1227c39d-9f2b-4eda-bbaa-aff2b61dd135",
+                            ConcurrencyStamp = "669b0fae-195b-4d84-a333-5b334fb860e7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -607,7 +607,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         {
                             Id = "d3211a8d-efde-4a19-8087-79cde4679276",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5ed2b685-7f3c-4dfa-bca1-a0a690a8351a",
+                            ConcurrencyStamp = "adba9e1d-4fcc-4bb4-9c77-ba7e6dd0c52f",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Peter",
@@ -615,10 +615,10 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL5fEY4YbuEpzr+GJxvZ5PABD/vjBAaFbzaJeTNs+LZHXKGEbs35jebBk7Cr/MRUkQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAvcIte2Itj0/JmN5zHZpSxyu2H/JUjRWJ/9qp5RWUhalTQUoMvo7gnT/laNLkn4qA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9acd49ac-5837-4739-b60c-994076bcc0df",
+                            SecurityStamp = "42c1127a-1d14-4608-a804-a88fb6a7cbed",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         },
@@ -626,7 +626,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         {
                             Id = "c6e570fd-d889-4a67-a36a-0ecbe758bc2c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9c0204cd-5c7d-4288-beed-6744280c1ff5",
+                            ConcurrencyStamp = "a35ae420-7817-44b6-95a8-003629338243",
                             Email = "agent@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Peter",
@@ -634,10 +634,10 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AGENT@GMAIL.COM",
                             NormalizedUserName = "AGENT1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEFl1Oox1OtTHiZDi4VgHS922kk8Ag/vQaK5Bmgrk/kK1ChyQJWFnN0Z+dp9iU2aAA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKnH1lpoBTrATL9YQnDfiOl+OLJcUechv6gkwLXWVt9hwjdVnZMMqkLdwx+CIFY7+w==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "879bbb4c-7760-4401-83fe-1d89eea05765",
+                            SecurityStamp = "1cefef7c-88db-49ca-851f-7baea7e52297",
                             TwoFactorEnabled = false,
                             UserName = "Agent1"
                         });
@@ -654,6 +654,9 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                     b.Property<decimal>("CostPerDay")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("TypeOfInsurance")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -668,12 +671,14 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         {
                             InsuranceCode = 1,
                             CostPerDay = 10m,
+                            IsActive = true,
                             TypeOfInsurance = "FullCoverage"
                         },
                         new
                         {
                             InsuranceCode = 2,
                             CostPerDay = 5m,
+                            IsActive = true,
                             TypeOfInsurance = "HalfCoverage"
                         });
                 });
@@ -691,6 +696,9 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LocationName")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -705,18 +713,21 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         {
                             Id = 1,
                             Address = "Bulgaria, Varna, 9000",
+                            IsActive = true,
                             LocationName = "Varna Center"
                         },
                         new
                         {
                             Id = 2,
                             Address = "Bulgaria, Varna, 9000",
+                            IsActive = true,
                             LocationName = "Varna Airport"
                         },
                         new
                         {
                             Id = 3,
                             Address = "Bulgaria, Sofia, 1000",
+                            IsActive = true,
                             LocationName = "Sofia Airport"
                         });
                 });

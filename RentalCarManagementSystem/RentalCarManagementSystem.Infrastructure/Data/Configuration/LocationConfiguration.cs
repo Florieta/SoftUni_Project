@@ -25,21 +25,26 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Configuration
                  {
                       Id = 1,
                       LocationName = "Varna Center",
-                      Address = "Bulgaria, Varna, 9000"
+                      Address = "Bulgaria, Varna, 9000",
+                      IsActive = true,
                  },
 
                 new Location()
                 {
                     Id = 2,
                     LocationName = "Varna Airport",
-                    Address = "Bulgaria, Varna, 9000"
+                    Address = "Bulgaria, Varna, 9000",
+                      IsActive = true,
+
                 },
 
                 new Location()
                 {
                     Id = 3,
                     LocationName = "Sofia Airport",
-                    Address = "Bulgaria, Sofia, 1000"
+                    Address = "Bulgaria, Sofia, 1000",
+                      IsActive = true,
+
 
                 }
             };

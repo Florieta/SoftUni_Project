@@ -16,5 +16,8 @@ namespace RentalCarManagementSystem.Core.Models.Admin
         [Required]
         [StringLength(100, MinimumLength = 10)]
         public string Address { get; set; } = null!;
+
+        public bool IsActive { get; set; }
+
     }
 }
