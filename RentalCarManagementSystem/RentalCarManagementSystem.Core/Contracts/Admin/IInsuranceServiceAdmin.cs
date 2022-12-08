@@ -20,7 +20,7 @@ namespace RentalCarManagementSystem.Core.Contracts.Admin
 
         Task<bool> IsExisted(int insuranceCode);
 
-        Task<Insurance> FindLocationAsync(int id);
+        Task<Insurance> FindInsuranceAsync(int id);
 
         Task RemoveInsuranceAsync(int id);
     }

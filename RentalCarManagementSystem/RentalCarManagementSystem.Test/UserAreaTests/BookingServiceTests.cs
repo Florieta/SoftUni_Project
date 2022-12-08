@@ -36,7 +36,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
             await SeedAsync(repo);
         }
         [Test]
-        public async Task GetCarById_SucceededGetTheCorrectCar()
+        public async Task GetBookingById_SucceededGetTheCorrectBooking()
         {
             var service = serviceProvider.GetService<IBookingService>();
 
@@ -59,18 +59,152 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
             Assert.Throws<ArgumentException>(() => service.GetCarById(id), "Invalid car ID");
         }
 
+        [Test]
+        public async Task CreateBooking_CheckIfTheDateOfIssueIsNotBiggerThanDateOfExpired()
+        {
+            var service = serviceProvider.GetService<IBookingService>();
+
+            var model = new BookingFormViewModel()
+            {
+                FullName = "Ivan Ivanov",
+                Address = "Bulgaria, Varna, Levski",
+                Gender = "Man",
+                PhoneNumber = "088333387",
+                Email = "ivan@mail.bg",
+                IdCardNumber = "12343567",
+                DriverLicenseNumber = "2222444567",
+                DateOfIssue = new DateTime(2016, 11, 17),
+                DateOfExpired = new DateTime(2026, 11, 17),
+                IssuedBy = "MVR Sofia",
+                PickUpDateAndTime = new DateTime(2022, 11, 30, 5, 0, 0),
+                DropOffDateAndTime = new DateTime(2022, 12, 06, 6, 0, 0),
+                Duration = 6,
+                PaymentType = "Card",
+                InsuranceCode = 1,
+                TotalAmount = 292,
+                IsActive = true,
+                IsPaid = true,
+                PickUpLocationId = 1,
+                DropOffLocationId = 1,
+            };
+
+            Assert.That(model.DateOfIssue < model.DateOfExpired);
+        }
+
+        [Test]
+        public async Task CreateBooking_ThrowsExceptionWhenTheDateOfIssueIsBiggerThanDateOfExpired()
+        {
+            var service = serviceProvider.GetService<IBookingService>();
+
+            var model = new BookingFormViewModel()
+            {
+                FullName = "Ivan Ivanov",
+                Address = "Bulgaria, Varna, Levski",
+                Gender = "Man",
+                PhoneNumber = "088333387",
+                Email = "ivan@mail.bg",
+                IdCardNumber = "12343567",
+                DriverLicenseNumber = "2222444567",
+                DateOfIssue = new DateTime(2027, 11, 17),
+                DateOfExpired = new DateTime(2026, 11, 17),
+                IssuedBy = "MVR Sofia",
+                PickUpDateAndTime = new DateTime(2022, 11, 30, 5, 0, 0),
+                DropOffDateAndTime = new DateTime(2022, 12, 06, 6, 0, 0),
+                Duration = 6,
+                PaymentType = "Card",
+                InsuranceCode = 1,
+                TotalAmount = 292,
+                IsActive = true,
+                IsPaid = true,
+                PickUpLocationId = 1,
+                DropOffLocationId = 1,
+            };
+            int carId = 1;
+            string userId = "d3211a8d-efde-4a19-8087-79cde4679276";
+
+
+            Assert.Throws<ArgumentException>(async () => await service.Create(model, carId, userId), "The date of issue cannot be greater than the date of expire!");
+        }
+
+        [Test]
+        public async Task CreateBooking_CheckIfThePickUpDateIsNotBiggerThanDropOffDate()
+        {
+            var service = serviceProvider.GetService<IBookingService>();
+
+            var model = new BookingFormViewModel()
+            {
+                FullName = "Ivan Ivanov",
+                Address = "Bulgaria, Varna, Levski",
+                Gender = "Man",
+                PhoneNumber = "088333387",
+                Email = "ivan@mail.bg",
+                IdCardNumber = "12343567",
+                DriverLicenseNumber = "2222444567",
+                DateOfIssue = new DateTime(2016, 11, 17),
+                DateOfExpired = new DateTime(2026, 11, 17),
+                IssuedBy = "MVR Sofia",
+                PickUpDateAndTime = new DateTime(2022, 11, 30, 5, 0, 0),
+                DropOffDateAndTime = new DateTime(2022, 12, 06, 6, 0, 0),
+                Duration = 6,
+                PaymentType = "Card",
+                InsuranceCode = 1,
+                TotalAmount = 292,
+                IsActive = true,
+                IsPaid = true,
+                PickUpLocationId = 1,
+                DropOffLocationId = 1,
+            };
+
+            Assert.That(model.PickUpDateAndTime < model.DropOffDateAndTime);
+        }
+
+        [Test]
+        public async Task CreateBooking_ThrowsExceptionWhenThePickUpDateIsBiggerThanDropOffDate()
+        {
+            var service = serviceProvider.GetService<IBookingService>();
+
+            var model = new BookingFormViewModel()
+            {
+                FullName = "Ivan Ivanov",
+                Address = "Bulgaria, Varna, Levski",
+                Gender = "Man",
+                PhoneNumber = "088333387",
+                Email = "ivan@mail.bg",
+                IdCardNumber = "12343567",
+                DriverLicenseNumber = "2222444567",
+                DateOfIssue = new DateTime(2016, 11, 17),
+                DateOfExpired = new DateTime(2026, 11, 17),
+                IssuedBy = "MVR Sofia",
+                PickUpDateAndTime = new DateTime(2022, 12, 30, 5, 0, 0),
+                DropOffDateAndTime = new DateTime(2022, 12, 06, 6, 0, 0),
+                Duration = 6,
+                PaymentType = "Card",
+                InsuranceCode = 1,
+                TotalAmount = 292,
+                IsActive = true,
+                IsPaid = true,
+                PickUpLocationId = 1,
+                DropOffLocationId = 1,
+            };
+            int carId = 1;
+            string userId = "d3211a8d-efde-4a19-8087-79cde4679276";
+
+
+            Assert.Throws<ArgumentException>(async () => await service.Create(model, carId, userId), "The date of issue cannot be greater than the date of expire!");
+        }
+
         //[Test]
-        //public async Task CreateBooking_AddTheCorectCustomerAndBooking()
+        //public async Task CreateBooking_CheckIfTheBookingIsAddedSuccessfully()
         //{
         //    var service = serviceProvider.GetService<IBookingService>();
-
+        //    var bookings = await service.G
         //    var model = new BookingFormViewModel()
         //    {
-        //        FullName = "John Snow",
-        //        Address = "Bulgaria, Sofia, Mladost 3, bl.222, ap.7",
+        //        FullName = "Ivan Ivanov",
+        //        Address = "Bulgaria, Varna, Levski",
         //        Gender = "Man",
-        //        PhoneNumber = "0888888887",
-        //        Email = "johns@mail.bg",
+        //        PhoneNumber = "088333387",
+        //        Email = "ivan@mail.bg",
         //        IdCardNumber = "12343567",
         //        DriverLicenseNumber = "2222444567",
         //        DateOfIssue = new DateTime(2016, 11, 17),
@@ -87,14 +221,9 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
         //        PickUpLocationId = 1,
         //        DropOffLocationId = 1,
         //    };
-        //    var carId = 1;
-        //    string userId = "d3211a8d-efde-4a19-8087-79cde4679276";
 
-        //    await service.Create(model, carId, userId);
-
-        //    Assert.That()
+        //    Assert.That(model.DateOfIssue < model.DateOfExpired);
         //}
-
         [Test]
         public async Task CheckIn_SuccedInCheckIn()
         {

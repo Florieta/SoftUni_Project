@@ -197,7 +197,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
             };
 
             
-            var category = new Category()
+            var category = new Insurance()
             {
                 CategoryName = "Compact"
             };

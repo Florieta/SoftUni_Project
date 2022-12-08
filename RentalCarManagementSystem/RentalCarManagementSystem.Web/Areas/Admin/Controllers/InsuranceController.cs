@@ -75,7 +75,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(All));
             }
 
-            var insurance = await insuranceService.FindLocationAsync(id);
+            var insurance = await insuranceService.FindInsuranceAsync(id);
 
 
             var model = new InsuranceViewModel()

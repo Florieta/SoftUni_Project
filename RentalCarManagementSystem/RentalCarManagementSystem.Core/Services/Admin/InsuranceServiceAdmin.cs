@@ -82,7 +82,7 @@ namespace RentalCarManagementSystem.Core.Services.Admin
                 .AnyAsync(x => x.InsuranceCode == insuranceCode);
         }
 
-        public async Task<Insurance> FindLocationAsync(int id)
+        public async Task<Insurance> FindInsuranceAsync(int id)
         {
             return await repo.GetByIdAsync<Insurance>(id);
         }

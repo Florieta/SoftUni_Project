@@ -27,7 +27,7 @@ namespace RentalCarManagementSystem.Core.Services.Admin
             return entities
             .Select(m => new LocationViewModel()
             {
-                Id = m.Id,
+               Id = m.Id,
                LocationName = m.LocationName,
                Address = m.Address
             });
