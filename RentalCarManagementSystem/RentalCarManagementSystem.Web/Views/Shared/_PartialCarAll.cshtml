@@ -1,7 +1,7 @@
-﻿
-@model CarServiceModel
+﻿@model CarServiceModel
 
 <tr>
+    <td>@Model.CategoryName</td>
     <td>@Model.Make</td>
     <td>@Model.Model</td>
     <td>@Model.RegNumber</td>
@@ -10,12 +10,10 @@
     <td>
         <a asp-controller="Car" asp-action="Details" asp-route-id="@Model.Id"
            class="btn btn-info">Details</a>
-    </td>
-    @if (Model.IsAvailable)
-    {
-        <td>
+        @if (Model.IsAvailable)
+        {
             <a asp-controller="Booking" asp-action="Add" asp-route-id="@Model.Id"
            class="btn btn-success">Book</a>
-        </td>
-    }
+        }
+    </td>
 </tr>

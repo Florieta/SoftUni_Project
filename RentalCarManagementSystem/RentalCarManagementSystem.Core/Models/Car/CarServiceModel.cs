@@ -23,6 +23,8 @@ namespace RentalCarManagementSystem.Core.Models.Car
         public decimal DailyRate { get; set; }
 
         [DisplayName("Is Rented")]
-        public bool IsAvailable { get; set; } 
+        public bool IsAvailable { get; set; }
+
+        public string CategoryName { get; set; } = null!;
     }
 }

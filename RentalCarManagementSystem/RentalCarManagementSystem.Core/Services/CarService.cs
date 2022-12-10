@@ -70,6 +70,7 @@ namespace RentalCarManagementSystem.Core.Services
             }
 
             return await allCars
+                .Include(x => x.Category)
            .Select(m => new CarServiceModel()
            {
                Id = m.Id,
@@ -78,7 +79,8 @@ namespace RentalCarManagementSystem.Core.Services
                RegNumber = m.RegNumber,
                ImageUrl = m.ImageUrl,
                DailyRate = m.DailyRate,
-               IsAvailable = m.IsAvailable
+               IsAvailable = m.IsAvailable,
+               CategoryName = m.Category.CategoryName
            }).ToListAsync();
         }
 

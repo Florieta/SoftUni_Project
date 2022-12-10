@@ -16,6 +16,9 @@
                             <th>Type of Insurance</th>
                             <th>Cost Per Day</th>
                             <th>Actions</th>
+                            <th>
+                                <a asp-area="Admin" asp-action="Add" asp-controller="Insurance"  class="btn btn-block btn-outline-success btn-xs">Add new insurance</a>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,10 +28,9 @@
                                 <td>@insurance.TypeOfInsurance</td>
                                 <td>@insurance.CostPerDay BGN</td>
                                 <td>
-                                    <a asp-area="admin" asp-action="add" asp-controller="location" asp-route-id="@insurance.InsuranceCode" class="btn btn-block btn-outline-success btn-xs">Add</a>
-                                    <a asp-area="admin" asp-action="edit" asp-controller="location" asp-route-id="@insurance.InsuranceCode" class="btn btn-block btn-outline-info btn-xs">Edit </a>
-                                    <form asp-area="Admin" asp-controller="Location" asp-action="Remove" asp-route-id="@insurance.InsuranceCode" method="post">
-                                        <input class="btn btn-block btn-outline-danger btn-xs" type="submit" value="Remove Location" />
+                                    <a asp-area="Admin" asp-action="Edit" asp-controller="Insurance" asp-route-insuranceCode="@insurance.InsuranceCode" class="btn btn-block btn-outline-info btn-xs">Edit </a>
+                                    <form asp-area="Admin" asp-controller="Insurance" asp-action="Remove" asp-route-insuranceCode="@insurance.InsuranceCode" method="post">
+                                        <input class="btn btn-block btn-outline-danger btn-xs" type="submit" value="Remove" />
                                     </form>
                                 </td>
                             </tr>

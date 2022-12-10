@@ -15,6 +15,9 @@
                         <tr>
                             <th>Location Name</th>
                             <th>Actions</th>
+                            <th>
+                                <a asp-area="Admin" asp-action="Add" asp-controller="Category" class="btn btn-block btn-outline-success btn-xs">Add new category</a>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,10 +26,9 @@
                             <tr>
                                 <td>@category.CategoryName</td>
                                 <td>
-                                    <a asp-area="Admin" asp-action="Add" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-block btn-outline-success btn-xs">Add</a>
                                     <a asp-area="Admin" asp-action="Edit" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-block btn-outline-info btn-xs">Edit </a>
                                     <form asp-area="Admin" asp-controller="Category" asp-action="Remove" asp-route-id="@category.Id" method="post">
-                                        <input class="btn btn-block btn-outline-danger btn-xs" type="submit" value="Remove Location" />
+                                        <input class="btn btn-block btn-outline-danger btn-xs" type="submit" value="Remove" />
                                     </form>
                                 </td>
                             </tr>

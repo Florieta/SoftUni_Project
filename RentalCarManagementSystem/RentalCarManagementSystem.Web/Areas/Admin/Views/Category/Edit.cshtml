@@ -1,9 +1,8 @@
 ﻿@using RentalCarManagementSystem.Core.Models.Admin
 
-@model InsuranceViewModel
-
+@model CategoryViewModel
 @{
-    ViewBag.Title = "Edit insurance";
+    ViewBag.Title = "Edit category";
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
@@ -11,21 +10,16 @@
 
 <div class="card card-warning">
     <div class="card-header">
-        <h3 class="card-title">Edit Insurance Form</h3>
+        <h3 class="card-title">Edit Catgeory Form</h3>
     </div>
     <div class="card-body">
         <form method="post">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label asp-for="@Model.TypeOfInsurance">Type of Insurance</label>
-                        <input asp-for="@Model.TypeOfInsurance" type="text" class="form-control" placeholder="Enter insurance type..." />
-                        <span asp-validation-for="TypeOfInsurance" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="@Model.CostPerDay">Cost per day</label>
-                        <input asp-for="@Model.CostPerDay" type="text" class="form-control" placeholder="Enter cost per day..." />
-                        <span asp-validation-for="CostPerDay" class="text-danger"></span>
+                        <label asp-for="@Model.CategoryName">Category name</label>
+                        <input asp-for="@Model.CategoryName" type="text" class="form-control" placeholder="Enter category name..." />
+                        <span asp-validation-for="CategoryName" class="text-danger"></span>
                     </div>
                 </div>
             </div>

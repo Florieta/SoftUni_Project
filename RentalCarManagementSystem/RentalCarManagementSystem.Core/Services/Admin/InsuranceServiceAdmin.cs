@@ -21,7 +21,7 @@ namespace RentalCarManagementSystem.Core.Services.Admin
 
         public async Task<IEnumerable<InsuranceViewModel>> GetAllAsync()
         {
-            var entities = await repo.All<Insurance>().ToListAsync();
+            var entities = await repo.All<Insurance>().Where(i => i.IsActive == true).ToListAsync();
 
             return entities
             .Select(m => new InsuranceViewModel()
@@ -50,18 +50,18 @@ namespace RentalCarManagementSystem.Core.Services.Admin
             await repo.SaveChangesAsync();
         }
 
-        public async Task RemoveInsuranceAsync(int id)
+        public async Task RemoveInsuranceAsync(int insuranceCode)
         {
-            var insurance = await repo.GetByIdAsync<Insurance>(id);
+            var insurance = await repo.GetByIdAsync<Insurance>(insuranceCode);
             insurance.IsActive = false;
 
             await repo.SaveChangesAsync();
 
         }
 
-        public async Task Edit(int id, InsuranceViewModel model)
+        public async Task Edit(int InsuranceCode, InsuranceViewModel model)
         {
-            var insurance = await repo.GetByIdAsync<Insurance>(id);
+            var insurance = await repo.GetByIdAsync<Insurance>(InsuranceCode);
 
             insurance.TypeOfInsurance = model.TypeOfInsurance;
             insurance.CostPerDay = model.CostPerDay;

@@ -22,7 +22,7 @@ namespace RentalCarManagementSystem.Core.Services.Admin
 
         public async Task<IEnumerable<LocationViewModel>> GetAllAsync()
         {
-            var entities = await repo.All<Location>().ToListAsync();
+            var entities = await repo.All<Location>().Where(l => l.IsActive == true).ToListAsync();
 
             return entities
             .Select(m => new LocationViewModel()

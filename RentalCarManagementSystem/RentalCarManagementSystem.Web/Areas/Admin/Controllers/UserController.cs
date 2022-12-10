@@ -105,14 +105,14 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 
             if (await userService.UpdateUser(editModel))
             {
-                ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulEdittingUser;
+                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulEdittingUser;
             }
             else
             {
-                ViewData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
             }
 
-            return View(model);
+            return Redirect("/Admin/User/UserManage");
         }
     }
 }

@@ -22,7 +22,7 @@ namespace RentalCarManagementSystem.Core.Services.Admin
 
         public async Task<IEnumerable<CategoryViewModel>> GetAllAsync()
         {
-            var entities = await repo.All<Category>().ToListAsync();
+            var entities = await repo.All<Category>().Where(i => i.IsActive == true).ToListAsync();
 
             return entities
             .Select(m => new CategoryViewModel()

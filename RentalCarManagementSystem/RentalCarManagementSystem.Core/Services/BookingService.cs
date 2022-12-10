@@ -152,16 +152,15 @@ namespace RentalCarManagementSystem.Core.Services
         public async Task Edit(int id, EditBookingViewModel model)
         {
             var booking = await repo.GetByIdAsync<Booking>(id);
+            var customer = await repo.GetByIdAsync<Customer>(booking.CustomerId);
 
-            booking.Id = id;
-            booking.CustomerId = model.CustomerId;
-            booking.Customer.FullName = model.FullName;
-            booking.Customer.Address = model.Address;
-            booking.Customer.PhoneNumber = model.PhoneNumber;
-            booking.Customer.Email = model.Email;
-            booking.Customer.IdCardNumber = model.IdCardNumber;
-            booking.Customer.DriverLicenseNumber = model.DriverLicenseNumber;
-            booking.Customer.Gender = model.Gender;
+            customer.FullName = model.FullName;
+            customer.Address = model.Address;
+            customer.PhoneNumber = model.PhoneNumber;
+            customer.Email = model.Email;
+            customer.IdCardNumber = model.IdCardNumber;
+            customer.DriverLicenseNumber = model.DriverLicenseNumber;
+            customer.Gender = model.Gender;
             booking.PickUpDateAndTime = model.PickUpDateAndTime;
             booking.DropOffDateAndTime = model.DropOffDateAndTime;
             booking.Duration = model.Duration;

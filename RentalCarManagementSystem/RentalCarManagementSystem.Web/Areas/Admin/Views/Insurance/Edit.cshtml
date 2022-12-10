@@ -1,5 +1,4 @@
-﻿@using RentalCarManagementSystem.Core.Models.Admin
-
+﻿
 @model InsuranceViewModel
 
 @{
@@ -19,12 +18,12 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label asp-for="@Model.TypeOfInsurance">Type of Insurance</label>
-                        <input asp-for="@Model.TypeOfInsurance" type="text" class="form-control" placeholder="Enter insurance type..." />
+                        <input asp-for="@Model.TypeOfInsurance" type="text" class="form-control" placeholder="Enter Insurance Type..." />
                         <span asp-validation-for="TypeOfInsurance" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.CostPerDay">Cost per day</label>
-                        <input asp-for="@Model.CostPerDay" type="text" class="form-control" placeholder="Enter cost per day..." />
+                        <input asp-for="@Model.CostPerDay" type="text" class="form-control" placeholder="Enter Price..." />
                         <span asp-validation-for="CostPerDay" class="text-danger"></span>
                     </div>
                 </div>

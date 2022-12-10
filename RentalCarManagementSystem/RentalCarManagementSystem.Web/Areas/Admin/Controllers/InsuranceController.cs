@@ -69,20 +69,19 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int InsuranceCode)
         {
-            if ((await insuranceService.IsExisted(id)) == false)
+            if ((await insuranceService.IsExisted(InsuranceCode)) == false)
             {
                 TempData[MessageConstant.ErrorMessage] = MessageConstant.InsuranceError;
 
                 return RedirectToAction(nameof(All));
             }
 
-            var insurance = await insuranceService.FindInsuranceAsync(id);
+            var insurance = await insuranceService.FindInsuranceAsync(InsuranceCode);
 
             var model = new InsuranceViewModel()
             {
-                InsuranceCode = insurance.InsuranceCode,
                 TypeOfInsurance = insurance.TypeOfInsurance,
                 CostPerDay = insurance.CostPerDay
             };
@@ -91,14 +90,14 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int insuranceCode, InsuranceViewModel editModel)
+        public async Task<IActionResult> Edit(int InsuranceCode, InsuranceViewModel editModel)
         {
-            if (insuranceCode != editModel.InsuranceCode)
+            if (InsuranceCode != editModel.InsuranceCode)
             {
                 return RedirectToPage("/Account/AccessDenied", new { area = "Identity" });
             }
 
-            if ((await insuranceService.IsExisted(editModel.InsuranceCode)) == false)
+            if ((await insuranceService.IsExisted(InsuranceCode)) == false)
             {
                 TempData[MessageConstant.ErrorMessage] = MessageConstant.InsuranceError;
 

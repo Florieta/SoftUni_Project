@@ -44,7 +44,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             {
                 await carServiceAdmin.CreateCar(carModel);
                 TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
-                return Redirect("/");
+                return RedirectToAction(nameof(All));
             }
             catch
             {
@@ -61,7 +61,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             {
                 await carServiceAdmin.RemoveCarAsync(id);
                 TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRemoving;
-                return RedirectToAction("All", "Car");
+                return RedirectToAction(nameof(All));
             }
             catch (Exception)
             {
@@ -76,7 +76,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             if ((await carService.Exists(id)) == false)
             {
                 ViewData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
-                return RedirectToAction("All", "Car");
+                return RedirectToAction(nameof(All));
             }
 
             var car = await carServiceAdmin.FindCarAsync(id);

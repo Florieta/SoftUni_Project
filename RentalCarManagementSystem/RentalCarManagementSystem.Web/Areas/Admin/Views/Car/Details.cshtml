@@ -36,13 +36,6 @@
                       asp-route-id="@Model.Id" method="post">
                         <input class="btn btn-danger" type="submit" value="Delete Car" />
                     </form>
-                @if (Model.IsAvailable)
-                {
-                    <form class="ml-2" asp-area="Admin" asp-controller="Booking"
-                      asp-action="Add" asp-route-id="@Model.Id" method="post">
-                        <input class="btn btn-primary" type="submit" value="Book" />
-                    </form>
-                }
             </div>
         </div>
     </div>

@@ -142,9 +142,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 
             if ((await bookingService.Exists(editModel.Id)) == false)
             {
-                ModelState.AddModelError("", "Booking does not exist");
                 TempData[MessageConstant.ErrorMessage] = MessageConstant.BookingError;
-
                 return View(editModel);
             }
 

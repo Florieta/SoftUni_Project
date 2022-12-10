@@ -16,6 +16,9 @@
                             <th>Location Name</th>
                             <th>Address</th>
                             <th>Actions</th>
+                            <th>
+                                <a asp-area="admin" asp-action="add" asp-controller="location" class="btn btn-block btn-outline-success btn-xs">Add new location</a>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,10 +28,9 @@
                                 <td>@location.LocationName</td>
                                 <td>@location.Address</td>
                                 <td>
-                                    <a asp-area="admin" asp-action="add" asp-controller="location" asp-route-id="@location.Id" class="btn btn-block btn-outline-success btn-xs">Add</a>
                                     <a asp-area="admin" asp-action="edit" asp-controller="location" asp-route-id="@location.Id" class="btn btn-block btn-outline-info btn-xs">Edit </a>
                                     <form asp-area="Admin" asp-controller="Location" asp-action="Remove" asp-route-id="@location.Id" method="post">
-                                        <input class="btn btn-block btn-outline-danger btn-xs" type="submit" value="Remove Location" />
+                                        <input class="btn btn-block btn-outline-danger btn-xs" type="submit" value="Remove" />
                                     </form>
                                 </td>
                             </tr>
