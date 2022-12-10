@@ -62,7 +62,7 @@ namespace RentalCarManagementSystem.Web.Controllers
         {
             if ((await bookingService.Exists(id)) == false)
             {
-                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.BookingError;
                 return RedirectToAction("All", "Booking");
             }
 
@@ -113,7 +113,7 @@ namespace RentalCarManagementSystem.Web.Controllers
             }
 
             await bookingService.Edit(editModel.Id, editModel);
-            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulEdittingBooking;
             return RedirectToAction("All", "Booking");
         }
 

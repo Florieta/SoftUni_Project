@@ -16,7 +16,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
             connection.Open();
 
             dbContextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseSqlServer(connection)
+                 .UseSqlite(connection)
                 .Options;
 
             using var context = new ApplicationDbContext(dbContextOptions);

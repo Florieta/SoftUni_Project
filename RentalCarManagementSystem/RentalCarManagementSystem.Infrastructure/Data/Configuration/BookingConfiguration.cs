@@ -25,8 +25,8 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Configuration
                 new Booking()
                 {
                      Id = 1,
-                     PickUpDateAndTime = new DateTime(2022, 11, 17, 5, 0, 0),
-                     DropOffDateAndTime = new DateTime(2022, 11, 23, 6, 0, 0),
+                     PickUpDateAndTime = new DateTime(2022, 12, 18, 5, 0, 0),
+                     DropOffDateAndTime = new DateTime(2022, 12, 24, 6, 0, 0),
                      Duration = 6,
                      PaymentType = "Card",
                      InsuranceCode = 1,
@@ -42,8 +42,8 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Configuration
                 new Booking()
                 {
                      Id = 2,
-                     PickUpDateAndTime = new DateTime(2022, 11, 17, 3, 0, 0),
-                     DropOffDateAndTime = new DateTime(2022, 11, 20, 5, 0, 0),
+                     PickUpDateAndTime = new DateTime(2022, 12, 15, 3, 0, 0),
+                     DropOffDateAndTime = new DateTime(2022, 12, 18, 5, 0, 0),
                      Duration = 3,
                      PaymentType = "BankTransfer",
                      CarId = 2,
@@ -53,7 +53,8 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Configuration
                      InsuranceCode = 2,
                      TotalAmount = 114,
                      IsActive = true,
-                     IsPaid = false,
+                     IsPaid = true,
+                     IsRented = true,
                      ApplicationUserId = "d3211a8d-efde-4a19-8087-79cde4679276"
                 }
             };

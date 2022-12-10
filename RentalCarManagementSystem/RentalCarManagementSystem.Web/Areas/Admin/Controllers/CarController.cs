@@ -60,7 +60,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             try
             {
                 await carServiceAdmin.RemoveCarAsync(id);
-                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRemoving;
                 return RedirectToAction("All", "Car");
             }
             catch (Exception)
@@ -75,6 +75,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         {
             if ((await carService.Exists(id)) == false)
             {
+                ViewData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 return RedirectToAction("All", "Car");
             }
 
@@ -110,7 +111,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 
             if ((await carService.Exists(editModel.Id)) == false)
             {
-                ModelState.AddModelError("", "Car does not exist");
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.CarError;
                 editModel.Categories = await carService.GetCategoriesAsync();
 
                 return View(editModel);
@@ -118,7 +119,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 
             if ((await carServiceAdmin.CategoryExistsById(editModel.CategoryId)) == false)
             {
-                ModelState.AddModelError(nameof(editModel.CategoryId), "Category does not exist");
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.CategoryError;
                 editModel.Categories = await carServiceAdmin.GetCategoriesAsync();
 
                 return View(editModel);
@@ -126,13 +127,14 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 
             if (ModelState.IsValid == false)
             {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 editModel.Categories = await carServiceAdmin.GetCategoriesAsync();
 
                 return View(editModel);
             }
 
             await carServiceAdmin.Edit(editModel.Id, editModel);
-            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulEdittingCar;
             return RedirectToAction("All", "Car");
         }
 

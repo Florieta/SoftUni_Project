@@ -21,6 +21,7 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
         private ServiceProvider serviceProvider;
         private InMemoryDbContext dbContext;
 
+
         [SetUp]
         public async Task Setup()
         {
@@ -35,17 +36,25 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
 
             var repo = serviceProvider.GetService<IRepository>();
 
-            await SeedAsync(repo);
         }
 
         [Test]
         public async Task GetUserByUsername_Succeed()
         {
             var service = serviceProvider.GetService<IProfileServiceAdmin>();
+            var model = new UserProfileViewModel()
+            {
+                Id = "d3211a8d-efde-4a19-8087-79cde4679276",
+                UserName = "Admin",
+                Email = "admin@gmail.com",
+                Address = null,
+                JobPosition = null,
+                ImageUrl = null,
+                FirstName = "Peter",
+                LastName = "Parker",
+            };
 
-            var userName = "Admin";
-
-            var user = await service.GetUserByUsernameAsync(userName);
+            var user = await service.GetUserByUsernameAsync(model.UserName);
 
             Assert.That(user, Is.Not.Null);
         }
@@ -55,13 +64,9 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
         {
             var service = serviceProvider.GetService<IProfileServiceAdmin>();
 
-            var userName = "Aaaaa";
+            var userName = "Test1";
 
-            var user = await service.GetUserByUsernameAsync(userName);
-
-            Assert.That(user, Is.Null);
-
-            Assert.Throws<ArgumentException>(() => service.GetUserByUsernameAsync(userName), "Invalid user!");
+            Assert.ThrowsAsync<ArgumentException>(async () => await service.GetUserByUsernameAsync(userName), "Invalid user!");
         }
 
 
@@ -94,11 +99,16 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
         {
             var service = serviceProvider.GetService<IProfileServiceAdmin>();
 
-            var id = "d3211a8d";
+            var model = new EditUserProfileViewModel()
+            {
+                Id = "1",
+                UserName = "Admin",
+                Email = "admin@gmail.com",
+                FirstName = "Peter",
+                LastName = "Parker"
+            };
 
-            var user = await service.GetUserById(id);
-
-            Assert.Throws<ArgumentException>(() => service.GetUserById(id), "Invalid user ID");
+            Assert.ThrowsAsync<ArgumentException>(async () => await service.EditProfile(model, model.Id), "Invalid user ID");
         }
 
         [Test]
@@ -120,55 +130,11 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
             Assert.IsTrue(user1);
         }
 
-        [Test]
-        public async Task EditProfile_ReturnFalse()
+        [TearDown]
+        public void TearDown()
         {
-            var service = serviceProvider.GetService<IProfileServiceAdmin>();
+            dbContext.Dispose();
 
-            var model = new EditUserProfileViewModel()
-            {
-                Id = "1",
-                UserName = "Admin",
-                Email = "admin@gmail.com",
-                FirstName = "Peter",
-                LastName = "Parker"
-            };
-
-            var user1 = await service.EditProfile(model, model.Id);
-
-            Assert.That(user1 == false);
-        }
-
-        private async Task SeedAsync(IRepository repo)
-        {
-
-            var user = new ApplicationUser()
-            {
-                Id = "d3211a8d-efde-4a19-8087-79cde4679276",
-                UserName = "Admin",
-                NormalizedUserName = "ADMIN",
-                Email = "admin@gmail.com",
-                NormalizedEmail = "ADMIN@GMAIL.COM",
-                PhoneNumber = "1234567890",
-                FirstName = "Peter",
-                LastName = "Parker"
-            };
-
-            var agent = new ApplicationUser()
-            {
-                Id = "c6e570fd-d889-4a67-a36a-0ecbe758bc2c",
-                UserName = "Agent1",
-                NormalizedUserName = "AGENT1",
-                Email = "agent@mail.com",
-                NormalizedEmail = "AGENT@MAIL.COM",
-                PhoneNumber = "1234567890",
-                FirstName = "Peter",
-                LastName = "Brwon"
-            };
-
-            await repo.AddAsync(user);
-            await repo.AddAsync(agent);
-            await repo.SaveChangesAsync();
         }
 
     }

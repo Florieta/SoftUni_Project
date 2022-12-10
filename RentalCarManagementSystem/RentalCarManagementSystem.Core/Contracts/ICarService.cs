@@ -20,6 +20,5 @@ namespace RentalCarManagementSystem.Core.Contracts
         Task<bool> Exists(int id);
 
         Task<bool> IsAvailable(int id);
-
     }
 }

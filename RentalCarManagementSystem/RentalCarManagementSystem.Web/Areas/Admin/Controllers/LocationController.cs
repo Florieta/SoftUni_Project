@@ -36,6 +36,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 return View(model);
             }
 
@@ -57,7 +58,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             try
             {
                 await locationService.RemoveLocationAsync(id);
-                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRemoving;
                 return RedirectToAction(nameof(All));
             }
             catch (Exception)
@@ -72,6 +73,8 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         {
             if ((await locationService.IsExisted(id)) == false)
             {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.LocationError;
+
                 return RedirectToAction(nameof(All));
             }
 
@@ -98,18 +101,20 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 
             if ((await locationService.IsExisted(editModel.Id)) == false)
             {
-                ModelState.AddModelError("", "Location does not exist");
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.LocationError;
 
                 return View(editModel);
             }
 
             if (!ModelState.IsValid)
             {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+
                 return View(editModel);
             }
 
             await locationService.Edit(editModel.Id, editModel);
-            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulEdittingLocation;
             return RedirectToAction(nameof(All));
         }
     }

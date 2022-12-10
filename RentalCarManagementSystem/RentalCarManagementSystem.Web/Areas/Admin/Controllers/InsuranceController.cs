@@ -36,6 +36,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 return View(model);
             }
 
@@ -57,7 +58,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             try
             {
                 await insuranceService.RemoveInsuranceAsync(insuranceCode);
-                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRemoving;
                 return RedirectToAction(nameof(All));
             }
             catch (Exception)
@@ -72,11 +73,12 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         {
             if ((await insuranceService.IsExisted(id)) == false)
             {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.InsuranceError;
+
                 return RedirectToAction(nameof(All));
             }
 
             var insurance = await insuranceService.FindInsuranceAsync(id);
-
 
             var model = new InsuranceViewModel()
             {
@@ -98,18 +100,20 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 
             if ((await insuranceService.IsExisted(editModel.InsuranceCode)) == false)
             {
-                ModelState.AddModelError("", "Insurance does not exist");
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.InsuranceError;
 
                 return View(editModel);
             }
 
             if (!ModelState.IsValid)
             {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+
                 return View(editModel);
             }
 
             await insuranceService.Edit(editModel.InsuranceCode, editModel);
-            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulEdittingInsurance;
             return RedirectToAction(nameof(All));
         }
     }

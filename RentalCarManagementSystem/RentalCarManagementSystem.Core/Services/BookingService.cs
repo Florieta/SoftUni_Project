@@ -283,5 +283,15 @@ namespace RentalCarManagementSystem.Core.Services
         {
             return await repo.GetByIdAsync<Car>(id);
         }
+
+        public async Task<IEnumerable<Customer>> GetAllCustomers()
+        {
+            return await repo.AllReadonly<Customer>().ToListAsync();
+        }
+
+        public async Task<IEnumerable<Booking>> GetAllBookings()
+        {
+            return await repo.AllReadonly<Booking>().ToListAsync();
+        }
     }
 }

@@ -39,8 +39,5 @@ namespace RentalCarManagementSystem.Core.Services
                 CheckOutsTodayCount = checkInsTodayCount
             };
         }
-
-       
-       
     }
 }

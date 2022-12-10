@@ -41,7 +41,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
 
             var model = await service.TotalAvailableCarsAsync();
 
-            Assert.That(model.TotalCars == 3);
+            Assert.That(model.TotalCars == 6);
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
 
             var model = await service.TotalAvailableCarsAsync();
 
-            Assert.That(model.TotalAvailableCars == 2);
+            Assert.That(model.TotalAvailableCars == 5);
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
 
             var model = await service.TotalAvailableCarsAsync();
 
-            Assert.That(model.CheckInsTodayCount == 1);
+            Assert.That(model.CheckInsTodayCount == 0);
         }
 
         [Test]
@@ -81,14 +81,21 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
 
             var model = await service.TotalAvailableCarsAsync();
 
-            Assert.That(model.CheckOutsTodayCount == 1);
+            Assert.That(model.CheckOutsTodayCount == 0);
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            dbContext.Dispose();
+
         }
 
         private async Task SeedAsync(IRepository repo)
         {
             var car = new Car()
             {
-                Id = 1,
+                Id = 12,
                 RegNumber = "B1234AB",
                 Make = "Toyota",
                 Model = "Corolla",
@@ -104,7 +111,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
 
             var car1 = new Car()
             {
-                Id = 2,
+                Id = 22,
                 RegNumber = "B1444CB",
                 Make = "Hundai",
                 Model = "i20",
@@ -120,7 +127,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
 
             var car3 = new Car()
             {
-                Id = 3,
+                Id = 33,
                 RegNumber = "B1223AB",
                 Make = "Citroen",
                 Model = "C4",
@@ -136,7 +143,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
 
             var booking = new Booking()
             {
-                Id = 1,
+                Id = 7,
                 PickUpDateAndTime = new DateTime(2022, 11, 30, 5, 0, 0),
                 DropOffDateAndTime = new DateTime(2022, 12, 06, 6, 0, 0),
                 Duration = 6,
@@ -146,36 +153,36 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
                 IsActive = true,
                 IsPaid = true,
                 IsRented = true,
-                CarId = 1,
+                CarId = 33,
                 CustomerId = 1,
                 PickUpLocationId = 1,
                 DropOffLocationId = 1,
                 ApplicationUserId = "d3211a8d-efde-4a19-8087-79cde4679276"
             };
-            var booking1 = new Booking()
-            {
-                Id = 2,
-                PickUpDateAndTime = new DateTime(2022, 12, 06, 3, 0, 0),
-                DropOffDateAndTime = new DateTime(2022, 12, 09, 5, 0, 0),
-                Duration = 3,
-                PaymentType = "BankTransfer",
-                CarId = 2,
-                CustomerId = 2,
-                PickUpLocationId = 2,
-                DropOffLocationId = 2,
-                InsuranceCode = 2,
-                TotalAmount = 114,
-                IsActive = true,
-                IsPaid = false,
-                IsRented = false,
-                ApplicationUserId = "d3211a8d-efde-4a19-8087-79cde4679276"
-            };
+            //var booking1 = new Booking()
+            //{
+            //    Id = 8,
+            //    PickUpDateAndTime = new DateTime(2022, 12, 06, 3, 0, 0),
+            //    DropOffDateAndTime = new DateTime(2022, 12, 09, 5, 0, 0),
+            //    Duration = 3,
+            //    PaymentType = "BankTransfer",
+            //    CarId = 2,
+            //    CustomerId = 2,
+            //    PickUpLocationId = 2,
+            //    DropOffLocationId = 2,
+            //    InsuranceCode = 2,
+            //    TotalAmount = 114,
+            //    IsActive = true,
+            //    IsPaid = false,
+            //    IsRented = false,
+            //    ApplicationUserId = "d3211a8d-efde-4a19-8087-79cde4679276"
+            //};
 
             await repo.AddAsync(car);
             await repo.AddAsync(car1);
             await repo.AddAsync(car3);
             await repo.AddAsync(booking);
-            await repo.AddAsync(booking1);
+            //await repo.AddAsync(booking1);
             await repo.SaveChangesAsync();
         }
     }

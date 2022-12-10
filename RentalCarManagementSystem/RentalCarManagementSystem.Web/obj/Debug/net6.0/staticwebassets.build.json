@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Eni0jt/RjFKmCk81SXiJcTgyxRP+Ovg4PnGiRkMEQhw=",
+  "Hash": "ygBr/7MYCUmLJwNTXnQmZzPnba3uIVjaix5hiV/ZEj8=",
   "Source": "RentalCarManagementSystem.Web",
   "BasePath": "_content/RentalCarManagementSystem.Web",
   "Mode": "Default",
@@ -2244,23 +2244,6 @@
       "OriginalItemSpec": "wwwroot\\js\\demo.js"
     },
     {
-      "Identity": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Web\\wwwroot\\js\\jquery.override-validator.js",
-      "SourceId": "RentalCarManagementSystem.Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Web\\wwwroot\\",
-      "BasePath": "_content/RentalCarManagementSystem.Web",
-      "RelativePath": "js/jquery.override-validator.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\jquery.override-validator.js"
-    },
-    {
       "Identity": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Web\\wwwroot\\js\\pages\\dashboard.js",
       "SourceId": "RentalCarManagementSystem.Web",
       "SourceType": "Discovered",
@@ -3092,6 +3075,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
+    },
+    {
+      "Identity": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Web\\wwwroot\\lib\\jquery.override-validator.js",
+      "SourceId": "RentalCarManagementSystem.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Web\\wwwroot\\",
+      "BasePath": "_content/RentalCarManagementSystem.Web",
+      "RelativePath": "lib/jquery.override-validator.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\jquery.override-validator.js"
     },
     {
       "Identity": "D:\\SoftUni\\source\\SoftUni_Project\\RentalCarManagementSystem\\RentalCarManagementSystem.Web\\wwwroot\\lib\\jquery\\dist\\jquery.js",

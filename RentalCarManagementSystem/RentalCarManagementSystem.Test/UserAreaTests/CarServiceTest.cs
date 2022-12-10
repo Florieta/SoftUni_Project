@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RentalCarManagementSystem.Core.Contracts;
+using RentalCarManagementSystem.Core.Models.Car;
 using RentalCarManagementSystem.Core.Services;
 using RentalCarManagementSystem.Infrastructure.Data.Common;
 using RentalCarManagementSystem.Infrastructure.Models;
@@ -42,9 +43,18 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
 
             var cars = await service.GetAllCarsAsync();
 
-            var carsList = cars.ToList();
+            Assert.That(cars.Count(), Is.EqualTo (6));
+        }
 
-            Assert.That(carsList.Count == 3);
+
+
+        [Test]
+        public async Task GetAllAsyncShouldReturnCorrectCollectionOfType()
+        {
+            var service = serviceProvider.GetService<ICarService>();
+            IEnumerable<CarServiceModel> carCollection = await service.GetAllCarsAsync();
+
+            Assert.IsInstanceOf<IEnumerable<CarServiceModel>>(carCollection);
         }
 
         [Test]
@@ -52,7 +62,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
         {
             var service = serviceProvider.GetService<ICarService>();
 
-            var id = 1;
+            var id = 12;
 
             var car = await service.Exists(id);
 
@@ -64,7 +74,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
         {
             var service = serviceProvider.GetService<ICarService>();
 
-            var id = 5;
+            var id = 113;
 
             var car = await service.Exists(id);
 
@@ -83,16 +93,13 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
         }
 
         [Test]
-        public async Task GetCarDetailsByIdWithInvalidId_ReturnFalse()
+        public async Task GetCarDetailsByIdWithInvalidId_ThrowsException()
         {
             var service = serviceProvider.GetService<ICarService>();
 
-            var id = 5;
+            var id = 0;
 
-            var car = await service.CarDetailsById(id);
-
-            Assert.That(car == null);
-            Assert.Throws<ArgumentException>(() => service.CarDetailsById(id), "Invalid car ID");
+            Assert.ThrowsAsync<ArgumentException>(async () => await service.CarDetailsById(id), "Invalid car ID");
         }
 
 
@@ -105,7 +112,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
 
             var categoryList = categories.ToList();
 
-            Assert.That(categoryList.Count == 1);
+            Assert.That(categoryList.Count == 5);
         }
 
         [Test]
@@ -125,18 +132,25 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
         {
             var service = serviceProvider.GetService<ICarService>();
 
-            var id = 3;
+            var id = 14;
 
             var carAvailability = await service.IsAvailable(id);
 
             Assert.That(carAvailability == false);
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            dbContext.Dispose();
+
+        }
+
         private async Task SeedAsync(IRepository repo)
         {
             var car = new Car()
             {
-                Id = 1,
+                Id = 12,
                 RegNumber = "B1234AB",
                 Make = "Toyota",
                 Model = "Corolla",
@@ -147,12 +161,13 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
                 GearBox = "Manual",
                 DailyRate = 40,
                 IsAvailable = true,
-                CategoryId = 3,
+                CategoryId = 8,
+                NotInUse = false
             };
 
             var car1 = new Car()
             {
-                Id = 2,
+                Id = 13,
                 RegNumber = "B1444CB",
                 Make = "Hundai",
                 Model = "i20",
@@ -163,12 +178,13 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
                 GearBox = "Manual",
                 DailyRate = 33,
                 IsAvailable = true,
-                CategoryId = 1,
+                CategoryId = 9,
+                NotInUse = false
             };
 
             var car3 = new Car()
             {
-                Id = 3,
+                Id = 14,
                 RegNumber = "B1223AB",
                 Make = "Citroen",
                 Model = "C4",
@@ -179,35 +195,29 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
                 GearBox = "Automatic",
                 DailyRate = 37,
                 IsAvailable = false,
-                CategoryId = 2,
+                CategoryId = 8,
+                NotInUse = false
             };
-
-
-
-            var user = new ApplicationUser()
-            {
-                Id = "d3211a8d-efde-4a19-8087-79cde4679276",
-                UserName = "Admin",
-                NormalizedUserName = "ADMIN",
-                Email = "admin@gmail.com",
-                NormalizedEmail = "ADMIN@GMAIL.COM",
-                PhoneNumber = "1234567890",
-                FirstName = "Peter",
-                LastName = "Parker"
-            };
-
             
-            var category = new Insurance()
+            var category = new Category()
             {
-                CategoryName = "Compact"
+                Id = 8,
+                CategoryName = "Compact",
+                IsActive = true
             };
 
-            
+            var category1 = new Category()
+            {
+                Id = 9,
+                CategoryName = "Economy",
+                IsActive = true
+
+            };
 
             await repo.AddAsync(car);
             await repo.AddAsync(car1);
             await repo.AddAsync(car3);
-            await repo.AddAsync(user);
+            await repo.AddAsync(category1);
             await repo.AddAsync(category);
             await repo.SaveChangesAsync();
         }

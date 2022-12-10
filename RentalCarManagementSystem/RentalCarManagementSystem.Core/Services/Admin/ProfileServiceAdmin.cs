@@ -16,12 +16,10 @@ namespace RentalCarManagementSystem.Core.Services.Admin
     public class ProfileServiceAdmin : IProfileServiceAdmin
     {
         private readonly IRepository repo;
-        private readonly IMapper mapper;
 
-        public ProfileServiceAdmin(IRepository repo, IMapper mapper)
+        public ProfileServiceAdmin(IRepository repo)
         {
             this.repo = repo;
-            this.mapper = mapper;
         }
 
         public async Task<UserProfileViewModel> GetUserByUsernameAsync(string username)

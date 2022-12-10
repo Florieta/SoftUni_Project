@@ -10,13 +10,13 @@ namespace RentalCarManagementSystem.Core.Contracts.Admin
 {
     public interface ICarServiceAdmin
     {
-        Task<bool> CreateCar(CreateCarInputModel model);
+        Task CreateCar(CreateCarInputModel model);
 
         Task<IEnumerable<Category>> GetCategoriesAsync();
 
         Task RemoveCarAsync(int id);
 
-        Task<bool> Edit(int id, EditCarViewModel model);
+        Task Edit(int id, EditCarViewModel model);
 
         Task<Car> FindCarAsync(int id);
 
@@ -25,5 +25,7 @@ namespace RentalCarManagementSystem.Core.Contracts.Admin
         Task<bool> CategoryExistsById(int categoryId);
 
         Task<bool> IsCarExists(CreateCarInputModel model);
+
+        Task<IEnumerable<Car>> GetAllAsync();
     }
 }

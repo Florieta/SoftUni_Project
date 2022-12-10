@@ -34,7 +34,6 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
 
             var repo = serviceProvider.GetService<IRepository>();
 
-            await SeedAsync(repo);
         }
         [Test]
         public async Task GetAllLocations_SucceededShowAllLocations()
@@ -43,9 +42,7 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
 
             var locations = await service.GetAllAsync();
 
-            var locationList = locations.ToList();
-
-            Assert.That(locationList.Count == 2);
+            Assert.That(locations.Count() == 3);
         }
 
         [Test]
@@ -124,7 +121,7 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
                 LocationName = "Sofia Airport"
             };
 
-            Assert.ThrowsAsync<ArgumentException>(async () => await service.IsLocationExists(model), "The location has already existed!");
+            Assert.ThrowsAsync<ArgumentException>(async () => await service.CreateLocation(model), "The location has already existed!");
         }
 
         [Test]
@@ -133,19 +130,16 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
             var service = serviceProvider.GetService<ILocationServiceAdmin>();
             var locations = await service.GetAllAsync();
 
-            var locationList = locations.ToList();
-
             var model = new CreateLocationViewModel()
             {
-                LocationName = "Varna"
+                LocationName = "Varna",
+                Address = "Bulgaria, Varna, 9000",
             };
             await service.CreateLocation(model);
 
             var locations1 = await service.GetAllAsync();
 
-            var locationList1 = locations1.ToList();
-
-            Assert.That(locationList.Count != locationList1.Count);
+            Assert.That(locations.Count() < locations1.Count());
         }
 
         [Test]
@@ -166,37 +160,18 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
         {
             var service = serviceProvider.GetService<ILocationServiceAdmin>();
 
-            var id = 1;
+            var id = 3;
             var location = await service.FindLocationAsync(id);
             var locationName = location.LocationName;
 
             var model = new LocationViewModel
             {
-                LocationName = "Sofia Mall"
+                LocationName = "Sofia Mall",
+                Address = "Bulgaria, Sofia, 1000"
             };
             await service.Edit(id, model);
 
             Assert.That(locationName != location.LocationName);
-        }
-        private async Task SeedAsync(IRepository repo)
-        {
-           
-            var location = new Location()
-            {
-                Id = 1,
-                LocationName = "Sofia Airport"
-            };
-
-            var location1 = new Location()
-            {
-                Id = 2,
-                LocationName = "Varna Airport"
-            };
-
-
-            await repo.AddAsync(location);
-            await repo.AddAsync(location1);
-            await repo.SaveChangesAsync();
         }
     }
 }

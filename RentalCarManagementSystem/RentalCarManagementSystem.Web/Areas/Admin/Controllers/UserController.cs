@@ -105,7 +105,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 
             if (await userService.UpdateUser(editModel))
             {
-                ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessMessage;
+                ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulEdittingUser;
             }
             else
             {

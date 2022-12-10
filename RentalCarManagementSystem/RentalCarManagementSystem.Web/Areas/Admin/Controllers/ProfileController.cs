@@ -45,6 +45,8 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+
                 return View(model);
             }
 
@@ -65,7 +67,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             }
             else
             {
-                ViewData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+                ViewData[MessageConstant.ErrorMessage] = MessageConstant.SuccessfulEdittingProfile;
             }
 
             return RedirectToAction(nameof(MyProfile));

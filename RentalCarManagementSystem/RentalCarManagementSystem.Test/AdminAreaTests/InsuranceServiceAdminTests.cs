@@ -31,8 +31,6 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
                 .BuildServiceProvider();
 
             var repo = serviceProvider.GetService<IRepository>();
-
-            await SeedAsync(repo);
         }
         [Test]
         public async Task GetAll_SucceededShowAllInsurances()
@@ -41,9 +39,7 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
 
             var insurances = await service.GetAllAsync();
 
-            var insuranceList = insurances.ToList();
-
-            Assert.That(insuranceList.Count == 2);
+            Assert.That(insurances.Count() == 2);
         }
 
         [Test]
@@ -65,7 +61,7 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
 
             var model = new CreateInsuranceViewModel()
             {
-                TypeOfInsurance = "FullCover",
+                TypeOfInsurance = "FullCoverage",
                 CostPerDay = 10
             };
 
@@ -113,7 +109,7 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
 
             Assert.That(result, Is.False);
         }
-     
+
 
         [Test]
         public async Task CreateInsurance_SucceededInCheckingThatInsuranceTypeDoesNotExist()
@@ -122,12 +118,13 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
 
             var model = new CreateInsuranceViewModel()
             {
-                TypeOfInsurance = "PartialCover"
+                TypeOfInsurance = "PartialCover",
+                CostPerDay = 6
             };
 
             var result = await service.IsInsuranceExisted(model);
 
-            Assert.That(result, Is.True);
+            Assert.That(result, Is.False);
         }
 
         [Test]
@@ -137,10 +134,11 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
 
             var model = new CreateInsuranceViewModel()
             {
-                TypeOfInsurance = "FullCover"
+                TypeOfInsurance = "FullCoverage",
+                CostPerDay = 10
             };
 
-            Assert.ThrowsAsync<ArgumentException>(() => service.IsInsuranceExisted(model), "The insurance has already existed!");
+            Assert.ThrowsAsync<ArgumentException>(() => service.CreateInsurance(model), "The insurance has already existed!");
         }
 
 
@@ -189,32 +187,12 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
 
             var model = new InsuranceViewModel
             {
+                TypeOfInsurance = "FullCoverage",
                 CostPerDay = 2
             };
             await service.Edit(insCode, model);
 
             Assert.That(costPerDay != insurance.CostPerDay);
-        }
-
-        private async Task SeedAsync(IRepository repo)
-        {
-           
-            var insurance = new Insurance()
-            {
-                InsuranceCode = 1,
-                TypeOfInsurance = "FullCover"
-            };
-
-            var insurance1 = new Insurance()
-            {
-                InsuranceCode = 2,
-                TypeOfInsurance = "HalfCover"
-            };
-
-
-            await repo.AddAsync(insurance);
-            await repo.AddAsync(insurance1);
-            await repo.SaveChangesAsync();
         }
     }
 }

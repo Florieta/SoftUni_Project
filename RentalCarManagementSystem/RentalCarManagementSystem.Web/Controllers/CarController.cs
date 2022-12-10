@@ -38,6 +38,5 @@ namespace RentalCarManagementSystem.Web.Controllers
             return View(carModel);
         }
 
-        
     }
 }

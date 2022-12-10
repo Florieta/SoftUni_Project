@@ -36,19 +36,19 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 return View(categoryModel);
             }
 
             try
             {
                 await categoryServiceAdmin.CreateCategory(categoryModel);
-                ViewData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+                TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
                 return Redirect("/");
             }
             catch
             {
-                ModelState.AddModelError("", "Something went wrong!");
-                ViewData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
                 return View(categoryModel);
             }
         }
@@ -73,6 +73,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         {
             if ((await categoryServiceAdmin.IsExisted(id)) == false)
             {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.CategoryError;
                 return RedirectToAction(nameof(All));
             }
 
@@ -97,7 +98,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
 
             if ((await categoryServiceAdmin.IsExisted(editModel.Id)) == false)
             {
-                ModelState.AddModelError("", "Category does not exist");
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.CategoryError;
 
                 return View(editModel);
             }
@@ -108,7 +109,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
             }
 
             await categoryServiceAdmin.Edit(editModel.Id, editModel);
-            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulRecord;
+            TempData[MessageConstant.SuccessMessage] = MessageConstant.SuccessfulEdittingCategory;
             return RedirectToAction(nameof(All));
         }
     }

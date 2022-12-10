@@ -37,5 +37,8 @@ namespace RentalCarManagementSystem.Core.Contracts
         Task<IEnumerable<AllBookingsViewModel>> AllCheckIns(string? searchTerm = null);
 
         Task<IEnumerable<AllBookingsViewModel>> AllCheckOuts(string? searchTerm = null);
+
+        Task<IEnumerable<Customer>> GetAllCustomers();
+        Task<IEnumerable<Booking>> GetAllBookings();
     }
 }

@@ -22,9 +22,8 @@ namespace RentalCarManagementSystem.Core.Services.Admin
             this.repo = repo;
         }
 
-        public async Task<bool> CreateCar(CreateCarInputModel model)
+        public async Task CreateCar(CreateCarInputModel model)
         {
-            var result = false;
             if (await IsCarExists(model))
             {
                 throw new ArgumentException("The car has already existed!");
@@ -44,21 +43,12 @@ namespace RentalCarManagementSystem.Core.Services.Admin
                 CategoryId = model.CategoryId,
                 IsAvailable = true
             };
-            try
-            {
-                
-                await repo.AddAsync(car);
-                await repo.SaveChangesAsync();
-                result = true;
-            }
-            catch (Exception)
-            {
-                throw new InvalidOperationException("Something went wrong!");
-            }
-            return result;
+
+            await repo.AddAsync(car);
+            await repo.SaveChangesAsync();
         }
 
-        
+
         public async Task<bool> IsCarExists(CreateCarInputModel model)
         {
             return await repo.All<Car>()
@@ -74,7 +64,7 @@ namespace RentalCarManagementSystem.Core.Services.Admin
         public async Task RemoveCarAsync(int id)
         {
             var car = await FindCarAsync(id);
-            if(car == null)
+            if (car == null)
             {
                 throw new ArgumentException("The car does not exist!");
             }
@@ -84,37 +74,27 @@ namespace RentalCarManagementSystem.Core.Services.Admin
 
         }
 
-        public async Task<bool> Edit(int id, EditCarViewModel model)
+        public async Task Edit(int id, EditCarViewModel model)
         {
-            var result = false;
             var car = await FindCarAsync(id);
             if (car == null)
             {
                 throw new ArgumentException("The car does not exist!");
             }
 
-            try
-            {
-                car.Make = model.Make;
-                car.Model = model.Model;
-                car.MakeYear = model.MakeYear;
-                car.RegNumber = model.RegNumber;
-                car.Color = model.Color;
-                car.GearBox = model.GearBox;
-                car.ImageUrl = model.ImageUrl;
-                car.Description = model.Description;
-                car.DailyRate = model.DailyRate;
-                car.CategoryId = model.CategoryId;
+            car.Make = model.Make;
+            car.Model = model.Model;
+            car.MakeYear = model.MakeYear;
+            car.RegNumber = model.RegNumber;
+            car.Color = model.Color;
+            car.GearBox = model.GearBox;
+            car.ImageUrl = model.ImageUrl;
+            car.Description = model.Description;
+            car.DailyRate = model.DailyRate;
+            car.CategoryId = model.CategoryId;
 
-                await repo.SaveChangesAsync();
-                result = true;
-            }
-            catch (Exception)
-            {
+            await repo.SaveChangesAsync();
 
-                throw new InvalidOperationException("Something went wrong!");
-            }
-            return result;
         }
 
         public async Task<Car> FindCarAsync(int id)
@@ -131,6 +111,10 @@ namespace RentalCarManagementSystem.Core.Services.Admin
             return await repo.AllReadonly<Category>()
                 .AnyAsync(c => c.Id == categoryId);
         }
-       
+
+        public async Task<IEnumerable<Car>> GetAllAsync()
+        {
+            return await repo.AllReadonly<Car>().ToListAsync();
+        }
     }
 }

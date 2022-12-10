@@ -33,20 +33,18 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
                 .BuildServiceProvider();
 
             var repo = serviceProvider.GetService<IRepository>();
-
-            await SeedAsync(repo);
         }
 
         [Test]
-        public async Task SucceedGetUserByIdForEdit_ReturnsTheCorrectInstanceOdUsersViewModel()
+        public async Task SucceedGetUserByIdForEdit_ReturnsTheCorrectInstanceOfUsersViewModel()
         {
             var service = serviceProvider.GetService<IUserServiceAdmin>();
 
-            var userId = "someId";
+            var userId = "d3211a8d-efde-4a19-8087-79cde4679276";
 
             var user = await service.GetUserByIdEditAsync(userId);
 
-            Assert.IsInstanceOf(typeof(UsersViewModel), user);
+            Assert.IsInstanceOf(typeof(EditUserViewModel), user);
         }
 
         [Test]
@@ -54,7 +52,7 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
         {
             var service = serviceProvider.GetService<IUserServiceAdmin>();
 
-            var userId = "someId";
+            var userId = "d3211a8d-efde-4a19-8087-79cde4679276";
 
             var user = await service.GetUserByIdEditAsync(userId);
 
@@ -78,7 +76,7 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
         {
             var service = serviceProvider.GetService<IUserServiceAdmin>();
 
-            var userId = "someId";
+            var userId = "d3211a8d-efde-4a19-8087-79cde4679276";
 
             var user = await service.GetUserByIdRoles(userId);
 
@@ -90,7 +88,7 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
         {
             var service = serviceProvider.GetService<IUserServiceAdmin>();
 
-            var userId = "someId";
+            var userId = "d3211a8d-efde-4a19-8087-79cde4679276";
 
             var user = await service.GetUserByIdRoles(userId);
 
@@ -112,13 +110,17 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
         [Test]
         public async Task EditUser_ReturnsCorrectResult()
         {
+            var service = serviceProvider.GetService<IUserServiceAdmin>();
+
             var model = new EditUserViewModel()
             {
-                Id = "someId",
-                UserName = "Admin"
+                Id = "d3211a8d-efde-4a19-8087-79cde4679276",
+                UserName = "Admin",
+                Email = "admin1@gmail.com",
+                PhoneNumber = "1234567890",
+                FirstName = "Peter",
+                LastName = "Parker",
             };
-
-            var service = serviceProvider.GetService<IUserServiceAdmin>();
 
             var result = await service.UpdateUser(model);
 
@@ -141,36 +143,5 @@ namespace RentalCarManagementSystem.Test.AdminAreaTests
             Assert.That(result, Is.False);
         }
 
-        private async Task SeedAsync(IRepository repo)
-        {
-            var user = new ApplicationUser()
-            {
-                Id = "someId",
-                UserName = "Admin",
-                NormalizedUserName = "ADMIN",
-                Email = "admin@gmail.com",
-                NormalizedEmail = "ADMIN@GMAIL.COM",
-                PhoneNumber = "1234567890",
-                FirstName = "Peter",
-                LastName = "Parker"
-            };
-
-            var user2 = new ApplicationUser()
-            {
-                Id = "testId",
-                UserName = "Agent1",
-                NormalizedUserName = "AGENT1",
-                Email = "agent@mail.com",
-                NormalizedEmail = "AGENT@GMAIL.COM",
-                PhoneNumber = "1234567890",
-                FirstName = "Peter",
-                LastName = "Brown",
-            };
-
-            await repo.AddAsync(user);
-            await repo.AddAsync(user2);
-
-            await repo.SaveChangesAsync();
-        }
     }
 }
