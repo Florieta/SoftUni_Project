@@ -8,7 +8,7 @@ namespace RentalCarManagementSystem.Core.Models.Admin
 {
     public class UserProfileViewModel
     {
-        public string Id { get; set; }
+        public string Id { get; set; } = null!;
         public string UserName { get; set; } = null!;
         public string FirstName { get; set; } = null!;
        

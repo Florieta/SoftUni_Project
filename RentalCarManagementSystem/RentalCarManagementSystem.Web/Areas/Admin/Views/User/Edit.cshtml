@@ -34,6 +34,21 @@
 					<input asp-for="@Model.PhoneNumber" class="form-control" aria-required="true" />
 					<span asp-validation-for="PhoneNumber" class="text-danger"></span>
 				</div>
+				<div class="form-floating">
+					<label asp-for="@Model.Address" class="form-label"></label>
+					<input asp-for="@Model.Address" class="form-control" aria-required="true" />
+					<span asp-validation-for="Address" class="text-danger"></span>
+				</div>
+				<div class="form-floating">
+					<label asp-for="@Model.ImageUrl" class="form-label"></label>
+					<input asp-for="@Model.ImageUrl" class="form-control" aria-required="true" />
+					<span asp-validation-for="ImageUrl" class="text-danger"></span>
+				</div>
+				<div class="form-floating">
+					<label asp-for="@Model.JobPosition" class="form-label"></label>
+					<input asp-for="@Model.JobPosition" class="form-control" aria-required="true" />
+					<span asp-validation-for="JobPosition" class="text-danger"></span>
+				</div>
 				<div class="row">&nbsp;</div>
 				<div class="row">
 					<div class="col-4">

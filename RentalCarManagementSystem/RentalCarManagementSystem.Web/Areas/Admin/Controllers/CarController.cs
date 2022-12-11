@@ -154,6 +154,11 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
+            if ((await carService.Exists(id)) == false)
+            {
+                TempData[MessageConstant.ErrorMessage] = MessageConstant.OccurredError;
+                return RedirectToAction(nameof(All));
+            }
             var carModel = await carService.CarDetailsById(id);
 
             return View(carModel);

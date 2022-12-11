@@ -52,9 +52,16 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         new
                         {
                             Id = "d86dba5034324ec481562264fecc1d3b",
-                            ConcurrencyStamp = "1ee8340f-7b7f-4cb1-ab9b-3e64676da165",
+                            ConcurrencyStamp = "250e574b-0b67-4802-970d-946138d07923",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "5af4facac8424694b91c57854ab6b598",
+                            ConcurrencyStamp = "f0ea9044-6b57-4648-a577-8a1abb1400c9",
+                            Name = "User",
+                            NormalizedName = "USER"
                         });
                 });
 
@@ -151,6 +158,11 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         {
                             UserId = "d3211a8d-efde-4a19-8087-79cde4679276",
                             RoleId = "d86dba5034324ec481562264fecc1d3b"
+                        },
+                        new
+                        {
+                            UserId = "c6e570fd-d889-4a67-a36a-0ecbe758bc2c",
+                            RoleId = "5af4facac8424694b91c57854ab6b598"
                         });
                 });
 
@@ -250,7 +262,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             ApplicationUserId = "d3211a8d-efde-4a19-8087-79cde4679276",
                             CarId = 1,
                             CustomerId = 1,
-                            DropOffDateAndTime = new DateTime(2022, 11, 23, 6, 0, 0, 0, DateTimeKind.Unspecified),
+                            DropOffDateAndTime = new DateTime(2022, 12, 24, 6, 0, 0, 0, DateTimeKind.Unspecified),
                             DropOffLocationId = 1,
                             Duration = 6,
                             InsuranceCode = 1,
@@ -258,7 +270,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             IsPaid = false,
                             IsRented = false,
                             PaymentType = "Card",
-                            PickUpDateAndTime = new DateTime(2022, 11, 17, 5, 0, 0, 0, DateTimeKind.Unspecified),
+                            PickUpDateAndTime = new DateTime(2022, 12, 18, 5, 0, 0, 0, DateTimeKind.Unspecified),
                             PickUpLocationId = 1,
                             TotalAmount = 292m
                         },
@@ -268,15 +280,15 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             ApplicationUserId = "d3211a8d-efde-4a19-8087-79cde4679276",
                             CarId = 2,
                             CustomerId = 2,
-                            DropOffDateAndTime = new DateTime(2022, 11, 20, 5, 0, 0, 0, DateTimeKind.Unspecified),
+                            DropOffDateAndTime = new DateTime(2022, 12, 18, 5, 0, 0, 0, DateTimeKind.Unspecified),
                             DropOffLocationId = 2,
                             Duration = 3,
                             InsuranceCode = 2,
                             IsActive = true,
-                            IsPaid = false,
-                            IsRented = false,
+                            IsPaid = true,
+                            IsRented = true,
                             PaymentType = "BankTransfer",
-                            PickUpDateAndTime = new DateTime(2022, 11, 17, 3, 0, 0, 0, DateTimeKind.Unspecified),
+                            PickUpDateAndTime = new DateTime(2022, 12, 15, 3, 0, 0, 0, DateTimeKind.Unspecified),
                             PickUpLocationId = 2,
                             TotalAmount = 114m
                         });
@@ -613,7 +625,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         {
                             Id = "d3211a8d-efde-4a19-8087-79cde4679276",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "68eb2800-18ca-4ff7-a787-f875687d92ea",
+                            ConcurrencyStamp = "87d1ce74-ac1d-4478-912c-e5308622825a",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Peter",
@@ -621,10 +633,10 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEISjnr8elFFsrEEeeTaqyImf0qn8gDHPQy/SiG/rlJ4PkZRF95qgC8iaAogj6Zk0DA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENiWMOAqDULTHLpn419doR7CqNXHaMDTdjMbz20U30PNSlFo6rEVZPV987iybPqoYQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "81cfb432-b0e9-4d16-bbe1-4a2b68cc3393",
+                            SecurityStamp = "4a2642a5-9583-4e62-9238-4053e573c534",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         },
@@ -632,7 +644,7 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                         {
                             Id = "c6e570fd-d889-4a67-a36a-0ecbe758bc2c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d6a4eed8-24ff-47d5-bc30-365a23dc1a18",
+                            ConcurrencyStamp = "347ca437-3d99-4861-9c08-1dc984f76ef2",
                             Email = "agent@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Peter",
@@ -640,10 +652,10 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AGENT@GMAIL.COM",
                             NormalizedUserName = "AGENT1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHRe7LtbTc7Z8C6d90F9HTyNf8gPQCm9YyTJzA1x/4NlZwPviPHajoFIdTTXGg3ebQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHdc53FqUPi3HwDhmd8ilCJgICRAu5SSrys23huZVruTzz4LT8eiKf5U4aZs2pHIeQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e3ba3b23-aaa1-4732-8396-3162e3241a0b",
+                            SecurityStamp = "3e280194-75f1-471c-967b-a2aa5f55e7de",
                             TwoFactorEnabled = false,
                             UserName = "Agent1"
                         });
