@@ -363,3 +363,8 @@ MigrationBackup/
 FodyWeavers.xsd
 bin
 obj
+/RentalCarManagementSystem/RentalCarManagementSystem.Core/obj
+/RentalCarManagementSystem/RentalCarManagementSystem.Test/bin
+/RentalCarManagementSystem/RentalCarManagementSystem.Test/obj
+/RentalCarManagementSystem/RentalCarManagementSystem.Web/bin
+/RentalCarManagementSystem/RentalCarManagementSystem.Web/obj
