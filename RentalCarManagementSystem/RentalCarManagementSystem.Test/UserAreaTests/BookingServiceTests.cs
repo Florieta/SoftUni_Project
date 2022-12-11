@@ -400,9 +400,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
 
             var bookings = await service.AllCheckIns();
 
-            var bookingList = bookings.ToList();
-
-            Assert.That(bookingList.Count == 2);
+            Assert.That(bookings.Count() == 1);
         }
 
         [Test]
@@ -412,9 +410,7 @@ namespace RentalCarManagementSystem.Test.UserAreaTests
 
             var bookings = await service.AllCheckOuts();
 
-            var bookingList = bookings.ToList();
-
-            Assert.That(bookingList.Count == 0);
+            Assert.That(bookings.Count() == 1);
         }
 
         [TearDown]
