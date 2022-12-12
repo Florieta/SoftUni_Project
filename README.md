@@ -41,7 +41,7 @@ He is able to edit his own profile, as well as others and give them a role.
 
 ## 🌐 Database Diagram
 
-![alt text](RentalCarManagementSystem_diagram.png)
+![alt text](RentalCarManagementSystem_Diagram.png)
 
 ## 👦 Author
 
