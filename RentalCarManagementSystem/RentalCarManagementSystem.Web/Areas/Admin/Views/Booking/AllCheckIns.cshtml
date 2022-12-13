@@ -10,9 +10,9 @@
 <form method="get">
     <div class="row">
         <div class="form-group">
-            <label asp-for="@Model.SearchTerm">Choose a date:</label>
-            <div class="input-group date" id="issuedate" data-target-input="nearest">
-                <input asp-for="@Model.SearchTerm" type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+           <label asp-for="@Model.SearchTerm">Choose a pick-up date:</label>
+            <div class="input-group date">
+                <input asp-for="@Model.SearchTerm" type="date" class="form-control" placeholder="dd/mm/yyyy">
             </div>
             <span asp-validation-for="SearchTerm" class="text-danger"></span>
         </div>

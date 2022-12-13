@@ -173,14 +173,13 @@ namespace RentalCarManagementSystem.Core.Services
             await repo.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<AllBookingsViewModel>> GetAllBookingsAsync(string? searchTerm = null)
+        public async Task<IEnumerable<AllBookingsViewModel>> GetAllBookingsAsync(DateTime? searchTerm = null)
         {
             var all = repo.AllReadonly<Booking>().Where(x => x.IsActive == true);
 
-            if (string.IsNullOrEmpty(searchTerm) == false)
+            if(searchTerm != null)
             {
-                var searchTerm1 = DateTime.Parse(searchTerm).Date;
-                all = all.Where(b => b.PickUpDateAndTime.Date == searchTerm1);
+                all = all.Where(b => b.PickUpDateAndTime.Date == searchTerm);
             }
 
             return await all
@@ -196,16 +195,15 @@ namespace RentalCarManagementSystem.Core.Services
                 }).OrderBy(t => t.PickUpDateAndTime).ToListAsync();
         }
 
-        public async Task<IEnumerable<AllBookingsViewModel>> AllCheckIns(string? searchTerm = null)
+        public async Task<IEnumerable<AllBookingsViewModel>> AllCheckIns(DateTime? searchTerm = null)
         {
             var bookings = repo.AllReadonly<Booking>()
                 .Where(b => b.IsActive == true && b.IsPaid == false && b.IsRented == false);
 
 
-            if (string.IsNullOrEmpty(searchTerm) == false)
+            if (searchTerm != null)
             {
-                var searchTerm1 = DateTime.Parse(searchTerm).Date;
-                bookings = bookings.Where(b => b.PickUpDateAndTime.Date == searchTerm1);
+                bookings = bookings.Where(b => b.PickUpDateAndTime.Date == searchTerm);
             }
 
             var result = await bookings
@@ -223,16 +221,15 @@ namespace RentalCarManagementSystem.Core.Services
             return result;
         }
 
-        public async Task<IEnumerable<AllBookingsViewModel>> AllCheckOuts(string? searchTerm = null)
+        public async Task<IEnumerable<AllBookingsViewModel>> AllCheckOuts(DateTime? searchTerm = null)
         {
             var bookings = repo.AllReadonly<Booking>()
                 .Where(b => b.IsActive && b.IsPaid == true && b.IsRented == true);
 
 
-            if (string.IsNullOrEmpty(searchTerm) == false)
+            if (searchTerm != null)
             {
-                var searchTerm1 = DateTime.Parse(searchTerm).Date;
-                bookings = bookings.Where(b => b.DropOffDateAndTime.Date == searchTerm1);
+                bookings = bookings.Where(b => b.DropOffDateAndTime.Date == searchTerm);
             }
 
             var result = await bookings

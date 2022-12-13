@@ -8,7 +8,7 @@ namespace RentalCarManagementSystem.Core.Models.Booking
 {
     public class AllBookingsViewModel
     {
-        public DateTime SearchTirm { get; set; }
+        
         public int Id { get; set; }
 
         public int CarId { get; set; }

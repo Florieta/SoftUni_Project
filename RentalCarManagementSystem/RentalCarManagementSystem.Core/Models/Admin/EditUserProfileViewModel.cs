@@ -26,6 +26,10 @@ namespace RentalCarManagementSystem.Core.Models.Admin
         [StringLength(50, MinimumLength = 7)]
         public string Email { get; set; } = null!;
 
+        [Required(ErrorMessage = "PhoneNumber is required")]
+        [StringLength(15, MinimumLength = 7)]
+        public string PhoneNumber { get; set; } = null!;
+
         public string? Address { get; set; }
 
         public string? ImageUrl { get; set; }

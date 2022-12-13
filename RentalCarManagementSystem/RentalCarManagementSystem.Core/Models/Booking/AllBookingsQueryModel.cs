@@ -8,7 +8,7 @@ namespace RentalCarManagementSystem.Core.Models.Booking
 {
     public class AllBookingsQueryModel
     {
-        public string? SearchTerm { get; set; }
+        public DateTime? SearchTerm { get; set; }
         public IEnumerable<AllBookingsViewModel> Bookings { get; set; } = Enumerable.Empty<AllBookingsViewModel>();
     }
 }

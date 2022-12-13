@@ -17,7 +17,7 @@ namespace RentalCarManagementSystem.Core.Contracts
 
         Task<IEnumerable<Insurance>> GetInsurancesAsync();
 
-        Task<IEnumerable<AllBookingsViewModel>> GetAllBookingsAsync(string? searchTerm = null);
+        Task<IEnumerable<AllBookingsViewModel>> GetAllBookingsAsync(DateTime? searchTerm = null);
 
         Task CheckIn(int id);
         Task CheckOut(int id);
@@ -34,9 +34,9 @@ namespace RentalCarManagementSystem.Core.Contracts
 
         Task<Car> GetCarById(int id);
 
-        Task<IEnumerable<AllBookingsViewModel>> AllCheckIns(string? searchTerm = null);
+        Task<IEnumerable<AllBookingsViewModel>> AllCheckIns(DateTime? searchTerm = null);
 
-        Task<IEnumerable<AllBookingsViewModel>> AllCheckOuts(string? searchTerm = null);
+        Task<IEnumerable<AllBookingsViewModel>> AllCheckOuts(DateTime? searchTerm = null);
 
         Task<IEnumerable<Customer>> GetAllCustomers();
         Task<IEnumerable<Booking>> GetAllBookings();

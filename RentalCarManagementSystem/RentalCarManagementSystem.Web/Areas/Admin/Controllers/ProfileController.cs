@@ -32,6 +32,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
                 LastName = user.LastName,
                 UserName = user.UserName,
                 Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
                 ImageUrl = user.ImageUrl,
                 Address = user.Address,
                 JobPosition = user.JobPosition
@@ -56,6 +57,7 @@ namespace RentalCarManagementSystem.Web.Areas.Admin.Controllers
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
+                PhoneNumber=model.PhoneNumber,
                 ImageUrl = model.ImageUrl,
                 JobPosition = model.JobPosition,
                 Address = model.Address

@@ -23,8 +23,8 @@ namespace RentalCarManagementSystem.Infrastructure.Data.Configuration
             builder.HasData(new IdentityRole()
             {
                 Id = "5af4facac8424694b91c57854ab6b598",
-                Name = "User",
-                NormalizedName = "USER"
+                Name = "Agent",
+                NormalizedName = "AGENT"
             });
         }
     }

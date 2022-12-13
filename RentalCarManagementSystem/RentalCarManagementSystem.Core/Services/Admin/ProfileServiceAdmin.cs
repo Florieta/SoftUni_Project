@@ -33,6 +33,7 @@ namespace RentalCarManagementSystem.Core.Services.Admin
                     FirstName = x.FirstName,
                     LastName = x.LastName,
                     Email = x.Email,
+                    PhoneNumber = x.PhoneNumber,
                     Address = x.Address,
                     JobPosition = x.JobPosition,
                     ImageUrl = x.ImageUrl
@@ -63,6 +64,7 @@ namespace RentalCarManagementSystem.Core.Services.Admin
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
                 user.Email = model.Email;
+                user.PhoneNumber = model.PhoneNumber;
                 user.JobPosition = model.JobPosition;
                 user.ImageUrl = model.ImageUrl;
                 user.Address = model.Address;
